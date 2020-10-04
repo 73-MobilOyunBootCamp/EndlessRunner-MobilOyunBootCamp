@@ -6,6 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/URP/Scenes/SampleScene.unity
-    guid: d1c3109bdb54ad54c8a2b2838528e640
+    path: Assets/Kodluyoruz/Projects/EndlessRunner/Scenes/EndlessRunnerUI.unity
+    guid: 830dfd70eef5641b4acd4b96b9c26c3b
+  - enabled: 1
+    path: Assets/Kodluyoruz/Projects/EndlessRunner/Scenes/EndlessRunnerInit.unity
+    guid: 02b7b07dfa37e41f096521da52c69bd3
+  - enabled: 1
+    path: Assets/Kodluyoruz/Projects/EndlessRunner/Scenes/EndlessRunnerGame.unity
+    guid: 006ea2981a1e14ca294f85280a777f66
   m_configObjects: {}
