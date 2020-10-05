@@ -9,27 +9,23 @@ public class LevelManager : Singleton<LevelManager>
 
 
     private bool isLevelStarted;
-
-    public void Initilize()
-    {
-        TrackManager.Instance.Initilize();
-    }
+    public bool IsLevelStarted { get { return isLevelStarted; } private set { isLevelStarted = value; } }
 
     public void StartLevel()
     {
-        if (isLevelStarted)
+        if (IsLevelStarted)
             return;
 
-        isLevelStarted = true;
+        IsLevelStarted = true;
         EventManager.OnLevelStart.Invoke();
     }
 
     public void FinishLevel()
     {
-        if (!isLevelStarted)
+        if (!IsLevelStarted)
             return;
 
-        isLevelStarted = false;
+        IsLevelStarted = false;
         EventManager.OnLevelFinish.Invoke();
     }
     

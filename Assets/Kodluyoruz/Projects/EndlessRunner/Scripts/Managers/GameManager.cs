@@ -2,17 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+public class GameManager : Singleton<GameManager>
 {
     private bool isGameStarted;
+    public bool IsGameStarted { get { return isGameStarted; } private set { isGameStarted = value; } }
 
 
     public void StartGame()
     {
-        if (isGameStarted)
+        if (IsGameStarted)
             return;
 
-        isGameStarted = true;
+        IsGameStarted = true;
         EventManager.OnGameStart.Invoke();
     }
 
@@ -21,7 +22,7 @@ public class GameManager : MonoBehaviour
         if (!isGameStarted)
             return;
 
-        isGameStarted = false;
+        IsGameStarted = false;
         EventManager.OnGameEnd.Invoke();
     }
 }

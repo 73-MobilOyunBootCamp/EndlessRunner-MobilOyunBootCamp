@@ -11,8 +11,6 @@ public class ERInitManager : MonoBehaviour
         SceneManager.LoadScene("EndlessRunnerUI", LoadSceneMode.Additive);
         SceneManager.LoadScene("EndlessRunnerGame", LoadSceneMode.Additive);
 
-
-
         Destroy(gameObject);
     }
 }

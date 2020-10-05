@@ -14,19 +14,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ThemeDatas:
   - Theme: 0
-    Tracks: []
+    Tracks:
+    - {fileID: 1000011175313116, guid: 2d4807022e73aa34ab8f01892dbdfe1d, type: 3}
+    - {fileID: 1000010272792782, guid: 81bf7d820e3d0554e9ea968eeba33052, type: 3}
+    - {fileID: 1000011514364366, guid: 9e0040302c7a83c4d8e1ddf3979d6979, type: 3}
     LevelObjectDatas:
     - LevelObjectType: 0
-      ObjectsToCreate: []
+      ObjectsToCreate:
+      - {fileID: 1000010455400752, guid: 82eb370d70e50344cb6eeb919a1429b8, type: 3}
+      - {fileID: 1000010256476064, guid: f0070c0f7d7cdcb4eb7176be4a87caa9, type: 3}
       SpawnRetrio: 65
     - LevelObjectType: 2
       ObjectsToCreate: []
       SpawnRetrio: 50
   - Theme: 1
-    Tracks: []
+    Tracks:
+    - {fileID: 1000010291688486, guid: dcbeb2ef97131d241b111f35d4788477, type: 3}
+    - {fileID: 1000014290068172, guid: efcbfaf146228ad40ae6c878d7806d64, type: 3}
+    - {fileID: 1000011501633068, guid: 5d6fcbaf51bca6b4594f12ca78b10a69, type: 3}
+    - {fileID: 1000011509899756, guid: 544006c54b323e9419926850d7e3fbac, type: 3}
     LevelObjectDatas:
     - LevelObjectType: 0
-      ObjectsToCreate: []
+      ObjectsToCreate:
+      - {fileID: 1000011638144408, guid: 22facfbe232a90b45b681c638f2e490d, type: 3}
+      - {fileID: 1000011769374998, guid: b19a0bd8ede69fe4683dff84150a047b, type: 3}
+      - {fileID: 1000013842435444, guid: d68ac797bf384f84bbca159dc2a6e4d7, type: 3}
       SpawnRetrio: 85
     - LevelObjectType: 2
       ObjectsToCreate: []

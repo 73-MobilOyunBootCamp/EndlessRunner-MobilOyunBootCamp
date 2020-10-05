@@ -2,20 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
-public class TrackObject : MonoBehaviour
+public class MainMenuPanel : Panel
 {
-    public Theme Theme;
-    public Transform StartPoint;
-    public Transform EndPoint;
-
 
     private void OnEnable()
     {
         if (Managers.Instance == null)
             return;
 
-        TrackManager.Instance.AddTrack(this);
+        EventManager.OnGameStart.AddListener(HidePanel);
+        EventManager.OnGameEnd.AddListener(ShowPanel);
     }
 
     private void OnDisable()
@@ -23,6 +19,7 @@ public class TrackObject : MonoBehaviour
         if (Managers.Instance == null)
             return;
 
-        TrackManager.Instance.RemoveTrack(this);
+        EventManager.OnGameStart.RemoveListener(HidePanel);
+        EventManager.OnGameEnd.RemoveListener(ShowPanel);
     }
 }
