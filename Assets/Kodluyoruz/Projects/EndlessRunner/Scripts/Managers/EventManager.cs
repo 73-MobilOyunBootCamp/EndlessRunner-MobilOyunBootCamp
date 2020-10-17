@@ -13,4 +13,10 @@ public static class EventManager
 
     public static UnityEvent OnLevelSuccess = new UnityEvent();
     public static UnityEvent OnLevelFail = new UnityEvent();
+
+    public static SwipeEvent OnSwipeDetected = new SwipeEvent();
+    public static UnityEvent OnTapDetected = new UnityEvent();
+    public static UnityEvent OnSwipeFail = new UnityEvent();
 }
+
+public class SwipeEvent : UnityEvent<Swipe, Vector2> { }

@@ -61,11 +61,8 @@ public class LevelData : ScriptableObject
             {
                 if (theme == ThemeDatas[i].Theme)
                 {
-                    for (int j = 0; j < ThemeDatas[i].LevelObjectDatas.Count; j++)
-                    {
-                        return ThemeDatas[i].LevelObjectDatas[j].ObjectsToCreate[Random.Range(0, ThemeDatas[i].LevelObjectDatas[j].ObjectsToCreate.Count)];
 
-                    }
+                    return ThemeDatas[i].LevelObjectDatas[(int)theme].ObjectsToCreate[Random.Range(0, ThemeDatas[i].LevelObjectDatas[(int)theme].ObjectsToCreate.Count)];
                 }
             }
             Debug.LogError("Theme Level Object is null");

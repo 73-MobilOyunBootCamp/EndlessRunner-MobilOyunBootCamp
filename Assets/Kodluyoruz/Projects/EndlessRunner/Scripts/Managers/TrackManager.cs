@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -27,14 +28,28 @@ public class TrackManager : Singleton<TrackManager>
         }
     }
 
+    private List<LaneObject> lanes;
+    public List<LaneObject> Lanes { get { return (lanes == null) ? lanes = new List<LaneObject>() : lanes; } set { lanes = value; } }
+
+    private float startDelay = 3.8f;
+    private float startTime;
+
     private void OnEnable()
     {
-        EventManager.OnGameStart.AddListener(Initilize);
+        EventManager.OnGameStart.AddListener(() =>
+        {
+            Initilize();
+            startTime = Time.time;
+        });
     }
 
     private void OnDisable()
     {
-        EventManager.OnGameStart.RemoveListener(Initilize);
+        EventManager.OnGameStart.RemoveListener(()=>
+        {
+            Initilize();
+            startTime = Time.time;
+        });
     }
 
 
@@ -48,6 +63,18 @@ public class TrackManager : Singleton<TrackManager>
     {
         if (CreatedTracks.Contains(trackObject))
             CreatedTracks.Remove(trackObject);
+    }
+
+    public void AddLane(LaneObject laneObject)
+    {
+        if (!Lanes.Contains(laneObject))
+            Lanes.Add(laneObject);
+    }
+
+    public void RemoveLane(LaneObject laneObject)
+    {
+        if (Lanes.Contains(laneObject))
+            Lanes.Remove(laneObject);
     }
 
     public void Initilize()
@@ -64,8 +91,11 @@ public class TrackManager : Singleton<TrackManager>
     /// </summary>
     private void Update()
     {
-        //if (!LevelManager.Instance.IsLevelStarted)
-        //    return;
+        if (!LevelManager.Instance.IsLevelStarted)
+            return;
+
+        if (Time.time < startTime + startDelay)
+            return;
 
         MoveTrackObjects();
         ManageTracks();
@@ -79,7 +109,7 @@ public class TrackManager : Singleton<TrackManager>
     {
         for (int i = 0; i < CreatedTracks.Count; i++)
         {
-            CreatedTracks[i].transform.position += Vector3.back * 5 * Time.deltaTime;
+            CreatedTracks[i].transform.position += Vector3.back * 10 * Time.deltaTime;
         }
     }
 
@@ -123,6 +153,21 @@ public class TrackManager : Singleton<TrackManager>
         Destroy(trackObject.gameObject);
     }
 
+    public LaneObject GetClosestLane(Vector3 position)
+    {
+        float minDistance = Mathf.Infinity;
+        LaneObject closestLine = null;
+        float distance = 0;
+        for (int i = 0; i < Lanes.Count; i++)
+        {
+            distance = Vector3.Distance(Lanes[i].transform.position, position);
+            if (distance < minDistance)
+            {
+                minDistance = distance;
+                closestLine = Lanes[i];
+            }
+        }
 
-
+        return closestLine;
+    }
 }
