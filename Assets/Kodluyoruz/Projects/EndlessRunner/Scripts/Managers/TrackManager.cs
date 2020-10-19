@@ -33,6 +33,7 @@ public class TrackManager : Singleton<TrackManager>
 
     private float startDelay = 3.8f;
     private float startTime;
+    private bool canMoveTracks;
 
     private void OnEnable()
     {
@@ -41,6 +42,8 @@ public class TrackManager : Singleton<TrackManager>
             Initilize();
             startTime = Time.time;
         });
+
+        EventManager.OnPlayerStartedRunning.AddListener(() => canMoveTracks = true);
     }
 
     private void OnDisable()
@@ -50,6 +53,8 @@ public class TrackManager : Singleton<TrackManager>
             Initilize();
             startTime = Time.time;
         });
+
+        EventManager.OnPlayerStartedRunning.RemoveListener(() => canMoveTracks = true);
     }
 
 
@@ -79,7 +84,7 @@ public class TrackManager : Singleton<TrackManager>
 
     public void Initilize()
     {
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < 10; i++)
         {
             CreateTrack();
         }
@@ -91,10 +96,7 @@ public class TrackManager : Singleton<TrackManager>
     /// </summary>
     private void Update()
     {
-        if (!LevelManager.Instance.IsLevelStarted)
-            return;
-
-        if (Time.time < startTime + startDelay)
+        if (!canMoveTracks)
             return;
 
         MoveTrackObjects();
@@ -140,7 +142,7 @@ public class TrackManager : Singleton<TrackManager>
             }
         }
         
-        GameObject roadObj = Instantiate(LevelManager.Instance.LevelData.GetRandomTrack(LevelManager.Instance.CurrentTheme), createPos, Quaternion.identity);
+        GameObject roadObj = Instantiate(LevelManager.Instance.LevelData.Levels[LevelManager.Instance.LevelIndex].GetRandomTrack(LevelManager.Instance.CurrentTheme), createPos, Quaternion.identity);
     }
 
     /// <summary>

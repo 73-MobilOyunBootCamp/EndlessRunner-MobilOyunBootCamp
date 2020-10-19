@@ -8,17 +8,23 @@ public class CharacterController : MonoBehaviour, ICharacterController
 {
 
     public LaneObject CurrentLane { get { return TrackManager.Instance.GetClosestLane(transform.position); } }
+    Character character;
+    Character Character { get { return (character == null) ? character = GetComponent<Character>() : character; } }
 
     private void OnEnable()
     {
         if (Managers.Instance == null)
             return;
+
+        EventManager.OnSwipeDetected.AddListener(Move);
     }
 
     private void OnDisable()
     {
         if (Managers.Instance == null)
             return;
+
+        EventManager.OnSwipeDetected.RemoveListener(Move);
     }
 
     /// <summary>
@@ -31,21 +37,50 @@ public class CharacterController : MonoBehaviour, ICharacterController
 
     }
 
-    public void Move(Swipe swipe, Vector3 direction)
+    public void Move(Swipe swipe, Vector2 direction)
     {
-        if (!CurrentLane.HasDirection(swipe))
+        if (!Character.IsControlable)
             return;
 
-        //Get which lane should this character move
+        LaneObject laneObject = CurrentLane.GetLane(swipe);
+        switch (swipe)
+        {
+            case Swipe.Up:
+                Jump();
+                break;
+            case Swipe.Down:
+                Slide();
+                break;
+            case Swipe.Left:
+                if (laneObject == null) return;
+
+                //Get which lane should this character move
+                transform.DOJump(new Vector3(laneObject.transform.position.x, transform.position.y, transform.position.z), 1f, 1, 0.3f);
+                //Jump();
+                break;
+            case Swipe.Right:
+                if (laneObject == null) return;
+
+                //Get which lane should this character move
+                transform.DOJump(new Vector3(laneObject.transform.position.x, transform.position.y, transform.position.z), 1f, 1, 0.3f);
+                //Jump();
+                break;
+            default:
+                break;
+        }
+        
+
     }
 
     public void Jump()
     {
-        Debug.Log("Jump");
+        Character.OnCharacterJump.Invoke();
+        Character.Collider.enabled = false;
     }
 
     public void Slide()
     {
-        Debug.Log("Slide");
+        Character.OnCharacterSlide.Invoke();
+        Character.Collider.enabled = false;
     }
 }

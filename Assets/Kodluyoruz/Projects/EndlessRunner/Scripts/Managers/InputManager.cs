@@ -55,7 +55,6 @@ public class InputManager : Singleton<InputManager>
 
         if (Input.GetMouseButton(0))
         {
-            GameManager.Instance.StartGame();
             LevelManager.Instance.StartLevel();
         }
 

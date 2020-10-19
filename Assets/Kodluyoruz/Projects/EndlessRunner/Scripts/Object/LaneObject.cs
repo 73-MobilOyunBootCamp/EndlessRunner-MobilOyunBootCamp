@@ -2,11 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
+public class LaneHolder
+{
+    public LaneObject LaneObject;
+    public Swipe SwipeDirection;
+}
+
 
 public class LaneObject : MonoBehaviour
 {
 
-    public List<Swipe> AvialibleDirections = new List<Swipe>();
+    public List<LaneHolder> ConnectedLanes = new List<LaneHolder>();
 
     private void OnEnable()
     {
@@ -23,15 +30,15 @@ public class LaneObject : MonoBehaviour
         TrackManager.Instance.RemoveLane(this);
     }
 
-    public bool HasDirection(Swipe swipe)
+    public LaneObject GetLane(Swipe swipe)
     {
-        for (int i = 0; i < AvialibleDirections.Count; i++)
+        for (int i = 0; i < ConnectedLanes.Count; i++)
         {
-            if (AvialibleDirections[i].Equals(swipe))
-                return true;
+            if (ConnectedLanes[i].SwipeDirection.Equals(swipe))
+                return ConnectedLanes[i].LaneObject;
         }
 
-        return false;
+        return null;
     }
 
 

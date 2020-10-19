@@ -9,8 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17887f6f8e4c847eda7e217f1d561976, type: 3}
-  m_Name: Endless Runner Level Data
+  m_Script: {fileID: 11500000, guid: bbf230182b7a4488c8c73f28ca55915d, type: 3}
+  m_Name: Easy Difficulity Data
   m_EditorClassIdentifier: 
-  Levels:
-  - {fileID: 0}
+  DifficulityMode: 0

@@ -17,6 +17,8 @@ public static class EventManager
     public static SwipeEvent OnSwipeDetected = new SwipeEvent();
     public static UnityEvent OnTapDetected = new UnityEvent();
     public static UnityEvent OnSwipeFail = new UnityEvent();
+
+    public static UnityEvent OnPlayerStartedRunning = new UnityEvent();
 }
 
 public class SwipeEvent : UnityEvent<Swipe, Vector2> { }

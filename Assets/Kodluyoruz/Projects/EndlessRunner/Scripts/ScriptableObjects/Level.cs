@@ -2,34 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum Theme { Industrial = 0, Suburbs = 1, Urban = 2 }
-public enum LevelObjectType { Obstacle, PowerUp, Coin}
 
-
-[System.Serializable]
-public class LevelObjectData
-{
-    public LevelObjectType LevelObjectType;
-
-    public List<GameObject> ObjectsToCreate = new List<GameObject>();
-
-    [Tooltip("Use this as a spawn percentage to determan the chance of this object being created when level creates a level object")]
-    [Range(1, 100)]
-    public float SpawnRetrio = 1f;
-}
-
-[System.Serializable]
-public class ThemeData
-{
-    public Theme Theme;
-    public List<GameObject> Tracks = new List<GameObject>();
-    public List<LevelObjectData> LevelObjectDatas = new List<LevelObjectData>();
-}
-
-[CreateAssetMenu(fileName = "Endless Runner Level Data", menuName = "Endless Runner/Level Data")]
-public class LevelData : ScriptableObject
+[CreateAssetMenu(fileName = "Endless Runner Level", menuName = "Endless Runner/Level Data")]
+public class Level : ScriptableObject
 {
     public List<ThemeData> ThemeDatas = new List<ThemeData>();
+    public List<DifficulityData> DifficulityData = new List<DifficulityData>();
 
 
     public GameObject GetRandomTrack(Theme theme)

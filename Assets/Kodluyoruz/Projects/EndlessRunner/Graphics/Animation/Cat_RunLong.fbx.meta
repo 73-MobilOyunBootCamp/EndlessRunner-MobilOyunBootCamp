@@ -1,166 +1,436 @@
 fileFormatVersion: 2
 guid: b5d2ede1140b4a34eb5f4d7569a2f986
-timeCreated: 1457959855
-licenseType: Store
 ModelImporter:
-  serializedVersion: 19
-  fileIDToRecycleName:
-    100000: Cat
-    100002: //RootNode
-    100004: Control_Head
-    100006: Control_LeftEye
-    100008: Control_Neck
-    100010: Control_RightEye
-    100012: Control_Spine1
-    100014: Control_Spine2
-    100016: Control_UpperBody
-    100018: Controls
-    100020: Head
-    100022: Hips
-    100024: LeftArm
-    100026: LeftEar
-    100028: LeftFoot
-    100030: LeftForeArm
-    100032: LeftHand
-    100034: LeftLeg
-    100036: LeftLowerEyelid
-    100038: LeftLowerEyelidEnd
-    100040: LeftShoulder
-    100042: LeftToe
-    100044: LeftUpLeg
-    100046: LeftUpperEyelid
-    100048: LeftUpperEyelidEnd
-    100050: Mesh
-    100052: Neck
-    100054: RightArm
-    100056: RightEar
-    100058: RightFoot
-    100060: RightForeArm
-    100062: RightHand
-    100064: RightLeg
-    100066: RightLowerEyelid
-    100068: RightLowerEyelidEnd
-    100070: RightShoulder
-    100072: RightToe
-    100074: RightUpLeg
-    100076: RightUpperEyelid
-    100078: RightUpperEyelidEnd
-    100080: Skeleton
-    100082: Spine1
-    100084: Spine2
-    100086: Tail1
-    100088: Tail2
-    100090: Tail3
-    100092: HeadEnd
-    100094: LeftEarEnd
-    100096: LeftHandEnd
-    100098: LeftLowerLid
-    100100: LeftLowerLidEnd
-    100102: LeftToeEnd
-    100104: LeftUpperLid
-    100106: LeftUpperLidEnd
-    100108: RightEarEnd
-    100110: RightHandEnd
-    100112: RightLowerLid
-    100114: RightLowerLidEnd
-    100116: RightToeEnd
-    100118: RightUpperLid
-    100120: RightUpperLidEnd
-    100122: Tail4
-    100124: LeftEye
-    100126: RightEye
-    400000: Cat
-    400002: //RootNode
-    400004: Control_Head
-    400006: Control_LeftEye
-    400008: Control_Neck
-    400010: Control_RightEye
-    400012: Control_Spine1
-    400014: Control_Spine2
-    400016: Control_UpperBody
-    400018: Controls
-    400020: Head
-    400022: Hips
-    400024: LeftArm
-    400026: LeftEar
-    400028: LeftFoot
-    400030: LeftForeArm
-    400032: LeftHand
-    400034: LeftLeg
-    400036: LeftLowerEyelid
-    400038: LeftLowerEyelidEnd
-    400040: LeftShoulder
-    400042: LeftToe
-    400044: LeftUpLeg
-    400046: LeftUpperEyelid
-    400048: LeftUpperEyelidEnd
-    400050: Mesh
-    400052: Neck
-    400054: RightArm
-    400056: RightEar
-    400058: RightFoot
-    400060: RightForeArm
-    400062: RightHand
-    400064: RightLeg
-    400066: RightLowerEyelid
-    400068: RightLowerEyelidEnd
-    400070: RightShoulder
-    400072: RightToe
-    400074: RightUpLeg
-    400076: RightUpperEyelid
-    400078: RightUpperEyelidEnd
-    400080: Skeleton
-    400082: Spine1
-    400084: Spine2
-    400086: Tail1
-    400088: Tail2
-    400090: Tail3
-    400092: HeadEnd
-    400094: LeftEarEnd
-    400096: LeftHandEnd
-    400098: LeftLowerLid
-    400100: LeftLowerLidEnd
-    400102: LeftToeEnd
-    400104: LeftUpperLid
-    400106: LeftUpperLidEnd
-    400108: RightEarEnd
-    400110: RightHandEnd
-    400112: RightLowerLid
-    400114: RightLowerLidEnd
-    400116: RightToeEnd
-    400118: RightUpperLid
-    400120: RightUpperLidEnd
-    400122: Tail4
-    400124: LeftEye
-    400126: RightEye
-    4300000: Cat
-    7400000: Cat_RunLong
-    9500000: //RootNode
-    13700000: Cat
+  serializedVersion: 19301
+  internalIDToNameTable:
+  - first:
+      1: 100000
+    second: Cat
+  - first:
+      1: 100002
+    second: //RootNode
+  - first:
+      1: 100004
+    second: Control_Head
+  - first:
+      1: 100006
+    second: Control_LeftEye
+  - first:
+      1: 100008
+    second: Control_Neck
+  - first:
+      1: 100010
+    second: Control_RightEye
+  - first:
+      1: 100012
+    second: Control_Spine1
+  - first:
+      1: 100014
+    second: Control_Spine2
+  - first:
+      1: 100016
+    second: Control_UpperBody
+  - first:
+      1: 100018
+    second: Controls
+  - first:
+      1: 100020
+    second: Head
+  - first:
+      1: 100022
+    second: Hips
+  - first:
+      1: 100024
+    second: LeftArm
+  - first:
+      1: 100026
+    second: LeftEar
+  - first:
+      1: 100028
+    second: LeftFoot
+  - first:
+      1: 100030
+    second: LeftForeArm
+  - first:
+      1: 100032
+    second: LeftHand
+  - first:
+      1: 100034
+    second: LeftLeg
+  - first:
+      1: 100036
+    second: LeftLowerEyelid
+  - first:
+      1: 100038
+    second: LeftLowerEyelidEnd
+  - first:
+      1: 100040
+    second: LeftShoulder
+  - first:
+      1: 100042
+    second: LeftToe
+  - first:
+      1: 100044
+    second: LeftUpLeg
+  - first:
+      1: 100046
+    second: LeftUpperEyelid
+  - first:
+      1: 100048
+    second: LeftUpperEyelidEnd
+  - first:
+      1: 100050
+    second: Mesh
+  - first:
+      1: 100052
+    second: Neck
+  - first:
+      1: 100054
+    second: RightArm
+  - first:
+      1: 100056
+    second: RightEar
+  - first:
+      1: 100058
+    second: RightFoot
+  - first:
+      1: 100060
+    second: RightForeArm
+  - first:
+      1: 100062
+    second: RightHand
+  - first:
+      1: 100064
+    second: RightLeg
+  - first:
+      1: 100066
+    second: RightLowerEyelid
+  - first:
+      1: 100068
+    second: RightLowerEyelidEnd
+  - first:
+      1: 100070
+    second: RightShoulder
+  - first:
+      1: 100072
+    second: RightToe
+  - first:
+      1: 100074
+    second: RightUpLeg
+  - first:
+      1: 100076
+    second: RightUpperEyelid
+  - first:
+      1: 100078
+    second: RightUpperEyelidEnd
+  - first:
+      1: 100080
+    second: Skeleton
+  - first:
+      1: 100082
+    second: Spine1
+  - first:
+      1: 100084
+    second: Spine2
+  - first:
+      1: 100086
+    second: Tail1
+  - first:
+      1: 100088
+    second: Tail2
+  - first:
+      1: 100090
+    second: Tail3
+  - first:
+      1: 100092
+    second: HeadEnd
+  - first:
+      1: 100094
+    second: LeftEarEnd
+  - first:
+      1: 100096
+    second: LeftHandEnd
+  - first:
+      1: 100098
+    second: LeftLowerLid
+  - first:
+      1: 100100
+    second: LeftLowerLidEnd
+  - first:
+      1: 100102
+    second: LeftToeEnd
+  - first:
+      1: 100104
+    second: LeftUpperLid
+  - first:
+      1: 100106
+    second: LeftUpperLidEnd
+  - first:
+      1: 100108
+    second: RightEarEnd
+  - first:
+      1: 100110
+    second: RightHandEnd
+  - first:
+      1: 100112
+    second: RightLowerLid
+  - first:
+      1: 100114
+    second: RightLowerLidEnd
+  - first:
+      1: 100116
+    second: RightToeEnd
+  - first:
+      1: 100118
+    second: RightUpperLid
+  - first:
+      1: 100120
+    second: RightUpperLidEnd
+  - first:
+      1: 100122
+    second: Tail4
+  - first:
+      1: 100124
+    second: LeftEye
+  - first:
+      1: 100126
+    second: RightEye
+  - first:
+      4: 400000
+    second: Cat
+  - first:
+      4: 400002
+    second: //RootNode
+  - first:
+      4: 400004
+    second: Control_Head
+  - first:
+      4: 400006
+    second: Control_LeftEye
+  - first:
+      4: 400008
+    second: Control_Neck
+  - first:
+      4: 400010
+    second: Control_RightEye
+  - first:
+      4: 400012
+    second: Control_Spine1
+  - first:
+      4: 400014
+    second: Control_Spine2
+  - first:
+      4: 400016
+    second: Control_UpperBody
+  - first:
+      4: 400018
+    second: Controls
+  - first:
+      4: 400020
+    second: Head
+  - first:
+      4: 400022
+    second: Hips
+  - first:
+      4: 400024
+    second: LeftArm
+  - first:
+      4: 400026
+    second: LeftEar
+  - first:
+      4: 400028
+    second: LeftFoot
+  - first:
+      4: 400030
+    second: LeftForeArm
+  - first:
+      4: 400032
+    second: LeftHand
+  - first:
+      4: 400034
+    second: LeftLeg
+  - first:
+      4: 400036
+    second: LeftLowerEyelid
+  - first:
+      4: 400038
+    second: LeftLowerEyelidEnd
+  - first:
+      4: 400040
+    second: LeftShoulder
+  - first:
+      4: 400042
+    second: LeftToe
+  - first:
+      4: 400044
+    second: LeftUpLeg
+  - first:
+      4: 400046
+    second: LeftUpperEyelid
+  - first:
+      4: 400048
+    second: LeftUpperEyelidEnd
+  - first:
+      4: 400050
+    second: Mesh
+  - first:
+      4: 400052
+    second: Neck
+  - first:
+      4: 400054
+    second: RightArm
+  - first:
+      4: 400056
+    second: RightEar
+  - first:
+      4: 400058
+    second: RightFoot
+  - first:
+      4: 400060
+    second: RightForeArm
+  - first:
+      4: 400062
+    second: RightHand
+  - first:
+      4: 400064
+    second: RightLeg
+  - first:
+      4: 400066
+    second: RightLowerEyelid
+  - first:
+      4: 400068
+    second: RightLowerEyelidEnd
+  - first:
+      4: 400070
+    second: RightShoulder
+  - first:
+      4: 400072
+    second: RightToe
+  - first:
+      4: 400074
+    second: RightUpLeg
+  - first:
+      4: 400076
+    second: RightUpperEyelid
+  - first:
+      4: 400078
+    second: RightUpperEyelidEnd
+  - first:
+      4: 400080
+    second: Skeleton
+  - first:
+      4: 400082
+    second: Spine1
+  - first:
+      4: 400084
+    second: Spine2
+  - first:
+      4: 400086
+    second: Tail1
+  - first:
+      4: 400088
+    second: Tail2
+  - first:
+      4: 400090
+    second: Tail3
+  - first:
+      4: 400092
+    second: HeadEnd
+  - first:
+      4: 400094
+    second: LeftEarEnd
+  - first:
+      4: 400096
+    second: LeftHandEnd
+  - first:
+      4: 400098
+    second: LeftLowerLid
+  - first:
+      4: 400100
+    second: LeftLowerLidEnd
+  - first:
+      4: 400102
+    second: LeftToeEnd
+  - first:
+      4: 400104
+    second: LeftUpperLid
+  - first:
+      4: 400106
+    second: LeftUpperLidEnd
+  - first:
+      4: 400108
+    second: RightEarEnd
+  - first:
+      4: 400110
+    second: RightHandEnd
+  - first:
+      4: 400112
+    second: RightLowerLid
+  - first:
+      4: 400114
+    second: RightLowerLidEnd
+  - first:
+      4: 400116
+    second: RightToeEnd
+  - first:
+      4: 400118
+    second: RightUpperLid
+  - first:
+      4: 400120
+    second: RightUpperLidEnd
+  - first:
+      4: 400122
+    second: Tail4
+  - first:
+      4: 400124
+    second: LeftEye
+  - first:
+      4: 400126
+    second: RightEye
+  - first:
+      43: 4300000
+    second: Cat
+  - first:
+      74: 7400000
+    second: Cat_RunLong
+  - first:
+      95: 9500000
+    second: //RootNode
+  - first:
+      137: 13700000
+    second: Cat
+  externalObjects: {}
   materials:
-    importMaterials: 1
+    materialImportMode: 1
     materialName: 1
     materialSearch: 2
+    materialLocation: 0
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
     resampleCurves: 1
     optimizeGameObjects: 0
     motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
     animationImportErrors: 
     animationImportWarnings: 
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
     animationCompression: 1
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
     animationWrapMode: 0
     extraExposedTransformPaths: []
+    extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
       name: Cat_RunLong
       takeName: Take 001
+      internalID: 0
       firstFrame: 1
       lastFrame: 60
       wrapMode: 0
@@ -181,7 +451,14 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: 0.044025157
+        functionName: OnRunStart
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask:
       - path: 
         weight: 1
@@ -286,13 +563,24 @@ ModelImporter:
     globalScale: 1
     meshCompression: 0
     addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 0
     importBlendShapes: 1
+    importCameras: 0
+    importLights: 0
+    fileIdsGeneration: 1
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
-    optimizeMeshForGPU: 1
     keepQuads: 0
     weldVertices: 1
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    meshOptimizationFlags: -1
+    indexFormat: 1
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
@@ -302,10 +590,14 @@ ModelImporter:
     normalSmoothAngle: 60
     normalImportMode: 0
     tangentImportMode: 3
+    normalCalculationMode: 0
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 1
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
   importAnimation: 1
-  copyAvatar: 0
   humanDescription:
-    serializedVersion: 2
+    serializedVersion: 3
     human: []
     skeleton: []
     armTwist: 0.5
@@ -315,15 +607,16 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
+    globalScale: 1
     rootMotionBoneName: 
-    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
     hasTranslationDoF: 0
     hasExtraRoot: 0
     skeletonHasParents: 0
-  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: 2b755775ae966024fab169f5ae2e95d6,
-    type: 3}
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 2
   humanoidOversampling: 1
+  avatarSetup: 1
   additionalBone: 0
   userData: 
   assetBundleName: 
