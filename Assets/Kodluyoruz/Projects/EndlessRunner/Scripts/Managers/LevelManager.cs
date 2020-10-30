@@ -8,6 +8,12 @@ public class LevelManager : Singleton<LevelManager>
     public Theme CurrentTheme = Theme.Industrial;
 
 
+    //Public Properities about current Level
+    public Level CurrentLevel { get { return (LevelData.Levels[LevelIndex]); } }
+    public DifficulityData DifficulityData { get { return (LevelData.Levels[LevelIndex].DifficulityData[DifficulityIndex]); } }
+    public ThemeData CurrentThemeData { get { return (LevelData.Levels[LevelIndex].ThemeDatas[(int)CurrentTheme]); } }
+
+
     private bool isLevelStarted;
     public bool IsLevelStarted { get { return isLevelStarted; } private set { isLevelStarted = value; } }
 
@@ -25,6 +31,8 @@ public class LevelManager : Singleton<LevelManager>
             PlayerPrefs.SetInt("LastLevel", value);
         }
     }
+
+    public int DifficulityIndex { get; set; }
 
     public void StartLevel()
     {

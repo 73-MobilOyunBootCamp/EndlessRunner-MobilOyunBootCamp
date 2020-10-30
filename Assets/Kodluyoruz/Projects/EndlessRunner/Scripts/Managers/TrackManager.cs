@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class TrackManager : Singleton<TrackManager>
 {
+   
+
     /// <summary>
     /// Here is an example of capsulation. We use a variable and a property to capsulate Tracks that we create.
     /// This way we get or set properties in an optimal way.
@@ -103,6 +105,7 @@ public class TrackManager : Singleton<TrackManager>
         ManageTracks();
     }
 
+    #region Tracks
     /// <summary>
     /// This method is resposible for moving track objects.
     /// We use a for loop to itterate trough all the track objects that we have.
@@ -142,7 +145,7 @@ public class TrackManager : Singleton<TrackManager>
             }
         }
         
-        GameObject roadObj = Instantiate(LevelManager.Instance.LevelData.Levels[LevelManager.Instance.LevelIndex].GetRandomTrack(LevelManager.Instance.CurrentTheme), createPos, Quaternion.identity);
+        GameObject roadObj = Instantiate(LevelManager.Instance.CurrentLevel.GetRandomTrack(LevelManager.Instance.CurrentTheme), createPos, Quaternion.identity);
     }
 
     /// <summary>
@@ -154,6 +157,8 @@ public class TrackManager : Singleton<TrackManager>
         CreatedTracks.Remove(trackObject);
         Destroy(trackObject.gameObject);
     }
+    #endregion
+    #region Lanes
 
     public LaneObject GetClosestLane(Vector3 position)
     {
@@ -172,4 +177,6 @@ public class TrackManager : Singleton<TrackManager>
 
         return closestLine;
     }
+
+    #endregion
 }

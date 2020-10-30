@@ -6,8 +6,13 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Endless Runner Level", menuName = "Endless Runner/Level Data")]
 public class Level : ScriptableObject
 {
+    [Header("Theme Data")]
     public List<ThemeData> ThemeDatas = new List<ThemeData>();
+    [Header("Difficulity Data")]
     public List<DifficulityData> DifficulityData = new List<DifficulityData>();
+
+    [Range(0, 1000)]
+    public int UnlockPrice = 0;
 
 
     public GameObject GetRandomTrack(Theme theme)

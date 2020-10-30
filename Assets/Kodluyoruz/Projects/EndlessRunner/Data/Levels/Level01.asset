@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1113a7fed71a4a9ba45508cafea6338, type: 3}
+  m_Name: Level01
+  m_EditorClassIdentifier: 
+  ThemeDatas:
+  - Theme: 0
+    Tracks:
+    - {fileID: 1000011175313116, guid: 2d4807022e73aa34ab8f01892dbdfe1d, type: 3}
+    - {fileID: 1000010272792782, guid: 81bf7d820e3d0554e9ea968eeba33052, type: 3}
+    - {fileID: 1000011514364366, guid: 9e0040302c7a83c4d8e1ddf3979d6979, type: 3}
+    LevelObjectDatas:
+    - LevelObjectType: 0
+      ObjectsToCreate:
+      - {fileID: 1000011638144408, guid: 22facfbe232a90b45b681c638f2e490d, type: 3}
+      - {fileID: 1000010455400752, guid: 82eb370d70e50344cb6eeb919a1429b8, type: 3}
+  DifficulityData:
+  - {fileID: 11400000, guid: 5b54d93871b9c43b0b9c365a620dd172, type: 2}
