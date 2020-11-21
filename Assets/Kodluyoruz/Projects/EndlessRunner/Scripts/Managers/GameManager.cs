@@ -1,10 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Sirenix.OdinInspector;
 
 public class GameManager : Singleton<GameManager>
 {
     private bool isGameStarted;
+    [ShowInInspector]
+    [ReadOnly]
     public bool IsGameStarted { get { return isGameStarted; } private set { isGameStarted = value; } }
 
 

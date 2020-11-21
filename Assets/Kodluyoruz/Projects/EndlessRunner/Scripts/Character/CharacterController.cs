@@ -56,14 +56,14 @@ public class CharacterController : MonoBehaviour, ICharacterController
 
                 //Get which lane should this character move
                 transform.DOJump(new Vector3(laneObject.transform.position.x, transform.position.y, transform.position.z), 1f, 1, 0.3f);
-                //Jump();
+                Character.OnCharacterSwitchLane.Invoke();
                 break;
             case Swipe.Right:
                 if (laneObject == null) return;
 
                 //Get which lane should this character move
                 transform.DOJump(new Vector3(laneObject.transform.position.x, transform.position.y, transform.position.z), 1f, 1, 0.3f);
-                //Jump();
+                Character.OnCharacterSwitchLane.Invoke();
                 break;
             default:
                 break;

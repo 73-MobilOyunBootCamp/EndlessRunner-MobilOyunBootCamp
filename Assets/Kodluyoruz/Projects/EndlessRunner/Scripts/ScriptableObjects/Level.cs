@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Sirenix.OdinInspector;
 
 
 [CreateAssetMenu(fileName = "Endless Runner Level", menuName = "Endless Runner/Level Data")]
@@ -9,6 +10,7 @@ public class Level : ScriptableObject
     [Header("Theme Data")]
     public List<ThemeData> ThemeDatas = new List<ThemeData>();
     [Header("Difficulity Data")]
+    [InlineEditor(InlineEditorModes.GUIOnly)]
     public List<DifficulityData> DifficulityData = new List<DifficulityData>();
 
     [Range(0, 1000)]
@@ -36,16 +38,22 @@ public class Level : ScriptableObject
         }
     }
 
-    public GameObject GetRandomLevelObject(Theme theme, LevelObjectType levelObjectType)
+    public GameObject GetRandomLevelObject(LevelObjectType levelObjectType)
     {
         try
         {
+            Theme theme = LevelManager.Instance.CurrentTheme;
             for (int i = 0; i < ThemeDatas.Count; i++)
             {
                 if (theme == ThemeDatas[i].Theme)
                 {
-
-                    return ThemeDatas[i].LevelObjectDatas[(int)theme].ObjectsToCreate[Random.Range(0, ThemeDatas[i].LevelObjectDatas[(int)theme].ObjectsToCreate.Count)];
+                    for (int j = 0; j < ThemeDatas[i].LevelObjectDatas.Count; j++)
+                    {
+                        if(ThemeDatas[i].LevelObjectDatas[j].LevelObjectType == levelObjectType)
+                            return ThemeDatas[i].LevelObjectDatas[j]
+                                .ObjectsToCreate[Random.Range(0, ThemeDatas[i]
+                                .LevelObjectDatas[j].ObjectsToCreate.Count)];
+                    }
                 }
             }
             Debug.LogError("Theme Level Object is null");

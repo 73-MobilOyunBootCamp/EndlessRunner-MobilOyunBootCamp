@@ -27,6 +27,8 @@ public class Character : MonoBehaviour
     public UnityEvent OnCharacterJump = new UnityEvent();
     [HideInInspector]
     public UnityEvent OnCharacterSlide = new UnityEvent();
+    [HideInInspector]
+    public UnityEvent OnCharacterSwitchLane = new UnityEvent();
 
     #endregion
 
@@ -40,14 +42,66 @@ public class Character : MonoBehaviour
     {
         if (Managers.Instance == null)
             return;
+
+        EventManager.OnLevelContine.AddListener(ReviveCharacter);
+        EventManager.OnLevelFinish.AddListener(()=>
+        {
+            transform.position = new Vector3(TrackManager.Instance.MiddleLane.transform.position.x, transform.position.y, transform.position.z);
+            transform.LookAt(TrackManager.Instance.MiddleLane.transform);
+        });
+        EventManager.OnLevelStart.AddListener(ReviveCharacter);
     }
 
     private void OnDisable()
     {
         if (Managers.Instance == null)
             return;
+
+        EventManager.OnLevelContine.RemoveListener(ReviveCharacter);
+        EventManager.OnLevelFinish.RemoveListener(ReviveCharacter);
+        EventManager.OnLevelFinish.RemoveListener(() =>
+        {
+            transform.position = new Vector3(TrackManager.Instance.MiddleLane.transform.position.x, transform.position.y, transform.position.z);
+            transform.LookAt(TrackManager.Instance.MiddleLane.transform);
+        });
+        EventManager.OnLevelStart.RemoveListener(ReviveCharacter);
+
     }
 
 
+    public void DamageCharacter()
+    {
+        OnCharacterHit.Invoke();
+    }
+
+    public void KillCharacter()
+    {
+        if (IsDead)
+            return;
+
+        IsDead = true;
+        IsControlable = false;
+        OnCharacterDie.Invoke();
+        if(CharacterControllerType == CharacterControllerType.Player)
+            EventManager.OnLevelFail.Invoke();
+    }
+
+    public void ReviveCharacter()
+    {
+        if (!IsDead)
+            return;
+
+        IsControlable = true;
+        IsDead = false;
+        OnCharacterRevive.Invoke();
+    }
+
+
+    private void OnTriggerEnter(Collider other)
+    {
+        Icollectable icollectable = other.GetComponent<Icollectable>();
+        if (icollectable != null)
+            icollectable.Collect();
+    }
 
 }

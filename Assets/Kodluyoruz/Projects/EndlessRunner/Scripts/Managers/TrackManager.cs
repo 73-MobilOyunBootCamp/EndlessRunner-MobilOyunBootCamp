@@ -11,27 +11,40 @@ public class TrackManager : Singleton<TrackManager>
     /// Here is an example of capsulation. We use a variable and a property to capsulate Tracks that we create.
     /// This way we get or set properties in an optimal way.
     /// </summary>
-    private List<TrackObject> createdTracks;
+    private List<TrackObject> tracks;
     //This is a property. Property allows us to perform logic while getting or setting and also we can define privite protedted or publuc to getters and setters.
-    public List<TrackObject> CreatedTracks
+    public List<TrackObject> Tracks
     {
         get
         {
-            if(createdTracks == null)
+            if(tracks == null)
             {
-                createdTracks = new List<TrackObject>();
+                tracks = new List<TrackObject>();
             }
 
-            return createdTracks;
+            return tracks;
         }
         private set
         {
-            createdTracks = value;
+            tracks = value;
         }
     }
 
     private List<LaneObject> lanes;
     public List<LaneObject> Lanes { get { return (lanes == null) ? lanes = new List<LaneObject>() : lanes; } set { lanes = value; } }
+    public LaneObject MiddleLane
+    {
+        get
+        {
+            for (int i = 0; i < Lanes.Count; i++)
+            {
+                if (Lanes[i].ConnectedLanes.Count > 1)
+                    return Lanes[i];
+            }
+
+            return null;
+        }
+    }
 
     private float startDelay = 3.8f;
     private float startTime;
@@ -46,6 +59,7 @@ public class TrackManager : Singleton<TrackManager>
         });
 
         EventManager.OnPlayerStartedRunning.AddListener(() => canMoveTracks = true);
+        EventManager.OnLevelFail.AddListener(() => canMoveTracks = false);
     }
 
     private void OnDisable()
@@ -57,19 +71,20 @@ public class TrackManager : Singleton<TrackManager>
         });
 
         EventManager.OnPlayerStartedRunning.RemoveListener(() => canMoveTracks = true);
+        EventManager.OnLevelFail.RemoveListener(() => canMoveTracks = false);
     }
 
 
     public void AddTrack(TrackObject trackObject)
     {
-        if (!CreatedTracks.Contains(trackObject))
-            CreatedTracks.Add(trackObject);
+        if (!Tracks.Contains(trackObject))
+            Tracks.Add(trackObject);
     }
 
     public void RemoveTrack(TrackObject trackObject)
     {
-        if (CreatedTracks.Contains(trackObject))
-            CreatedTracks.Remove(trackObject);
+        if (Tracks.Contains(trackObject))
+            Tracks.Remove(trackObject);
     }
 
     public void AddLane(LaneObject laneObject)
@@ -112,19 +127,19 @@ public class TrackManager : Singleton<TrackManager>
     /// </summary>
     private void MoveTrackObjects()
     {
-        for (int i = 0; i < CreatedTracks.Count; i++)
+        for (int i = 0; i < Tracks.Count; i++)
         {
-            CreatedTracks[i].transform.position += Vector3.back * 10 * Time.deltaTime;
+            Tracks[i].transform.position += Vector3.back * 10 * Time.deltaTime;
         }
     }
 
     private void ManageTracks()
     {
-        for (int i = 0; i < CreatedTracks.Count; i++)
+        for (int i = 0; i < Tracks.Count; i++)
         {
-            if(CreatedTracks[i].transform.position.z < -30f)
+            if(Tracks[i].transform.position.z < -30f)
             {
-                DisposeTrack(CreatedTracks[i]);
+                DisposeTrack(Tracks[i]);
                 CreateTrack();
             }
         }
@@ -137,11 +152,11 @@ public class TrackManager : Singleton<TrackManager>
     public void CreateTrack()
     {
         Vector3 createPos = Vector3.zero;
-        if(CreatedTracks != null)
+        if(Tracks != null)
         {
-            if (CreatedTracks.Count > 0)
+            if (Tracks.Count > 0)
             {
-                createPos = CreatedTracks[CreatedTracks.Count - 1].EndPoint.position + Vector3.forward * 4f;
+                createPos = Tracks[Tracks.Count - 1].EndPoint.position + Vector3.forward * 4f;
             }
         }
         
@@ -154,7 +169,7 @@ public class TrackManager : Singleton<TrackManager>
     /// <param name="trackObject"></param>
     public void DisposeTrack(TrackObject trackObject)
     {
-        CreatedTracks.Remove(trackObject);
+        Tracks.Remove(trackObject);
         Destroy(trackObject.gameObject);
     }
     #endregion

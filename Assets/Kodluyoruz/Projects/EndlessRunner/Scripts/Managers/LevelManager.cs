@@ -1,9 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Sirenix.OdinInspector;
 
 public class LevelManager : Singleton<LevelManager>
 {
+    [InlineEditor(InlineEditorModes.GUIOnly)]
     public LevelData LevelData;
     public Theme CurrentTheme = Theme.Industrial;
 
@@ -15,6 +17,8 @@ public class LevelManager : Singleton<LevelManager>
 
 
     private bool isLevelStarted;
+    [ShowInInspector]
+    [ReadOnly]
     public bool IsLevelStarted { get { return isLevelStarted; } private set { isLevelStarted = value; } }
 
     public int LevelIndex

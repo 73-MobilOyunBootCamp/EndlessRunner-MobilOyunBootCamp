@@ -10,7 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4000010250284340}
   - component: {fileID: 136000012872324984}
-  - component: {fileID: 82000013865502162}
+  - component: {fileID: 5134560318664028976}
+  - component: {fileID: -5615517742777044475}
   m_Layer: 9
   m_Name: ObstacleDog
   m_TagString: Untagged
@@ -48,7 +49,20 @@ CapsuleCollider:
   m_Height: 1.6
   m_Direction: 2
   m_Center: {x: -0.01, y: 0.85, z: 0}
---- !u!82 &82000013865502162
+--- !u!114 &5134560318664028976
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000010446287116}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7519821f3e1254428bfc821d9faa9126, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HitSoundID: DogHit
+--- !u!82 &-5615517742777044475
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -62,7 +76,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -113,7 +127,7 @@ AudioSource:
       outWeight: 0.33333334
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 0
+    m_RotationOrder: 4
   spreadCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -128,13 +142,13 @@ AudioSource:
       outWeight: 0.33333334
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 0
+    m_RotationOrder: 4
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 1
+      value: 1.1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -143,7 +157,7 @@ AudioSource:
       outWeight: 0.33333334
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 0
+    m_RotationOrder: 4
 --- !u!1 &1000012151388900
 GameObject:
   m_ObjectHideFlags: 0

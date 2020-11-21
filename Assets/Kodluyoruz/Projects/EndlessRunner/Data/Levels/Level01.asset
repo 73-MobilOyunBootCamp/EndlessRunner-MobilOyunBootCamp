@@ -23,5 +23,9 @@ MonoBehaviour:
       ObjectsToCreate:
       - {fileID: 1000011638144408, guid: 22facfbe232a90b45b681c638f2e490d, type: 3}
       - {fileID: 1000010455400752, guid: 82eb370d70e50344cb6eeb919a1429b8, type: 3}
+    - LevelObjectType: 2
+      ObjectsToCreate:
+      - {fileID: 8387328013862532398, guid: 3528fee27ec574b6aa81e5415bfaed8f, type: 3}
   DifficulityData:
   - {fileID: 11400000, guid: 5b54d93871b9c43b0b9c365a620dd172, type: 2}
+  UnlockPrice: 0

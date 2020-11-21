@@ -178,6 +178,9 @@ GameObject:
   - component: {fileID: 600619042}
   - component: {fileID: 600619041}
   - component: {fileID: 600619043}
+  - component: {fileID: 600619044}
+  - component: {fileID: 600619045}
+  - component: {fileID: 600619046}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -249,7 +252,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f82e6c2562de420188af895d633e420, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Lanes: []
 --- !u!114 &600619043
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -262,3 +264,95 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: adcca3e1905db45d7aa94ad0c10ad4ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  minSwipeLength: 0.5
+  triggerSwipeAtMinLength: 0
+  useEightDirections: 0
+--- !u!114 &600619044
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 600619037}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e14c6a8d2787674db32da4c04645934, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AudioDatas:
+  - {fileID: 11400000, guid: 2d148c45a06b64b0aae8e7bb910e497a, type: 2}
+  - {fileID: 11400000, guid: de7f9894840f742a7845cc85408a2322, type: 2}
+  AudioMixer: {fileID: 24100000, guid: 05e716739eb744d8f949cece09ebdcf5, type: 2}
+  MusicGroup: {fileID: -6366990284318977919, guid: 05e716739eb744d8f949cece09ebdcf5,
+    type: 2}
+  SFXGroup: {fileID: -405782293061392124, guid: 05e716739eb744d8f949cece09ebdcf5,
+    type: 2}
+--- !u!114 &600619045
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 600619037}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24ed741ad8cc34620b1826793f4e8e5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &600619046
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 600619037}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b152425445d1449f9613402f43fcd17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &1997254007
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1997254009}
+  - component: {fileID: 1997254008}
+  m_Layer: 0
+  m_Name: PoolingSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1997254008
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1997254007}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 073e548914439214d93b56c61e3b4f54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SourceObjects: []
+  DefaultCount: 10
+--- !u!4 &1997254009
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1997254007}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 14.727296, y: 2.5131817, z: 208.74173}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

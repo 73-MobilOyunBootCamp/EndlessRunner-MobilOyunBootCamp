@@ -4,19 +4,20 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-public class PlayButton : MonoBehaviour
+public class PlayButton : Button
 {
-    Button button;
-    Button Button { get { return (button == null) ? button = GetComponent<Button>() : button; } }
+   
 
-    private void OnEnable()
+    protected override void OnEnable()
     {
-        Button.onClick.AddListener(StartGame);
+        base.OnEnable();
+        onClick.AddListener(StartGame);
     }
 
-    private void OnDisable()
+    protected override void OnDisable()
     {
-        Button.onClick.AddListener(StartGame);
+        base.OnEnable();
+        onClick.AddListener(StartGame);
     }
 
     private void StartGame()

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Sirenix.OdinInspector;
 
 public enum Theme { Industrial = 0, Suburbs = 1, Urban = 2 }
 public enum LevelObjectType { Obstacle, PowerUp, Coin}
@@ -25,5 +26,6 @@ public class ThemeData
 [CreateAssetMenu(fileName = "Endless Runner Level Data", menuName = "Endless Runner/Level Data")]
 public class LevelData : ScriptableObject
 {
+    [InlineEditor(InlineEditorModes.GUIOnly)]
     public List<Level> Levels = new List<Level>();
 }

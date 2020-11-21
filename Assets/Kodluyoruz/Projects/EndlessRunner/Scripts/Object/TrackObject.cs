@@ -16,6 +16,7 @@ public class TrackObject : MonoBehaviour
             return;
 
         TrackManager.Instance.AddTrack(this);
+        EventManager.OnLevelFinish.AddListener(() => Destroy(gameObject));
     }
 
     private void OnDisable()
@@ -24,5 +25,6 @@ public class TrackObject : MonoBehaviour
             return;
 
         TrackManager.Instance.RemoveTrack(this);
+        EventManager.OnLevelFinish.RemoveListener(() => Destroy(gameObject));
     }
 }
