@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &8387328013862532398
+--- !u!1 &6370999019972268101
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,25 +8,25 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 8387328013862365454}
-  - component: {fileID: 8387328013859465518}
-  - component: {fileID: 8387328013860596718}
-  - component: {fileID: 8387328013862501491}
-  - component: {fileID: 8387328013862499212}
+  - component: {fileID: 6370999019971841125}
+  - component: {fileID: 6370999019975265349}
+  - component: {fileID: 6370999019974266501}
+  - component: {fileID: 6370999019972237035}
+  - component: {fileID: -8507688477623409111}
   m_Layer: 0
-  m_Name: Fishbone
+  m_Name: Multiply
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &8387328013862365454
+--- !u!4 &6370999019971841125
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8387328013862532398}
+  m_GameObject: {fileID: 6370999019972268101}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
@@ -34,21 +34,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &8387328013859465518
+--- !u!33 &6370999019975265349
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8387328013862532398}
-  m_Mesh: {fileID: 4300000, guid: c52e3c1f121dda74299d2b29c86fa3f6, type: 3}
---- !u!23 &8387328013860596718
+  m_GameObject: {fileID: 6370999019972268101}
+  m_Mesh: {fileID: 4300002, guid: 133ca0afa26ad974cba11eb3a20aaa2c, type: 3}
+--- !u!23 &6370999019974266501
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8387328013862532398}
+  m_GameObject: {fileID: 6370999019972268101}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -60,7 +60,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: b2a61585b42736f498a47f62a7424de1, type: 2}
+  - {fileID: 2100000, guid: a1da5a75d83b2b64d9684707d810f8c7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -81,31 +81,33 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!114 &8387328013862501491
+--- !u!114 &6370999019972237035
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8387328013862532398}
+  m_GameObject: {fileID: 6370999019972268101}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 16080ef74049f4e73a0652da92d84099, type: 3}
+  m_Script: {fileID: 11500000, guid: 1bfa1ec59bd254911bf1c2d4c9def630, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CollectSoundID: FishboneCollect
-  CollectParticlePrefab: {fileID: 1000011448495468, guid: 1ed06baf38958d4499069ab23fb82419,
+  CollectSoundID: PowerUp
+  CollectParticlePrefab: {fileID: 1000013609614470, guid: 1caba3d1275fd0547ae29c5a0ec03214,
     type: 3}
---- !u!135 &8387328013862499212
+  PowerUpDisplayPrefab: {fileID: 1427315010707858, guid: cb8a481413e1e1d43aac95d00d81eea7,
+    type: 3}
+--- !u!135 &-8507688477623409111
 SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8387328013862532398}
+  m_GameObject: {fileID: 6370999019972268101}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.21728387
-  m_Center: {x: 0, y: -0.000000014901161, z: 0}
+  m_Radius: 0.24753827
+  m_Center: {x: 0.01298625, y: -0.0000010579824, z: -0.0000020321459}

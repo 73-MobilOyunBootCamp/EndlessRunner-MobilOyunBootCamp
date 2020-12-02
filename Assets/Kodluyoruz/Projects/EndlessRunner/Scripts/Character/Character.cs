@@ -20,6 +20,8 @@ public class Character : MonoBehaviour
     [HideInInspector]
     public UnityEvent OnCharacterHit = new UnityEvent();
     [HideInInspector]
+    public UnityEvent OnCharacterHeal = new UnityEvent();
+    [HideInInspector]
     public UnityEvent OnCharacterDie = new UnityEvent();
     [HideInInspector]
     public UnityEvent OnCharacterRevive = new UnityEvent();
@@ -50,6 +52,8 @@ public class Character : MonoBehaviour
             transform.LookAt(TrackManager.Instance.MiddleLane.transform);
         });
         EventManager.OnLevelStart.AddListener(ReviveCharacter);
+
+        CharacterManager.Instance.AddCharacter(this);
     }
 
     private void OnDisable()
@@ -65,6 +69,7 @@ public class Character : MonoBehaviour
             transform.LookAt(TrackManager.Instance.MiddleLane.transform);
         });
         EventManager.OnLevelStart.RemoveListener(ReviveCharacter);
+        CharacterManager.Instance.RemoveCharacter(this);
 
     }
 
@@ -72,6 +77,10 @@ public class Character : MonoBehaviour
     public void DamageCharacter()
     {
         OnCharacterHit.Invoke();
+    }
+    public void HealCharacter()
+    {
+        OnCharacterHeal.Invoke();
     }
 
     public void KillCharacter()

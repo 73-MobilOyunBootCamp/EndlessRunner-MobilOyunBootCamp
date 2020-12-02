@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &8387328013862532398
+--- !u!1 &1029194402659383592
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,25 +8,26 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 8387328013862365454}
-  - component: {fileID: 8387328013859465518}
-  - component: {fileID: 8387328013860596718}
-  - component: {fileID: 8387328013862501491}
-  - component: {fileID: 8387328013862499212}
+  - component: {fileID: 1029194402659214600}
+  - component: {fileID: 1029194402660541736}
+  - component: {fileID: 1029194402661640168}
+  - component: {fileID: 1029194402666662632}
+  - component: {fileID: 1029194402659352458}
+  - component: {fileID: -6300603643354249685}
   m_Layer: 0
-  m_Name: Fishbone
+  m_Name: Magnet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &8387328013862365454
+--- !u!4 &1029194402659214600
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8387328013862532398}
+  m_GameObject: {fileID: 1029194402659383592}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
@@ -34,21 +35,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &8387328013859465518
+--- !u!33 &1029194402660541736
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8387328013862532398}
-  m_Mesh: {fileID: 4300000, guid: c52e3c1f121dda74299d2b29c86fa3f6, type: 3}
---- !u!23 &8387328013860596718
+  m_GameObject: {fileID: 1029194402659383592}
+  m_Mesh: {fileID: 4300000, guid: 6c5d5f4ec05e47947b43a75d2aca001d, type: 3}
+--- !u!23 &1029194402661640168
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8387328013862532398}
+  m_GameObject: {fileID: 1029194402659383592}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -60,7 +61,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: b2a61585b42736f498a47f62a7424de1, type: 2}
+  - {fileID: 2100000, guid: c29c3d6edae27f74abbf2babbbdf4b9f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -81,31 +82,52 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!114 &8387328013862501491
+--- !u!95 &1029194402666662632
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1029194402659383592}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: 6c5d5f4ec05e47947b43a75d2aca001d, type: 3}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1029194402659352458
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8387328013862532398}
+  m_GameObject: {fileID: 1029194402659383592}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 16080ef74049f4e73a0652da92d84099, type: 3}
+  m_Script: {fileID: 11500000, guid: 8dd5c2410ecc04600b3f907ffb7b53c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CollectSoundID: FishboneCollect
-  CollectParticlePrefab: {fileID: 1000011448495468, guid: 1ed06baf38958d4499069ab23fb82419,
+  CollectSoundID: PowerUp
+  CollectParticlePrefab: {fileID: 1000010215340682, guid: 1c7ad47898d087f4d844c9fd695e576c,
     type: 3}
---- !u!135 &8387328013862499212
+  PowerUpDisplayPrefab: {fileID: 1778844492263050, guid: 8cede34fb26a722408198e0d27628ae9,
+    type: 3}
+--- !u!135 &-6300603643354249685
 SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8387328013862532398}
+  m_GameObject: {fileID: 1029194402659383592}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.21728387
-  m_Center: {x: 0, y: -0.000000014901161, z: 0}
+  m_Radius: 0.17832877
+  m_Center: {x: 0, y: 0.000000014901161, z: 0.000000014901161}

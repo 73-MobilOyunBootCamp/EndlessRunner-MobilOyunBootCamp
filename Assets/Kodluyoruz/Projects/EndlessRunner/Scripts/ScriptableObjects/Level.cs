@@ -13,6 +13,8 @@ public class Level : ScriptableObject
     [InlineEditor(InlineEditorModes.GUIOnly)]
     public List<DifficulityData> DifficulityData = new List<DifficulityData>();
 
+    public PowerUpData PowerUpData;
+
     [Range(0, 1000)]
     public int UnlockPrice = 0;
 

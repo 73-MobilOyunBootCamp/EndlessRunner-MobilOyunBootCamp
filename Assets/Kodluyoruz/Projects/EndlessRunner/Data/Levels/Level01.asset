@@ -28,4 +28,9 @@ MonoBehaviour:
       - {fileID: 8387328013862532398, guid: 3528fee27ec574b6aa81e5415bfaed8f, type: 3}
   DifficulityData:
   - {fileID: 11400000, guid: 5b54d93871b9c43b0b9c365a620dd172, type: 2}
+  PowerUpData:
+    PowerUpPrefabs:
+    - {fileID: 5705038583296520998, guid: f0e30bb2beb53469eb7f534c63f1042b, type: 3}
+    - {fileID: 1029194402659383592, guid: fc6ba0f05024d41deb48368cce5f96f1, type: 3}
+    - {fileID: 6370999019972268101, guid: 2694c2aadb096400ca0e261eff0c7a18, type: 3}
   UnlockPrice: 0

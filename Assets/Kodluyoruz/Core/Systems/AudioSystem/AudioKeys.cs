@@ -17,6 +17,7 @@ public static class AudioKeys
     public static readonly string RatHit = "RatHit";
     public static readonly string DogHit = "DogHit";
     public static readonly string BarrierHitSound = "BarrierHitSound";
+    public static readonly string PowerUp = "PowerUp";
 
     private static List<string> audioKeyList;
 

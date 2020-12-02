@@ -7,7 +7,7 @@ public abstract class CollectableBase : MonoBehaviour, Icollectable
 {
     [ValueDropdown("audioKeyList")]
     public string CollectSoundID;
-    public GameObject DestroyParticlePrefab;
+    public GameObject CollectParticlePrefab;
 
    
     private List<string> audioKeyList { get { return AudioKeys.AudioKeyList; } }
@@ -32,15 +32,15 @@ public abstract class CollectableBase : MonoBehaviour, Icollectable
     {
         if(!string.IsNullOrEmpty(CollectSoundID))
             AudioManager.Instance.PlayOneShot2D(CollectSoundID);
+
+        if (CollectParticlePrefab != null)
+            Instantiate(CollectParticlePrefab, transform.position, Quaternion.identity);
     }
 
     public abstract void Use();
 
     public virtual void Dispose()
     {
-        if(DestroyParticlePrefab != null)
-            Instantiate(DestroyParticlePrefab, transform.position, Quaternion.identity);
-
         Destroy(gameObject);
     }
 }

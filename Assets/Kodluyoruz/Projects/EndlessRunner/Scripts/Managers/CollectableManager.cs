@@ -40,9 +40,25 @@ public class CollectableManager : MonoBehaviour
         for (int i = 0; i < targetCoinCount; i++)
         {
             GameObject coin = LevelManager.Instance.CurrentLevel.GetRandomLevelObject(LevelObjectType.Coin);
-            Instantiate(coin, laneObject.transform.position + Vector3.up, Quaternion.identity, TrackManager.Instance.Tracks[TrackManager.Instance.Tracks.Count - 1].transform);
+            Instantiate(coin, laneObject.transform.position + Vector3.up, Quaternion.identity,
+                TrackManager.Instance.Tracks[TrackManager.Instance.Tracks.Count - 1].transform);
             yield return new WaitForSeconds(0.2f);
         }
+        yield return new WaitForSeconds(0.3f);
+        CreatePowerUp();
         yield return null;
+    }
+
+    private void CreatePowerUp()
+    {
+        float chance = Random.Range(0, 100);
+        if (chance > LevelManager.Instance.DifficulityData.PowerUpSpawnRetrio)
+            return;
+
+        Instantiate(LevelManager.Instance.CurrentLevel.PowerUpData
+            .PowerUpPrefabs[Random.Range(0, LevelManager.Instance.CurrentLevel.PowerUpData.PowerUpPrefabs.Count)],
+            TrackManager.Instance.Lanes[Random.Range(0, TrackManager.Instance.Lanes.Count)].transform.position + Vector3.up,
+            Quaternion.identity,
+            TrackManager.Instance.Tracks[TrackManager.Instance.Tracks.Count - 1].transform);
     }
 }

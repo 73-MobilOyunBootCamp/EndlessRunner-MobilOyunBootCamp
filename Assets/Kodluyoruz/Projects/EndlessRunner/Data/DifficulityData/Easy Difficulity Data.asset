@@ -15,4 +15,5 @@ MonoBehaviour:
   DifficulityMode: 0
   TrackSpeed: 5
   ObstacleSpawnRetrio: 35
+  PowerUpSpawnRetrio: 75
   ActivateTimeTrashold: 0

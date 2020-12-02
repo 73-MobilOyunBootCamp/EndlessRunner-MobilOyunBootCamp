@@ -1,15 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Sirenix.OdinInspector;
 
-
-public class CharacterManager : MonoBehaviour
+public class CharacterManager : Singleton<CharacterManager>
 {
 
     private List<Character> characters;
+    [ShowInInspector]
+    [ReadOnly]
     public List<Character> Characters { get { return (characters == null) ? characters = new List<Character>() : characters; } set { characters = value; } }
 
     private Character player;
+    [ShowInInspector]
+    [ReadOnly]
     public Character Player
     {
         get
@@ -58,18 +62,7 @@ public class CharacterManager : MonoBehaviour
         }
     }
 
-    private void OnEnable()
-    {
-        if (Managers.Instance == null)
-            return;
-    }
-
-    private void OnDisable()
-    {
-        if (Managers.Instance == null)
-            return;
-    }
-
+    
     public void AddCharacter(Character character)
     {
         if (!Characters.Contains(character))

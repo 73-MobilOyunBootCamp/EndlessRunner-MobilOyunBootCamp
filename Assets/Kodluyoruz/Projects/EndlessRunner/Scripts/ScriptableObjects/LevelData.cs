@@ -23,6 +23,12 @@ public class ThemeData
     public List<LevelObjectData> LevelObjectDatas = new List<LevelObjectData>();
 }
 
+[System.Serializable]
+public class PowerUpData
+{
+    public List<GameObject> PowerUpPrefabs;
+}
+
 [CreateAssetMenu(fileName = "Endless Runner Level Data", menuName = "Endless Runner/Level Data")]
 public class LevelData : ScriptableObject
 {

@@ -30,6 +30,7 @@ public class CharacterHealthController : MonoBehaviour
             return;
 
         Character.OnCharacterHit.AddListener(Damage);
+        Character.OnCharacterHeal.AddListener(Heal);
         Character.OnCharacterRevive.AddListener(ResetHealth);
         EventManager.OnGameStart.AddListener(ResetHealth);
     }
@@ -40,6 +41,7 @@ public class CharacterHealthController : MonoBehaviour
             return;
 
         Character.OnCharacterHit.RemoveListener(Damage);
+        Character.OnCharacterHeal.RemoveListener(Heal);
         Character.OnCharacterRevive.RemoveListener(ResetHealth);
         EventManager.OnGameStart.RemoveListener(ResetHealth);
     }
@@ -54,6 +56,13 @@ public class CharacterHealthController : MonoBehaviour
         CurrentHealth--;
         if (CurrentHealth <= 0)
             Character.KillCharacter();
+    }
+
+    private void Heal()
+    {
+        CurrentHealth++;
+        if (CurrentHealth >= MaxHealth)
+            CurrentHealth = MaxHealth;
     }
 
 
