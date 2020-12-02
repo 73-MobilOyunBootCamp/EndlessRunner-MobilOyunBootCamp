@@ -14,8 +14,7 @@ public class RestartButton : Button
         if (Managers.Instance == null)
             return;
 
-        onClick.AddListener(() => LevelManager.Instance.FinishLevel());
-        onClick.AddListener(() => GameManager.Instance.EndGame());
+        
 
     }
 
@@ -25,8 +24,7 @@ public class RestartButton : Button
         if (Managers.Instance == null)
             return;
 
-        onClick.AddListener(() => LevelManager.Instance.FinishLevel());
-        onClick.AddListener(() => GameManager.Instance.EndGame());
+        
 
     }
 }

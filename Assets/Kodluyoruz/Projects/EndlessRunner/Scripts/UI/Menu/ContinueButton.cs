@@ -13,8 +13,7 @@ public class ContinueButton : Button
         if (Managers.Instance == null)
             return;
 
-        onClick.AddListener(() => LevelManager.Instance.FinishLevel());
-        onClick.AddListener(() => GameManager.Instance.EndGame());
+        
 
     }
 
@@ -24,8 +23,7 @@ public class ContinueButton : Button
         if (Managers.Instance == null)
             return;
 
-        onClick.RemoveListener(() => LevelManager.Instance.FinishLevel());
-        onClick.RemoveListener(() => GameManager.Instance.EndGame());
+        
 
     }
 }

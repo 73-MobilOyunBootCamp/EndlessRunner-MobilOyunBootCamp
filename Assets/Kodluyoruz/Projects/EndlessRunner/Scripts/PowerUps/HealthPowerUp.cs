@@ -13,11 +13,6 @@ public class HealthPowerUp : PowerUpBase
 
     public override void Use()
     {
-        CharacterManager.Instance.Player.HealCharacter();
-        Instantiate(PowerUpDisplayPrefab, CharacterManager.Instance.Player.transform.position,
-            Quaternion.identity,
-            CharacterManager.Instance.Player.transform);
-
-        Dispose();
+        
     }
 }

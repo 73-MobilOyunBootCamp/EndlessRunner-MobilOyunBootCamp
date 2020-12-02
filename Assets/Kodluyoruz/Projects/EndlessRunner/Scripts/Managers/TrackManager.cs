@@ -52,59 +52,38 @@ public class TrackManager : Singleton<TrackManager>
 
     private void OnEnable()
     {
-        EventManager.OnGameStart.AddListener(() =>
-        {
-            Initilize();
-            startTime = Time.time;
-        });
-
-        EventManager.OnPlayerStartedRunning.AddListener(() => canMoveTracks = true);
-        EventManager.OnLevelFail.AddListener(() => canMoveTracks = false);
+        
     }
 
     private void OnDisable()
     {
-        EventManager.OnGameStart.RemoveListener(()=>
-        {
-            Initilize();
-            startTime = Time.time;
-        });
-
-        EventManager.OnPlayerStartedRunning.RemoveListener(() => canMoveTracks = true);
-        EventManager.OnLevelFail.RemoveListener(() => canMoveTracks = false);
+       
     }
 
 
     public void AddTrack(TrackObject trackObject)
     {
-        if (!Tracks.Contains(trackObject))
-            Tracks.Add(trackObject);
+       
     }
 
     public void RemoveTrack(TrackObject trackObject)
     {
-        if (Tracks.Contains(trackObject))
-            Tracks.Remove(trackObject);
+        
     }
 
     public void AddLane(LaneObject laneObject)
     {
-        if (!Lanes.Contains(laneObject))
-            Lanes.Add(laneObject);
+        
     }
 
     public void RemoveLane(LaneObject laneObject)
     {
-        if (Lanes.Contains(laneObject))
-            Lanes.Remove(laneObject);
+        
     }
 
     public void Initilize()
     {
-        for (int i = 0; i < 10; i++)
-        {
-            CreateTrack();
-        }
+        
     }
 
     /// <summary>
@@ -113,11 +92,7 @@ public class TrackManager : Singleton<TrackManager>
     /// </summary>
     private void Update()
     {
-        if (!canMoveTracks)
-            return;
-
-        MoveTrackObjects();
-        ManageTracks();
+        
     }
 
     #region Tracks
@@ -127,22 +102,12 @@ public class TrackManager : Singleton<TrackManager>
     /// </summary>
     private void MoveTrackObjects()
     {
-        for (int i = 0; i < Tracks.Count; i++)
-        {
-            Tracks[i].transform.position += Vector3.back * 10 * Time.deltaTime;
-        }
+        
     }
 
     private void ManageTracks()
     {
-        for (int i = 0; i < Tracks.Count; i++)
-        {
-            if(Tracks[i].transform.position.z < -30f)
-            {
-                DisposeTrack(Tracks[i]);
-                CreateTrack();
-            }
-        }
+        
     }
 
 
@@ -151,16 +116,7 @@ public class TrackManager : Singleton<TrackManager>
     /// </summary>
     public void CreateTrack()
     {
-        Vector3 createPos = Vector3.zero;
-        if(Tracks != null)
-        {
-            if (Tracks.Count > 0)
-            {
-                createPos = Tracks[Tracks.Count - 1].EndPoint.position + Vector3.forward * 4f;
-            }
-        }
         
-        GameObject roadObj = Instantiate(LevelManager.Instance.CurrentLevel.GetRandomTrack(LevelManager.Instance.CurrentTheme), createPos, Quaternion.identity);
     }
 
     /// <summary>
@@ -169,28 +125,14 @@ public class TrackManager : Singleton<TrackManager>
     /// <param name="trackObject"></param>
     public void DisposeTrack(TrackObject trackObject)
     {
-        Tracks.Remove(trackObject);
-        Destroy(trackObject.gameObject);
+       
     }
     #endregion
     #region Lanes
 
     public LaneObject GetClosestLane(Vector3 position)
     {
-        float minDistance = Mathf.Infinity;
-        LaneObject closestLine = null;
-        float distance = 0;
-        for (int i = 0; i < Lanes.Count; i++)
-        {
-            distance = Vector3.Distance(Lanes[i].transform.position, position);
-            if (distance < minDistance)
-            {
-                minDistance = distance;
-                closestLine = Lanes[i];
-            }
-        }
-
-        return closestLine;
+        return null;
     }
 
     #endregion
