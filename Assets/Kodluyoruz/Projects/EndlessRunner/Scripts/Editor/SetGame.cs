@@ -18,7 +18,6 @@ public static class SetGame
     {
         bool hasInit = false;
 
-
         if (PlayModeStateChange.EnteredPlayMode == state)
         {
             int sceneCount = SceneManager.sceneCount;
@@ -29,7 +28,6 @@ public static class SetGame
                 if (SceneManager.GetSceneAt(i).buildIndex == 0)
                 {
                     hasInit = true;
-
                 }
             }
             if (!hasInit)
