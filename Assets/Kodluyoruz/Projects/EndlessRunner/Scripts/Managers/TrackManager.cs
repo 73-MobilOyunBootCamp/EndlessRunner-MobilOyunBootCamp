@@ -5,8 +5,6 @@ using UnityEngine;
 
 public class TrackManager : Singleton<TrackManager>
 {
-   
-
     /// <summary>
     /// Here is an example of capsulation. We use a variable and a property to capsulate Tracks that we create.
     /// This way we get or set properties in an optimal way.
@@ -17,10 +15,10 @@ public class TrackManager : Singleton<TrackManager>
     {
         get
         {
-            // if(tracks == null)
-            // {
-            //     tracks = new List<TrackObject>();
-            // }
+            if (tracks == null)
+            {
+                tracks = new List<TrackObject>();
+            }
 
             return tracks;
         }

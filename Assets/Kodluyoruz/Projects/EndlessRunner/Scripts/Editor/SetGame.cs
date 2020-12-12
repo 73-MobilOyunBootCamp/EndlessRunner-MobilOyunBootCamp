@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-<<<<<<< Updated upstream
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -9,18 +8,6 @@ using UnityEngine.SceneManagement;
 
 [InitializeOnLoad]
 public static class SetGame
-=======
-using UnityEngine;
-using UnityEngine.SceneManagement;
-using Sirenix.OdinInspector;
-
-public class SetGame : MonoBehaviour
-{
-
-
-[InitializeOnLoad]
-public static class PlayModeStateChangedExample
->>>>>>> Stashed changes
 {
     // register an event handler when the class is initialized
 
@@ -55,8 +42,3 @@ public static class PlayModeStateChangedExample
         }
     }
 }
-<<<<<<< Updated upstream
-
-=======
-}
->>>>>>> Stashed changes

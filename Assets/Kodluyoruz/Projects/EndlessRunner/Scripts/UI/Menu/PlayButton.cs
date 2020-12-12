@@ -16,7 +16,6 @@ public class PlayButton : Button
     {
         base.OnEnable();
         onClick.RemoveListener(StartGame);
-
     }
 
     private void StartGame()
