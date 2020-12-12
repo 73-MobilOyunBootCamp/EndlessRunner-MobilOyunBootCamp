@@ -9,15 +9,17 @@ public class MainMenuPanel : Panel
     {
         if (Managers.Instance == null)
             return;
+        EventManager.OnGameStart.AddListener(HidePanel);
+        EventManager.OnGameEnd.AddListener(ShowPanel);
 
-        
     }
 
     private void OnDisable()
     {
         if (Managers.Instance == null)
             return;
+        EventManager.OnGameStart.RemoveListener(HidePanel);
+        EventManager.OnGameEnd.RemoveListener(ShowPanel);
 
-        
     }
 }
