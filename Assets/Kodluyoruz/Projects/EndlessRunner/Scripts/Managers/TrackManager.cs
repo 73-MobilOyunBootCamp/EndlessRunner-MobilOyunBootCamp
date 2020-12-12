@@ -17,10 +17,10 @@ public class TrackManager : Singleton<TrackManager>
     {
         get
         {
-            if(tracks == null)
-            {
-                tracks = new List<TrackObject>();
-            }
+            // if(tracks == null)
+            // {
+            //     tracks = new List<TrackObject>();
+            // }
 
             return tracks;
         }
@@ -53,23 +53,26 @@ public class TrackManager : Singleton<TrackManager>
 
     private void OnEnable()
     {
-        
+        EventManager.OnGameStart.AddListener(Initilize);
     }
 
     private void OnDisable()
     {
-       
+        EventManager.OnGameStart.RemoveListener(Initilize);       
     }
 
 
     public void AddTrack(TrackObject trackObject)
     {
-       
+       if(!Tracks.Contains(trackObject))
+            Tracks.Add(trackObject);
+    
     }
 
     public void RemoveTrack(TrackObject trackObject)
     {
-        
+        if(!Tracks.Contains(trackObject))
+            Tracks.Remove(trackObject);
     }
 
     public void AddLane(LaneObject laneObject)
@@ -84,7 +87,10 @@ public class TrackManager : Singleton<TrackManager>
 
     public void Initilize()
     {
-        
+        for (int i = 0; i < 10; i++)
+        {
+            CreateTrack();
+        }
     }
 
     /// <summary>
@@ -130,7 +136,14 @@ public class TrackManager : Singleton<TrackManager>
     /// </summary>
     public void CreateTrack()
     {
-        
+        Vector3 createPos = Vector3.zero;
+        if(Tracks != null){
+            if(Tracks.Count > 0)
+            {
+                createPos = Tracks[Tracks.Count - 1].EndPoint.position + Vector3.forward *4f;
+            }
+        }
+        GameObject trackObj = Instantiate(LevelManager.Instance.CurrentLevel.GetRandomTrack(LevelManager.Instance.CurrentTheme), createPos, Quaternion.identity);
     }
 
     /// <summary>
