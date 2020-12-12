@@ -63,12 +63,18 @@ public class TrackManager : Singleton<TrackManager>
 
     public void AddTrack(TrackObject trackObject)
     {
-       
+        if (!(Tracks.Contains(trackObject)))
+        {
+            Tracks.Add(trackObject);
+        }
     }
 
     public void RemoveTrack(TrackObject trackObject)
     {
-        
+        if (Tracks.Contains(trackObject))
+        {
+            Tracks.Remove(trackObject);
+        }
     }
 
     public void AddLane(LaneObject laneObject)
