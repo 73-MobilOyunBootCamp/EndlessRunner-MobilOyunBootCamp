@@ -101,7 +101,7 @@ public class TrackManager : Singleton<TrackManager>
     /// </summary>
     private void Update()
     {
-        
+        MoveTrackObjects();
     }
 
     #region Tracks
@@ -111,12 +111,22 @@ public class TrackManager : Singleton<TrackManager>
     /// </summary>
     private void MoveTrackObjects()
     {
-        
+        for (int i = 0; i < Tracks.Count; i++)
+        {
+            Tracks[i].transform.position += Vector3.back * LevelManager.Instance.DifficulityData.TrackSpeed * Time.deltaTime;
+        }
     }
 
     private void ManageTracks()
     {
-        
+        for (int i = 0; i < Tracks.Count; i++)
+        {
+            if (Tracks[i].transform.position.z < -30)
+            {
+                DisposeTrack(Tracks[i]);
+                CreateTrack();
+            }
+        }
     }
 
 
@@ -144,7 +154,8 @@ public class TrackManager : Singleton<TrackManager>
     /// <param name="trackObject"></param>
     public void DisposeTrack(TrackObject trackObject)
     {
-       
+        Tracks.Remove(trackObject);
+        Destroy(trackObject.gameObject);
     }
     #endregion
     #region Lanes
