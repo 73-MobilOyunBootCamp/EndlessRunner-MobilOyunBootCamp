@@ -15,7 +15,7 @@ public class TrackManager : Singleton<TrackManager>
     {
         get
         {
-            if(tracks == null)
+            if (tracks == null)
             {
                 tracks = new List<TrackObject>();
             }
@@ -46,6 +46,7 @@ public class TrackManager : Singleton<TrackManager>
 
     private float startDelay = 3.8f;
     private float startTime;
+    [SerializeField]
     private bool canMoveTracks;
 
     private void OnEnable()
@@ -55,7 +56,7 @@ public class TrackManager : Singleton<TrackManager>
 
     private void OnDisable()
     {
-       
+        EventManager.OnGameStart.RemoveListener(Initilize);
     }
 
 
@@ -73,12 +74,12 @@ public class TrackManager : Singleton<TrackManager>
 
     public void AddLane(LaneObject laneObject)
     {
-        
+
     }
 
     public void RemoveLane(LaneObject laneObject)
     {
-        
+
     }
 
     public void Initilize()
@@ -86,6 +87,7 @@ public class TrackManager : Singleton<TrackManager>
         for (int i = 0; i < 10; i++)
         {
             CreateTrack();
+            Debug.Log("Track Created");
         }
     }
 
@@ -95,6 +97,9 @@ public class TrackManager : Singleton<TrackManager>
     /// </summary>
     private void Update()
     {
+        if (!canMoveTracks)
+            return;
+
         MoveTrackObjects();
         ManageTracks();
     }
@@ -106,7 +111,7 @@ public class TrackManager : Singleton<TrackManager>
     /// </summary>
     private void MoveTrackObjects()
     {
-        for (int i = 0; i < tracks.Count; i++)
+        for (int i = 0; i < Tracks.Count; i++)
         {
             Tracks[i].transform.position += Vector3.back * LevelManager.Instance.DifficulityData.TrackSpeed * Time.deltaTime;
         }
@@ -114,7 +119,7 @@ public class TrackManager : Singleton<TrackManager>
 
     private void ManageTracks()
     {
-        for (int i = 0; i < tracks.Count; i++)
+        for (int i = 0; i < Tracks.Count; i++)
         {
             if (Tracks[i].transform.position.z < -30)
             {
@@ -132,7 +137,7 @@ public class TrackManager : Singleton<TrackManager>
     {
         Vector3 createPos = Vector3.zero;
 
-        if (tracks != null)
+        if (Tracks != null)
         {
             if (Tracks.Count > 0)
             {
@@ -140,7 +145,7 @@ public class TrackManager : Singleton<TrackManager>
             }
         }
 
-        GameObject trackObj = Instantiate((LevelManager.Instance.CurrentLevel.GetRandomTrack(LevelManager.Instance.CurrentTheme)), createPos, Quaternion.identity);
+        GameObject trackObj = Instantiate(LevelManager.Instance.CurrentLevel.GetRandomTrack(LevelManager.Instance.CurrentTheme), createPos, Quaternion.identity);
     }
 
     /// <summary>
