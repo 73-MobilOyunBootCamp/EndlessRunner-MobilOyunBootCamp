@@ -5,8 +5,6 @@ using UnityEngine;
 
 public class TrackManager : Singleton<TrackManager>
 {
-   
-
     /// <summary>
     /// Here is an example of capsulation. We use a variable and a property to capsulate Tracks that we create.
     /// This way we get or set properties in an optimal way.
@@ -17,7 +15,7 @@ public class TrackManager : Singleton<TrackManager>
     {
         get
         {
-            if(tracks == null)
+            if (tracks == null)
             {
                 tracks = new List<TrackObject>();
             }
@@ -48,27 +46,30 @@ public class TrackManager : Singleton<TrackManager>
 
     private float startDelay = 3.8f;
     private float startTime;
+    [SerializeField]
     private bool canMoveTracks;
 
     private void OnEnable()
     {
-        
+        EventManager.OnGameStart.AddListener(Initilize);
     }
 
     private void OnDisable()
     {
-       
+        EventManager.OnGameStart.RemoveListener(Initilize);
     }
 
 
     public void AddTrack(TrackObject trackObject)
     {
-       
+        if (!Tracks.Contains(trackObject))
+            Tracks.Add(trackObject);
     }
 
     public void RemoveTrack(TrackObject trackObject)
     {
-        
+        if (Tracks.Contains(trackObject))
+            Tracks.Remove(trackObject);
     }
 
     public void AddLane(LaneObject laneObject)
@@ -83,7 +84,11 @@ public class TrackManager : Singleton<TrackManager>
 
     public void Initilize()
     {
-        
+        for (int i = 0; i < 10; i++)
+        {
+            CreateTrack();
+            Debug.Log("Track Created");
+        }
     }
 
     /// <summary>
@@ -92,7 +97,11 @@ public class TrackManager : Singleton<TrackManager>
     /// </summary>
     private void Update()
     {
-        
+        if (!canMoveTracks)
+            return;
+
+        MoveTrackObjects();
+        ManageTracks();
     }
 
     #region Tracks
@@ -102,12 +111,22 @@ public class TrackManager : Singleton<TrackManager>
     /// </summary>
     private void MoveTrackObjects()
     {
-        
+        for (int i = 0; i < Tracks.Count; i++)
+        {
+            Tracks[i].transform.position += Vector3.back * LevelManager.Instance.DifficulityData.TrackSpeed * Time.deltaTime;
+        }
     }
 
     private void ManageTracks()
     {
-        
+        for (int i = 0; i < Tracks.Count; i++)
+        {
+            if(Tracks[i].transform.position.z < -30)
+            {
+                DisposeTrack(Tracks[i]);
+                CreateTrack();
+            }
+        }
     }
 
 
@@ -116,7 +135,17 @@ public class TrackManager : Singleton<TrackManager>
     /// </summary>
     public void CreateTrack()
     {
-        
+        Vector3 createPos = Vector3.zero;
+
+        if(Tracks != null)
+        {
+            if (Tracks.Count > 0)
+            {
+                createPos = Tracks[Tracks.Count - 1].EndPoint.position + Vector3.forward * 4f;
+            }
+        }
+
+        GameObject trackObj = Instantiate(LevelManager.Instance.CurrentLevel.GetRandomTrack(LevelManager.Instance.CurrentTheme), createPos, Quaternion.identity);
     }
 
     /// <summary>
@@ -125,7 +154,8 @@ public class TrackManager : Singleton<TrackManager>
     /// <param name="trackObject"></param>
     public void DisposeTrack(TrackObject trackObject)
     {
-       
+        Tracks.Remove(trackObject);
+        Destroy(trackObject.gameObject);
     }
     #endregion
     #region Lanes
