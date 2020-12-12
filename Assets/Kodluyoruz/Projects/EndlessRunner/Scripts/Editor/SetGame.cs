@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class SetGame : MonoBehaviour
 {
+    //This is test comment for git tik.
 
     [InitializeOnLoad]
 
