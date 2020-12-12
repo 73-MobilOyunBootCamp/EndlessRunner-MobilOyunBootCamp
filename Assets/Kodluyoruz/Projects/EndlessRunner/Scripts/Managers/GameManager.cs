@@ -23,11 +23,19 @@ public class GameManager : Singleton<GameManager>
 
     public void StartGame()
     {
-        
+        if (isGameStarted)
+            return;
+
+        isGameStarted = true;
+        EventManager.OnGameStart.Invoke();
     }
 
     public void EndGame()
     {
-        
+        if (!isGameStarted)
+            return;
+
+        isGameStarted = false;
+        EventManager.OnGameEnd.Invoke();
     }
 }
