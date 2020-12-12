@@ -494,7 +494,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 073e548914439214d93b56c61e3b4f54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SourceObjects: []
+  SourceObjects:
+  - ID: Coin
+    SourcePrefab: {fileID: 8387328013862532398, guid: 3528fee27ec574b6aa81e5415bfaed8f,
+      type: 3}
+    MinNumberOfObject: 0
+    AllowGrow: 1
+    AutoDestroy: 1
+    clones: []
   DefaultCount: 10
 --- !u!4 &1997254009
 Transform:
