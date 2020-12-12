@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Sirenix.OdinInspector;
+
 
 
 [RequireComponent(typeof(CanvasGroup))]
@@ -29,15 +31,15 @@ public class Panel : MonoBehaviour
         }
     }
 
-
-    public void ShowPanel()
+    [Button]
+    public virtual void ShowPanel()
     {
         CanvasGroup.alpha = 1;
         CanvasGroup.interactable = true;
         CanvasGroup.blocksRaycasts = true;
     }
-
-    public void HidePanel()
+    [Button]
+    public virtual void HidePanel()
     {
         CanvasGroup.alpha = 0;
         CanvasGroup.interactable = false;
