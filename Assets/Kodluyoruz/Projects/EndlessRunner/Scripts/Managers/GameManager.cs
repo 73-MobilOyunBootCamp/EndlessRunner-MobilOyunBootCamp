@@ -23,11 +23,27 @@ public class GameManager : Singleton<GameManager>
 
     public void StartGame()
     {
-        
+        // Güvence altına aldık sadece bir kere çalışmasını istiyoruz.
+        if (IsGameStarted)
+        {
+            return;
+        }
+
+        IsGameStarted = true;
+        EventManager.OnGameStart.Invoke(); 
     }
 
+    //Bu tarz metotlardan GameManager sorumlu olmalı. Bu yüzden play butonunun içine yazmadık.
+    //Bu Manageri başka projelerde kullanabilmeliyim.
+    //Bir sorun olduğunda yerini bulması daha kolay olur.
     public void EndGame()
     {
-        
+        if (!IsGameStarted)
+        {
+            return;
+        }
+
+        IsGameStarted = false;
+        EventManager.OnGameEnd.Invoke();        
     }
 }
