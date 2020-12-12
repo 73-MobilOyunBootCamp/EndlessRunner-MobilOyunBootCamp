@@ -15,7 +15,7 @@ public class GameData
 public class GameManager : Singleton<GameManager>
 {
     private bool isGameStarted;
-    [ShowInInspector]
+    [ShowInInspector] //bunlar odin ile geliyor.d
     [ReadOnly]
     public bool IsGameStarted { get { return isGameStarted; } private set { isGameStarted = value; } }
 
@@ -23,11 +23,26 @@ public class GameManager : Singleton<GameManager>
 
     public void StartGame()
     {
+        if (IsGameStarted)
+        {
+            return;
+        }
         
+        IsGameStarted = true;
+        EventManager.OnGameStart.Invoke();
+        
+
     }
 
     public void EndGame()
     {
+        if (!IsGameStarted)
+        {
+            return;
+        }
         
+        IsGameStarted = false;
+        EventManager.OnGameEnd.Invoke();
+
     }
 }

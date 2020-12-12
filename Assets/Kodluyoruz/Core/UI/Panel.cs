@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using Sirenix.OdinInspector;
 
 [RequireComponent(typeof(CanvasGroup))]
 public class Panel : MonoBehaviour
@@ -29,7 +29,7 @@ public class Panel : MonoBehaviour
         }
     }
 
-
+    [Button]
     public void ShowPanel()
     {
         CanvasGroup.alpha = 1;
@@ -37,6 +37,7 @@ public class Panel : MonoBehaviour
         CanvasGroup.blocksRaycasts = true;
     }
 
+    [Button]
     public void HidePanel()
     {
         CanvasGroup.alpha = 0;
