@@ -88,6 +88,7 @@ public class TrackManager : Singleton<TrackManager>
         {
             CreateTrack();
             print("Track Created");
+            Debug.Log("Track Created");
         }
     }
 
