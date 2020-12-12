@@ -23,21 +23,11 @@ public class GameManager : Singleton<GameManager>
 
     public void StartGame()
     {
-        if (IsGameStarted) //Oyun başlamışsa değeri döndür (Tekrar tekrar event tetikleme)
-        {
-            return;
-        }
-        IsGameStarted = true;
-        EventManager.OnGameStart.Invoke();
+        
     }
 
     public void EndGame()
     {
-        if (!IsGameStarted) //Oyun bitmişse değeri döndür (Tekrar tekrar event tetikleme)
-        {
-            return;
-        }
-        IsGameStarted = false;
-        EventManager.OnGameEnd.Invoke();
+        
     }
 }

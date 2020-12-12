@@ -7,9 +7,7 @@ public class ERInitManager : MonoBehaviour
 {
     void Start()
     {
-        SceneManager.LoadScene("EndlessRunnerUI", LoadSceneMode.Additive);
-        SceneManager.LoadScene("EndlessRunnerGame", LoadSceneMode.Additive);
-        Destroy(gameObject);
+        //Init Game Here
        
     }
 }
