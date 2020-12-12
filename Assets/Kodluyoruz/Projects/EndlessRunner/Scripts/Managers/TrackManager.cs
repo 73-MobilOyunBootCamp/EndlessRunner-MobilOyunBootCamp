@@ -48,6 +48,7 @@ public class TrackManager : Singleton<TrackManager>
 
     private float startDelay = 3.8f;
     private float startTime;
+    [SerializeField]
     private bool canMoveTracks;
 
     private void OnEnable()
@@ -101,7 +102,13 @@ public class TrackManager : Singleton<TrackManager>
     /// </summary>
     private void Update()
     {
+        if (!canMoveTracks)
+        {
+            return;
+        }
+        
         MoveTrackObjects();
+        ManageTracks();
     }
 
     #region Tracks
