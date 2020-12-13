@@ -16,7 +16,7 @@ public class FishboneCollectable : CollectableBase
 
     public override void Use()
     {
-       
+
     }
 
     private void Update()
