@@ -259,7 +259,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f82e6c2562de420188af895d633e420, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canMoveTracks: 1
+  canMoveTracks: 0
 --- !u!114 &600619043
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -319,7 +319,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b152425445d1449f9613402f43fcd17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canCreateObstacles: 1
+  canCreateObstacles: 0
 --- !u!81 &600619047
 AudioListener:
   m_ObjectHideFlags: 0
