@@ -31,14 +31,54 @@ public class CharacterAudioController : MonoBehaviour
         if (Managers.Instance == null)
             return;
 
-        
-    }
+        Character.OnCharacterJump.AddListener(() =>
+        {
+            AudioManager.Instance.PlayOneShot2D(JumpSound);
+        });
+        Character.OnCharacterSlide.AddListener(() =>
+        {
+            AudioManager.Instance.PlayOneShot2D(SlideSound);
+        });
+        Character.OnCharacterHit.AddListener(() =>
+        {
+            AudioManager.Instance.PlayOneShot2D(HitSound);
+        });
+        Character.OnCharacterDie.AddListener(() =>
+        {
+            AudioManager.Instance.PlayOneShot2D(DeathSound);
+        });
+        Character.OnCharacterSwitchLane.AddListener(() =>
+        {
+            AudioManager.Instance.PlayOneShot2D(SwitchLane);
+        });
+
+     }
 
     private void OnDisable()
     {
         if (Managers.Instance == null)
             return;
 
-       
+        Character.OnCharacterJump.RemoveListener(() =>
+        {
+            AudioManager.Instance.PlayOneShot2D(JumpSound);
+        });
+        Character.OnCharacterSlide.RemoveListener(() =>
+        {
+            AudioManager.Instance.PlayOneShot2D(SlideSound);
+        });
+        Character.OnCharacterHit.RemoveListener(() =>
+        {
+            AudioManager.Instance.PlayOneShot2D(HitSound);
+        });
+        Character.OnCharacterDie.RemoveListener(() =>
+        {
+            AudioManager.Instance.PlayOneShot2D(DeathSound);
+        });
+        Character.OnCharacterSwitchLane.RemoveListener(() =>
+        {
+            AudioManager.Instance.PlayOneShot2D(SwitchLane);
+        });
+
     }
 }
