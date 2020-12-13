@@ -60,28 +60,6 @@ public class TrackManager : Singleton<TrackManager>
     }
 
 
-    public void AddTrack(TrackObject trackObject)
-    {
-        if (!Tracks.Contains(trackObject))
-            Tracks.Add(trackObject);
-    }
-
-    public void RemoveTrack(TrackObject trackObject)
-    {
-        if (Tracks.Contains(trackObject))
-            Tracks.Remove(trackObject);
-    }
-
-    public void AddLane(LaneObject laneObject)
-    {
-        
-    }
-
-    public void RemoveLane(LaneObject laneObject)
-    {
-        
-    }
-
     public void Initilize()
     {
         for (int i = 0; i < 10; i++)
@@ -129,6 +107,17 @@ public class TrackManager : Singleton<TrackManager>
         }
     }
 
+    public void AddTrack(TrackObject trackObject)
+    {
+        if (!Tracks.Contains(trackObject))
+            Tracks.Add(trackObject);
+    }
+
+    public void RemoveTrack(TrackObject trackObject)
+    {
+        if (Tracks.Contains(trackObject))
+            Tracks.Remove(trackObject);
+    }
 
     /// <summary>
     /// This Method will be responsible for creating tracks.
@@ -163,6 +152,18 @@ public class TrackManager : Singleton<TrackManager>
     public LaneObject GetClosestLane(Vector3 position)
     {
         return null;
+    }
+
+    public void AddLane(LaneObject laneObject)
+    {
+        if (!Lanes.Contains(laneObject))
+            Lanes.Add(laneObject);
+    }
+
+    public void RemoveLane(LaneObject laneObject)
+    {
+        if (Lanes.Contains(laneObject))
+            Lanes.Remove(laneObject);
     }
 
     #endregion
