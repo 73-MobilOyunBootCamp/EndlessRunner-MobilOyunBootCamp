@@ -43,6 +43,7 @@ public class ObstacleManager : Singleton<ObstacleManager>
     }
 
 
+<<<<<<< Updated upstream
     public void SpawnObstacles()
     {
         if (Time.time < lastObstacleCreateTime + obstacleCreateWaitTime)
@@ -86,18 +87,66 @@ public class ObstacleManager : Singleton<ObstacleManager>
 
             CreateObstacle(laneObjects[i].transform.position);
             break; //This statment will allow us the quit from for loop. 
+=======
+    public void SpawnObstacle()
+    {
+        if (Time.time < lastObstacleCreateTime + obstacleCreateWaitTime)
+        {
+            return;
+        }
+
+        //Create obstacle
+        //We use our retio from difficulity data to see if we pass the cahange of creating the obstacle
+
+        float change = Random.Range(0f, 100f); //f eklemezsen int döner
+
+        if (change < LevelManager.Instance.DifficulityData.ObstacleSpawnRetrio)
+        {
+            lastObstacleCreateTime = Time.time; //We set the last obstacle create .......
+            EventManager.OnObstacleCreated.Invoke();
+            return;
+        }
+
+        //First we make sure new list of lane objects
+        List<LaneObject> laneObjects = new List<LaneObject>(TrackManager.Instance.Lanes);
+        //then we suffle the list to make a different variation
+        laneObjects.Shuffle(); //Extension metodu listelere özgü
+        laneObjects.RemoveAt(Random.Range(0, laneObjects.Count));//En fazla 2 engel olabileceğinden emin oluyoruz, bir yol hep boş olmalı
+        float changeForAnotherObstacle = Random.Range(0f, 1f);
+        lastObstacleCreateTime = Time.time;
+
+        for (int i = 0; i < laneObjects.Count; i++)
+        {
+            if (changeForAnotherObstacle > 0.5f)
+            {
+                CreateObstacle(laneObjects[i].transform.position);
+                changeForAnotherObstacle = 0f;
+                continue;
+            }
+
+            CreateObstacle(laneObjects[i].transform.position);
+            break;
+>>>>>>> Stashed changes
         }
 
         EventManager.OnObstacleCreated.Invoke();
     }
 
+<<<<<<< Updated upstream
     private GameObject CreateObstacle(Vector3 position)
+=======
+    private GameObject CreateObstacle(Vector3 position) 
+>>>>>>> Stashed changes
     {
         return Instantiate(LevelManager.Instance.CurrentLevel.GetRandomLevelObject(LevelObjectType.Obstacle),
             position,
             Quaternion.identity,
+<<<<<<< Updated upstream
             TrackManager.Instance.Tracks[TrackManager.Instance.Tracks.Count - 1].transform);
 
+=======
+            TrackManager.Instance.Tracks[TrackManager.Instance.Tracks.Count -1].transform);//Trackle beraber hareket edecek childı olduğu için
+>>>>>>> Stashed changes
     }
 
 }
