@@ -40,12 +40,22 @@ public class LevelManager : Singleton<LevelManager>
 
     public void StartLevel()
     {
-        
+        if (IsLevelStarted)
+        {
+            return;
+        }
+        isLevelStarted = true;
+        EventManager.OnLevelStart.Invoke();
     }
 
     public void FinishLevel()
     {
-        
+        if (IsLevelStarted)
+        {
+            return;
+        }
+        isLevelStarted = false;
+        EventManager.OnLevelFinish.Invoke();
     }
     
 }

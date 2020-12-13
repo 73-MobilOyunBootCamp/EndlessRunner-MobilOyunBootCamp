@@ -58,21 +58,33 @@ public class Character : MonoBehaviour
 
     public void DamageCharacter()
     {
-
+        OnCharacterHit.Invoke();
     }
     public void HealCharacter()
     {
-
+        OnCharacterHeal.Invoke();
     }
 
     public void KillCharacter()
     {
-        
+        if (IsDead)
+        {
+            return;
+        }
+        IsDead = true;
+        IsControlable = false;
+        OnCharacterDie.Invoke();
     }
 
     public void ReviveCharacter()
     {
-      
+        if (!IsDead)
+        {
+            return;
+        }
+        IsDead = false;
+        IsControlable = true;
+        OnCharacterRevive.Invoke();
     }
 
 
