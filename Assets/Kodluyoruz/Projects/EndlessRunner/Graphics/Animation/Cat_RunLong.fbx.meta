@@ -431,7 +431,7 @@ ModelImporter:
       name: Cat_RunLong
       takeName: Take 001
       internalID: 0
-      firstFrame: 1
+      firstFrame: 0.5
       lastFrame: 60
       wrapMode: 0
       orientationOffsetY: 0
@@ -452,7 +452,7 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.044025157
+      - time: 0.86032146
         functionName: OnRunStart
         data: 
         objectReferenceParameter: {instanceID: 0}

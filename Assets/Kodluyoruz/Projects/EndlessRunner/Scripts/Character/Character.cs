@@ -58,21 +58,36 @@ public class Character : MonoBehaviour
 
     public void DamageCharacter()
     {
-
+        OnCharacterHit.Invoke();
     }
     public void HealCharacter()
     {
-
+        OnCharacterHeal.Invoke();
     }
 
     public void KillCharacter()
     {
-        
+        if (isDead)
+            return;
+
+        IsDead = true;
+        IsControlable = false;
+        OnCharacterDie.Invoke();
+
+        //if(CharacterControllerType == CharacterControllerType.Player)
+        //{
+        //    EventManager.OnLevelFail.Invoke();
+        //}
     }
 
     public void ReviveCharacter()
     {
-      
+        if (!isDead)
+            return;
+
+        IsDead = false;
+        IsControlable = true;
+        //burada bir event tetikleneck
     }
 
 
