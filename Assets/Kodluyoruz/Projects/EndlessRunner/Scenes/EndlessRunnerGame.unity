@@ -531,6 +531,31 @@ MonoBehaviour:
     SwipeDirection: 4
   - LaneObject: {fileID: 1393531259}
     SwipeDirection: 3
+--- !u!1 &2076437002 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1919195712183084980, guid: f0bebc166c4e44289ab1c5140f4ccb0e,
+    type: 3}
+  m_PrefabInstance: {fileID: 1919195710562623339}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &2076437003
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2076437002}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b468e53677ceeeb49bcda5deb95250aa, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &2109851829
 GameObject:
   m_ObjectHideFlags: 0

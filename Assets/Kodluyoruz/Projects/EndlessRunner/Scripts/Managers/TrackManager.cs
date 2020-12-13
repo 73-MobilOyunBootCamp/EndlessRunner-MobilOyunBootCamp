@@ -52,11 +52,13 @@ public class TrackManager : Singleton<TrackManager>
     private void OnEnable()
     {
         EventManager.OnGameStart.AddListener(Initilize);
+        EventManager.OnPlayerStartedRunning.AddListener(() => canMoveTracks = true);
     }
 
     private void OnDisable()
     {
         EventManager.OnGameStart.RemoveListener(Initilize);
+        EventManager.OnPlayerStartedRunning.RemoveListener(() => canMoveTracks = true);
     }
 
 
@@ -71,17 +73,19 @@ public class TrackManager : Singleton<TrackManager>
         if (Tracks.Contains(trackObject))
             Tracks.Remove(trackObject);
     }
-
+    #region Lanes
     public void AddLane(LaneObject laneObject)
     {
-        
+        if (Lanes.Contains(laneObject))
+            Lanes.Add(laneObject);
     }
 
     public void RemoveLane(LaneObject laneObject)
     {
-        
+        if (Lanes.Contains(laneObject))
+            Lanes.Remove(laneObject);
     }
-
+    #endregion
     public void Initilize()
     {
         for (int i = 0; i < 10; i++)
@@ -162,8 +166,19 @@ public class TrackManager : Singleton<TrackManager>
 
     public LaneObject GetClosestLane(Vector3 position)
     {
-        return null;
+        float minDistance = Mathf.Infinity;
+        LaneObject closestLane = null;
+        float distance = 0;
+        for(int i = 0; i < Lanes.Count; i++)
+        {
+            distance = Vector3.Distance(Lanes[i].transform.position, position);
+            if(distance<minDistance)
+            {
+                minDistance = distance;
+                closestLane = Lanes[i];
+            }
+        }
+        return closestLane;
     }
-
     #endregion
 }
