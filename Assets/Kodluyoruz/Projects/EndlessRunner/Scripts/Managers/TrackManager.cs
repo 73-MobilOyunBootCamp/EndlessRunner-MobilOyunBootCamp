@@ -58,30 +58,6 @@ public class TrackManager : Singleton<TrackManager>
     {
         EventManager.OnGameStart.RemoveListener(Initilize);
     }
-
-
-    public void AddTrack(TrackObject trackObject)
-    {
-        if (!Tracks.Contains(trackObject))
-            Tracks.Add(trackObject);
-    }
-
-    public void RemoveTrack(TrackObject trackObject)
-    {
-        if (Tracks.Contains(trackObject))
-            Tracks.Remove(trackObject);
-    }
-
-    public void AddLane(LaneObject laneObject)
-    {
-        
-    }
-
-    public void RemoveLane(LaneObject laneObject)
-    {
-        
-    }
-
     public void Initilize()
     {
         for (int i = 0; i < 10; i++)
@@ -105,6 +81,18 @@ public class TrackManager : Singleton<TrackManager>
     }
 
     #region Tracks
+    public void AddTrack(TrackObject trackObject)
+    {
+        if (!Tracks.Contains(trackObject))
+            Tracks.Add(trackObject);
+    }
+
+    public void RemoveTrack(TrackObject trackObject)
+    {
+        if (Tracks.Contains(trackObject))
+            Tracks.Remove(trackObject);
+    }
+
     /// <summary>
     /// This method is resposible for moving track objects.
     /// We use a for loop to itterate trough all the track objects that we have.
@@ -121,7 +109,7 @@ public class TrackManager : Singleton<TrackManager>
     {
         for (int i = 0; i < Tracks.Count; i++)
         {
-            if(Tracks[i].transform.position.z < -30)
+            if (Tracks[i].transform.position.z < -30)
             {
                 DisposeTrack(Tracks[i]);
                 CreateTrack();
@@ -137,7 +125,7 @@ public class TrackManager : Singleton<TrackManager>
     {
         Vector3 createPos = Vector3.zero;
 
-        if(Tracks != null)
+        if (Tracks != null)
         {
             if (Tracks.Count > 0)
             {
@@ -160,9 +148,37 @@ public class TrackManager : Singleton<TrackManager>
     #endregion
     #region Lanes
 
+    public void AddLane(LaneObject laneObject)
+    {
+        if (!Lanes.Contains(laneObject))
+            Lanes.Add(laneObject);
+    }
+
+    public void RemoveLane(LaneObject laneObject)
+    {
+        if (Lanes.Contains(laneObject))
+            Lanes.Remove(laneObject);
+    }
+
     public LaneObject GetClosestLane(Vector3 position)
     {
-        return null;
+        float minimumDistance = Mathf.Infinity;
+        LaneObject closestLame = null;
+        float distance = 0;
+
+
+        for (int i = 0; i < Lanes.Count; i++)
+        {
+            distance = Vector3.Distance(Lanes[i].transform.position, position);
+
+            if (distance < minimumDistance)
+            {
+                minimumDistance = distance;
+                closestLame = Lanes[i];
+            }
+        }
+
+        return closestLame;
     }
 
     #endregion
