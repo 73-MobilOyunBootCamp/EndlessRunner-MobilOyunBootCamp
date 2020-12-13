@@ -17,12 +17,20 @@ public class LaneObject : MonoBehaviour
 
     private void OnEnable()
     {
-        
+        if (Managers.Instance == null)
+        {
+            return;
+        }
+        TrackManager.Instance.AddLane(this);
     }
 
     private void OnDisable()
     {
-        
+        if (Managers.Instance == null)
+        {
+            return;
+        }
+        TrackManager.Instance.RemoveLane(this);
     }
 
     public LaneObject GetLane(Swipe swipe)

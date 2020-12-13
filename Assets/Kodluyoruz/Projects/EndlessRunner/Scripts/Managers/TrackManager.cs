@@ -59,29 +59,6 @@ public class TrackManager : Singleton<TrackManager>
         EventManager.OnGameStart.RemoveListener(Initilize);
     }
 
-
-    public void AddTrack(TrackObject trackObject)
-    {
-        if (!Tracks.Contains(trackObject))
-            Tracks.Add(trackObject);
-    }
-
-    public void RemoveTrack(TrackObject trackObject)
-    {
-        if (Tracks.Contains(trackObject))
-            Tracks.Remove(trackObject);
-    }
-
-    public void AddLane(LaneObject laneObject)
-    {
-        
-    }
-
-    public void RemoveLane(LaneObject laneObject)
-    {
-        
-    }
-
     public void Initilize()
     {
         for (int i = 0; i < 10; i++)
@@ -109,6 +86,19 @@ public class TrackManager : Singleton<TrackManager>
     /// This method is resposible for moving track objects.
     /// We use a for loop to itterate trough all the track objects that we have.
     /// </summary>
+
+    public void AddTrack(TrackObject trackObject)
+    {
+        if (!Tracks.Contains(trackObject))
+            Tracks.Add(trackObject);
+    }
+
+    public void RemoveTrack(TrackObject trackObject)
+    {
+        if (Tracks.Contains(trackObject))
+            Tracks.Remove(trackObject);
+    }
+
     private void MoveTrackObjects()
     {
         for (int i = 0; i < Tracks.Count; i++)
@@ -160,9 +150,35 @@ public class TrackManager : Singleton<TrackManager>
     #endregion
     #region Lanes
 
+    public void AddLane(LaneObject laneObject)
+    {
+        if (!Lanes.Contains(laneObject))
+            Lanes.Add(laneObject);
+    }
+
+    public void RemoveLane(LaneObject laneObject)
+    {
+        if (Lanes.Contains(laneObject))
+            Lanes.Remove(laneObject);
+    }
     public LaneObject GetClosestLane(Vector3 position)
     {
-        return null;
+        float minDistance = Mathf.Infinity;
+        LaneObject closestLane = null;
+        float distance = 0;
+
+        for (int i = 0; i < Lanes.Count; i++)
+        {
+            distance = Vector3.Distance(Lanes[i].transform.position, position);
+
+            if (distance<minDistance)
+            {
+                minDistance = distance;
+                closestLane = Lanes[i];
+            }
+        }
+
+        return closestLane;
     }
 
     #endregion
