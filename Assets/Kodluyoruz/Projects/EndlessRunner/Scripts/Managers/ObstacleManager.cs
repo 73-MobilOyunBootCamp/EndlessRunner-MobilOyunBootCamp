@@ -9,6 +9,7 @@ public class ObstacleManager : Singleton<ObstacleManager>
     private float lastObstacleCreateTime;
     private float obstacleCreateWaitTime;
 
+    [SerializeField]
     private bool canCreateObstacles;
 
     private void Start()
@@ -34,7 +35,11 @@ public class ObstacleManager : Singleton<ObstacleManager>
 
     private void Update()
     {
-        
+        if (!canCreateObstacles)
+        {
+            return;
+        }
+        SpawnObstacles();
     }
 
 
