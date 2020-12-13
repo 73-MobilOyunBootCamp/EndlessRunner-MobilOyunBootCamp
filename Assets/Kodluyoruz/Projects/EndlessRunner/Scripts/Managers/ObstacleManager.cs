@@ -52,20 +52,23 @@ public class ObstacleManager : Singleton<ObstacleManager>
 
         if (chance < LevelManager.Instance.DifficulityData.ObstacleSpawnRetrio)
         {
-            lastObstacleCreateTime = Time.time; //Last obstacle creted time is now our passed game time
-            EventManager.OnObstacleCreated.Invoke(); //Wen invoke this if wont create obstacle
-            return; //We havent pass so we wait for the next time
+            lastObstacleCreateTime = Time.time; //We set the last obstacle create time to Time.time to wait for next interval.
+            EventManager.OnObstacleCreated.Invoke(); //We invoke this event even if we don't create any obstacles. Because we want the come continue on it's loop.
+            return; // We havent pass so we wait for the next time.
         }
 
         //First make list of lane objects
         List<LaneObject> laneObjects = new List<LaneObject>(TrackManager.Instance.Lanes);
+        //then we suffle the list to make a different variation
         laneObjects.Shuffle();
-        //Now er remove lane object from list ake sure our player has one lane without obstacle
+        //Now we remove one lane object from the list to make sure our player has one lane without an obstacle.
         laneObjects.RemoveAt(Random.Range(0, laneObjects.Count));
 
-        float chanceForAnotherObstacle = Random.Range(0f, 1f);
+        //We loop the list that contains two random lanes (different order each time because we suffle it.)
+        float chanceForAnotherObstacle = Random.Range(0f, 1f);//This is our chance for second obstacle if we pass this float we will create a second obstacle.
+                                                              //If not we will only create one obstacle 100 percent
 
-        lastObstacleCreateTime = Time.time; //Last obstacle creted time is now our passed game time
+        lastObstacleCreateTime = Time.time; //We set the last obstacle create time to Time.time to wait for next interval.
 
         for (int i = 0; i < laneObjects.Count; i++)
         {
@@ -73,11 +76,13 @@ public class ObstacleManager : Singleton<ObstacleManager>
             {
                 CreateObstacle(laneObjects[i].transform.position);
                 chanceForAnotherObstacle = 0f;
-                continue;
+                continue;//This statment will allow us the pass the code below in the for loop.
+                         //We don't want to create two obstacles on the same lane however we also don't know if we passed the
+                         //if statement.
             }
 
             CreateObstacle(laneObjects[i].transform.position);
-            break;
+            break;//This statment will allow us the quit from for loop. 
         }
 
         EventManager.OnObstacleCreated.Invoke();
