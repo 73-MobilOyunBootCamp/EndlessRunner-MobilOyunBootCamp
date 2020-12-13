@@ -34,7 +34,7 @@ public class ObstacleManager : Singleton<ObstacleManager>
 
     private void Update()
     {
-        
+        SpawnObstacle();
     }
 
 
