@@ -16,8 +16,12 @@ public class CharacterAnimationController : MonoBehaviour
         if (Managers.Instance == null)
             return;
 
-        
+        EventManager.OnLevelStart.AddListener(() => InvokeTrigger("Start")); //Normalde void alıyor, static parametre vermek için böyle yapabilirsiniz.
 
+        Character.OnCharacterJump.AddListener(() => InvokeTrigger("Jump"));
+        Character.OnCharacterSlide.AddListener(() => InvokeTrigger("Slide"));
+        Character.OnCharacterHit.AddListener(() => InvokeTrigger("Hit"));
+        Character.OnCharacterDie.AddListener(() => InvokeTrigger("Die"));
 
     }
 
@@ -26,7 +30,13 @@ public class CharacterAnimationController : MonoBehaviour
         if (Managers.Instance == null)
             return;
 
-       
+        EventManager.OnLevelStart.RemoveListener(() => InvokeTrigger("Start"));
+
+        Character.OnCharacterJump.RemoveListener(() => InvokeTrigger("Jump"));
+        Character.OnCharacterSlide.RemoveListener(() => InvokeTrigger("Slide"));
+        Character.OnCharacterHit.RemoveListener(() => InvokeTrigger("Hit"));
+        Character.OnCharacterDie.RemoveListener(() => InvokeTrigger("Die"));
+
     }
 
     private void Update()
@@ -36,12 +46,13 @@ public class CharacterAnimationController : MonoBehaviour
 
     private void UpdateAnimations()
     {
-       
+        Animator.SetBool("Moving", LevelManager.Instance.IsLevelStarted);
+        Animator.SetBool("IsDead", Character.IsDead);
     }
 
     private void InvokeTrigger(string value)
     {
-        
+        Animator.SetTrigger(value);
     }
 
     public void OnSlideFinish()
@@ -56,6 +67,7 @@ public class CharacterAnimationController : MonoBehaviour
 
     public void OnRunStart()
     {
-        
+        Debug.Log("Start");
+        EventManager.OnPlayerStartedRunning.Invoke();
     }
 }
