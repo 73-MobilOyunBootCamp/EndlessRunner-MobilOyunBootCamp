@@ -151,7 +151,23 @@ public class TrackManager : Singleton<TrackManager>
 
     public LaneObject GetClosestLane(Vector3 position)
     {
-        return null;
+        float minDistance = Mathf.Infinity;
+        LaneObject closestLane = null;
+        float distance = 0;
+
+        for (int i = 0; i < Lanes.Count; i++)
+        {
+            distance = Vector3.Distance(Lanes[i].transform.position, position);
+
+            if (distance < minDistance)
+            {
+                minDistance = distance;
+                closestLane = Lanes[i];
+            }
+        }
+
+
+        return closestLane;
     }
 
     public void AddLane(LaneObject laneObject)
