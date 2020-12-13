@@ -21,6 +21,7 @@ public class ObstacleManager : Singleton<ObstacleManager>
         if (Managers.Instance == null)
             return;
 
+        EventManager.OnLevelStart.AddListener(() => canCreateObstacles = true);
        
     }
 
@@ -29,11 +30,18 @@ public class ObstacleManager : Singleton<ObstacleManager>
         if (Managers.Instance == null)
             return;
 
-       
+        EventManager.OnLevelStart.RemoveListener(() => canCreateObstacles = true);
+
     }
 
     private void Update()
     {
+        if (!canCreateObstacles)
+        {
+            lastObstacleCreateTime = Time.time;
+
+            return;
+        }
         SpawnObstacle();
     }
 
