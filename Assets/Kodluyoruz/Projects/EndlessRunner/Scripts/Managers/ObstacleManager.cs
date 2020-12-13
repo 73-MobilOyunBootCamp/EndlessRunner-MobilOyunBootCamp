@@ -40,7 +40,21 @@ public class ObstacleManager : Singleton<ObstacleManager>
 
     public void CreateObstacle()
     {
-        
+        //Check for is it creating time
+        if (Time.time < lastObstacleCreateTime + obstacleCreateWaitTime)
+        {
+            return;
+        }
+
+        //Create obstacle
+        //We use our retio from difficulty data to see if we pass the chance of craeting the obstacle
+        float chance = Random.Range(0f, 100f);
+
+        if (chance < LevelManager.Instance.DifficulityData.ObstacleSpawnRetrio)
+        {
+            lastObstacleCreateTime = Time.time; //Last obstacle creted time is now our passed game time
+            EventManager.OnObstacleCreated.Invoke();
+        }
     }
 
 }
