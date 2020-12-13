@@ -52,11 +52,13 @@ public class TrackManager : Singleton<TrackManager>
     private void OnEnable()
     {
         EventManager.OnGameStart.AddListener(Initilize);
+        EventManager.OnPlayerStartedRunning.AddListener(() => canMoveTracks = true);
     }
 
     private void OnDisable()
     {
         EventManager.OnGameStart.RemoveListener(Initilize);
+        EventManager.OnPlayerStartedRunning.RemoveListener(() => canMoveTracks = true);
     }
 
 
