@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
 
-
 [RequireComponent(typeof(CanvasGroup))]
 public class Panel : MonoBehaviour
 {
@@ -30,7 +29,9 @@ public class Panel : MonoBehaviour
         }
     }
 
+
     [Button]
+
     public virtual void ShowPanel()
     {
         CanvasGroup.alpha = 1;
@@ -39,6 +40,7 @@ public class Panel : MonoBehaviour
     }
 
     [Button]
+   
     public virtual void HidePanel()
     {
         CanvasGroup.alpha = 0;

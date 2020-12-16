@@ -52,11 +52,13 @@ public class TrackManager : Singleton<TrackManager>
     private void OnEnable()
     {
         EventManager.OnGameStart.AddListener(Initilize);
+        EventManager.OnPlayerStartedRunning.AddListener(() => canMoveTracks = true);
     }
 
     private void OnDisable()
     {
         EventManager.OnGameStart.RemoveListener(Initilize);
+        EventManager.OnPlayerStartedRunning.RemoveListener(() => canMoveTracks = true);
     }
 
 
@@ -74,12 +76,14 @@ public class TrackManager : Singleton<TrackManager>
 
     public void AddLane(LaneObject laneObject)
     {
-        
+        if (!Lanes.Contains(laneObject))
+            Lanes.Add(laneObject);
     }
 
     public void RemoveLane(LaneObject laneObject)
     {
-        
+        if (Lanes.Contains(laneObject))
+            Lanes.Remove(laneObject);
     }
 
     public void Initilize()
@@ -87,7 +91,9 @@ public class TrackManager : Singleton<TrackManager>
         for (int i = 0; i < 10; i++)
         {
             CreateTrack();
+
             Debug.Log("Track Created");
+
         }
     }
 
@@ -121,7 +127,8 @@ public class TrackManager : Singleton<TrackManager>
     {
         for (int i = 0; i < Tracks.Count; i++)
         {
-            if(Tracks[i].transform.position.z < -30)
+
+            if (Tracks[i].transform.position.z < -30)
             {
                 DisposeTrack(Tracks[i]);
                 CreateTrack();
@@ -137,7 +144,7 @@ public class TrackManager : Singleton<TrackManager>
     {
         Vector3 createPos = Vector3.zero;
 
-        if(Tracks != null)
+        if (Tracks != null)
         {
             if (Tracks.Count > 0)
             {
@@ -162,7 +169,21 @@ public class TrackManager : Singleton<TrackManager>
 
     public LaneObject GetClosestLane(Vector3 position)
     {
-        return null;
+        float minDistance = Mathf.Infinity;
+        LaneObject closestLane = null;
+        float distance = 0;
+
+        for(int i=0; i<Lanes.Count; i++)
+        {
+            distance = Vector3.Distance(Lanes[i].transform.position, position);
+
+            if(distance<minDistance)
+            {
+                minDistance = distance;
+                closestLane = Lanes[i];
+            }
+        }
+        return closestLane;
     }
 
     #endregion

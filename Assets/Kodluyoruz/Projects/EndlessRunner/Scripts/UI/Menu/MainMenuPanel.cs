@@ -9,7 +9,6 @@ public class MainMenuPanel : Panel
     {
         if (Managers.Instance == null)
             return;
-
         EventManager.OnGameStart.AddListener(HidePanel);
         EventManager.OnGameEnd.AddListener(ShowPanel);
     }
@@ -18,9 +17,9 @@ public class MainMenuPanel : Panel
     {
         if (Managers.Instance == null)
             return;
-
         EventManager.OnGameStart.RemoveListener(HidePanel);
         EventManager.OnGameEnd.RemoveListener(ShowPanel);
+
 
     }
 }
