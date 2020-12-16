@@ -31,7 +31,7 @@ namespace UnityToolbarExtender.Examples
         static List<SceneAsset> scenes = new List<SceneAsset>();
 
         static void OnToolbarGUI() {
-
+			//You can edit here and use other projects
             GUILayout.BeginHorizontal();
 
             for (int i = 0; i < EditorBuildSettings.scenes.Length; i++) {
@@ -46,7 +46,7 @@ namespace UnityToolbarExtender.Examples
             }
 
             GUILayout.EndHorizontal();
-
+			//--------------------------------------------
         }
 
     }
