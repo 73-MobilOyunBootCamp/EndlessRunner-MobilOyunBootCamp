@@ -31,17 +31,18 @@ public class CharacterAnimationController : MonoBehaviour
 
     private void Update()
     {
-        
+        UpdateAnimations();
     }
 
     private void UpdateAnimations()
     {
-       
+        Animator.SetBool("Moving", LevelManager.Instance.IsLevelStarted);
+        Animator.SetBool("isDead", Character.IsDead);
     }
 
     private void InvokeTrigger(string value)
     {
-        
+        Animator.SetTrigger(value);
     }
 
     public void OnSlideFinish()
