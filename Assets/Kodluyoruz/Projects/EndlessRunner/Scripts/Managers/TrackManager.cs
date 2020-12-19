@@ -52,34 +52,13 @@ public class TrackManager : Singleton<TrackManager>
     private void OnEnable()
     {
         EventManager.OnGameStart.AddListener(Initilize);
+        EventManager.OnPlayerStartedRunning.AddListener(() => canMoveTracks = true);
     }
 
     private void OnDisable()
     {
         EventManager.OnGameStart.RemoveListener(Initilize);
-    }
-
-
-    public void AddTrack(TrackObject trackObject)
-    {
-        if (!Tracks.Contains(trackObject))
-            Tracks.Add(trackObject);
-    }
-
-    public void RemoveTrack(TrackObject trackObject)
-    {
-        if (Tracks.Contains(trackObject))
-            Tracks.Remove(trackObject);
-    }
-
-    public void AddLane(LaneObject laneObject)
-    {
-        
-    }
-
-    public void RemoveLane(LaneObject laneObject)
-    {
-        
+        EventManager.OnPlayerStartedRunning.RemoveListener(() => canMoveTracks = true);
     }
 
     public void Initilize()
@@ -105,6 +84,19 @@ public class TrackManager : Singleton<TrackManager>
     }
 
     #region Tracks
+
+    public void AddTrack(TrackObject trackObject)
+    {
+        if (!Tracks.Contains(trackObject))
+            Tracks.Add(trackObject);
+    }
+
+    public void RemoveTrack(TrackObject trackObject)
+    {
+        if (Tracks.Contains(trackObject))
+            Tracks.Remove(trackObject);
+    }
+
     /// <summary>
     /// This method is resposible for moving track objects.
     /// We use a for loop to itterate trough all the track objects that we have.
@@ -158,12 +150,38 @@ public class TrackManager : Singleton<TrackManager>
         Destroy(trackObject.gameObject);
     }
     #endregion
+
     #region Lanes
+    public void AddLane(LaneObject laneObject)
+    {
+        if (!Lanes.Contains(laneObject))
+            Lanes.Add(laneObject);
+    }
+
+    public void RemoveLane(LaneObject laneObject)
+    {
+        if (Lanes.Contains(laneObject))
+            Lanes.Remove(laneObject);
+    }
 
     public LaneObject GetClosestLane(Vector3 position)
     {
-        return null;
-    }
+        float minDistance = Mathf.Infinity;
+        LaneObject closestLane = null;
+        float distance = 0;
 
+        for (int i = 0; i < Lanes.Count; i++)
+        {
+            distance = Vector3.Distance(Lanes[i].transform.position, position);
+
+            if(distance < minDistance)
+            {
+                minDistance = distance;
+                closestLane = Lanes[i];
+            }
+        }
+
+        return closestLane;
+    }
     #endregion
 }
