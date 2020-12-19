@@ -58,12 +58,12 @@ public class CharacterAnimationController : MonoBehaviour
 
     public void OnSlideFinish()
     {
-        
+        Character.Collider.enabled = true;
     }
 
     public void OnJumpFinish()
     {
-        
+        Character.Collider.enabled = true;
     }
 
     public void OnRunStart()
