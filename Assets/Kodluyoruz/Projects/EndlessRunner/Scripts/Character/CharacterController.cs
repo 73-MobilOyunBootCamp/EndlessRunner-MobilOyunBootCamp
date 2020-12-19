@@ -39,8 +39,11 @@ public class CharacterController : MonoBehaviour, ICharacterController
 
     public void Move(Swipe swipe, Vector2 direction)
     {
-        
-        
+
+        if (Character.IsControlable)
+            return;
+
+        LaneObject laneObject = CurrentLane.GetLane(Swipe);
 
     }
 
