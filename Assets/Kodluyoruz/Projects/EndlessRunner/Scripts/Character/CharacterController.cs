@@ -41,8 +41,7 @@ public class CharacterController : MonoBehaviour, ICharacterController
 
     public void Move(Swipe swipe, Vector2 direction)
     {
-        Debug.Log("Move with Swipe!");
-
+        
         if (!Character.IsControlable)
             return;
 
@@ -90,7 +89,6 @@ public class CharacterController : MonoBehaviour, ICharacterController
 
     private void JumpToLane(LaneObject laneObject)
     {
-        Debug.Log("JumpToLane method!");
         transform.DOJump(new Vector3(laneObject.transform.position.x, transform.position.y, transform.position.z), 1f, 1, 0.3f);
         Character.OnCharacterSwitchLane.Invoke();
     }
