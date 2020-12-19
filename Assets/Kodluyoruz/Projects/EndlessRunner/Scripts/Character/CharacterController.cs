@@ -87,9 +87,21 @@ public class CharacterController : MonoBehaviour, ICharacterController
        
     }
 
+    private bool isJumping;
+    
     private void JumpToLane(LaneObject laneObject)
     {
-        transform.DOJump(new Vector3(laneObject.transform.position.x, transform.position.y, transform.position.z), 1f, 1, 0.3f);
+        if (isJumping)
+            return;
+
+        isJumping = true;
+
+
+        transform.DOJump(new Vector3(laneObject.transform.position.x, transform.position.y, transform.position.z), 1f, 1, 0.3f)
+            .OnComplete( () => { isJumping = false; }) ;
+
         Character.OnCharacterSwitchLane.Invoke();
+
+        
     }
 }

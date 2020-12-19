@@ -66,7 +66,7 @@ public class TrackManager : Singleton<TrackManager>
         for (int i = 0; i < 10; i++)
         {
             CreateTrack();
-            Debug.Log("Track Created");
+            //Debug.Log("Track Created");
         }
     }
 
