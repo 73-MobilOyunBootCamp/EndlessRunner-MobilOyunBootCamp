@@ -44,6 +44,7 @@ public class CharacterController : MonoBehaviour, ICharacterController
             return;
 
         LaneObject laneObject = CurrentLane.GetLane(swipe);
+        //currentlane en yakın lane'i her seferinde bulup ona göre swipe yapmamızı sağlıyor.
 
         switch (swipe)
         {
@@ -67,22 +68,51 @@ public class CharacterController : MonoBehaviour, ICharacterController
 
             default:
                 break;
+
+              
         }
     }
+    public Ease Ease;
         public void Jump()
     {
-        
+
+        if (isJumping)
+            return;
+
+        isJumping = true;
+
+        transform.DOJump(transform.position, 2.5f, 1, 1.2f).SetEase(Ease)
+             .OnComplete(() =>
+             {
+                 isJumping = false;
+             });
+        Character.OnCharacterJump.Invoke();
+        //Character.Collider.enabled = false;
+        //collider zıplaması bittiğinde aktif olması gerekiyor ÖDEV.
     }
 
     public void Slide()
     {
-       
+        Character.OnCharacterSlide.Invoke();
+        //Character.Collider.enabled = false;
+        //collider zıplaması bittiğinde aktif olması gerekiyor ÖDEV.
     }
 
+    private bool isJumping;
+    private Tween jumpTween;
     private void JumpToLane(LaneObject laneObject)
     {
-    transform.DOJump(new Vector3(laneObject.transform.position.x, transform.position.y, transform.position.z), 1f, 0, 0.3f);
-                Character.OnCharacterSwitchLane.Invoke();
+        if (isJumping)
+            return;
+        
+        isJumping = true;
+
+        transform.DOJump(new Vector3(laneObject.transform.position.x, transform.position.y, transform.position.z), 1f, 0, 0.3f)
+             .OnComplete(() =>
+             {
+                 isJumping = false;
+             }); 
+        Character.OnCharacterSwitchLane.Invoke();
     }
 
     }
