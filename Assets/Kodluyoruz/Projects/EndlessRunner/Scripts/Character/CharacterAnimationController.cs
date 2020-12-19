@@ -68,6 +68,8 @@ public class CharacterAnimationController : MonoBehaviour
 
     public void OnRunStart()
     {
-        
+        Debug.Log("Run Start");
+        Character.IsControlable = true;
+        EventManager.OnPlayerStartedRunning.Invoke();
     }
 }
