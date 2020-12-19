@@ -43,7 +43,29 @@ public class CharacterController : MonoBehaviour, ICharacterController
         if (Character.IsControlable)
             return;
 
-        LaneObject laneObject = CurrentLane.GetLane(Swipe);
+        LaneObject laneObject = CurrentLane.GetLane(swipe);
+
+        switch (swipe)
+        {
+            case Swipe.Up:
+                Jump();
+                break;
+            case Swipe.Down:
+                Slide();
+                break;
+            case Swipe.Left:
+
+                if (laneObject != null)
+                {
+                    return;
+                }
+                break;
+            case Swipe.Right:
+
+                break;
+            default:
+                break;
+        }
 
     }
 
