@@ -75,29 +75,17 @@ public class CharacterController : MonoBehaviour, ICharacterController
 
     public void Jump()
     {
-        Character.OnCharacterJump.Invoke();
-        //Character.Collider.enabled = false;
+        
     }
 
     public void Slide()
     {
-        Character.OnCharacterSlide.Invoke();
-        //Character.Collider.enabled = false;
+       
     }
-    private bool isJumping;
-    
+
     private void JumpToLane(LaneObject laneObject)
     {
-        if (isJumping)
-            return;
-        isJumping = true;
-
-        transform.DOJump(new Vector3(laneObject.transform.position.x, transform.position.y, transform.position.z), 1f, 1, 0.3f)
-            .onComplete(() =>
-            {
-                isJumping = false;
-            });
-        
+        transform.DOJump(new Vector3(laneObject.transform.position.x, transform.position.y, transform.position.z), 1f, 1, 0.3f);
         Character.OnCharacterSwitchLane.Invoke();
     }
 }
