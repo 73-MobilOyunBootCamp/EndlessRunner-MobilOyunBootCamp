@@ -35,11 +35,10 @@ public class LaneObject : MonoBehaviour
     {
         for (int i = 0; i < ConnectedLanes.Count; i++)
         {
-            if (!ConnectedLanes[i].SwipeDirection.Equals(swipe))
-            {
+            if (ConnectedLanes[i].SwipeDirection.Equals(swipe))
                 return ConnectedLanes[i].LaneObject;
-            }
         }
+
         return null;
     }
 
