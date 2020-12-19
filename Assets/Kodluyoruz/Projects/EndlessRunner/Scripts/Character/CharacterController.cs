@@ -16,6 +16,7 @@ public class CharacterController : MonoBehaviour, ICharacterController
         if (Managers.Instance == null)
             return;
 
+        EventManager.OnSwipeDetected.AddListener(Move);
        
     }
 
@@ -24,7 +25,8 @@ public class CharacterController : MonoBehaviour, ICharacterController
         if (Managers.Instance == null)
             return;
 
-       
+        EventManager.OnSwipeDetected.RemoveListener(Move);
+
     }
 
     /// <summary>
@@ -39,8 +41,9 @@ public class CharacterController : MonoBehaviour, ICharacterController
 
     public void Move(Swipe swipe, Vector2 direction)
     {
+        Debug.Log("Move with Swipe!");
 
-        if (Character.IsControlable)
+        if (!Character.IsControlable)
             return;
 
         LaneObject laneObject = CurrentLane.GetLane(swipe);
@@ -55,12 +58,18 @@ public class CharacterController : MonoBehaviour, ICharacterController
                 break;
             case Swipe.Left:
 
-                if (laneObject != null)
-                {
+                if (laneObject == null)
                     return;
-                }
+                
+                JumpToLane(laneObject);
+
                 break;
             case Swipe.Right:
+                
+                if (laneObject == null)
+                    return;
+
+                JumpToLane(laneObject);
 
                 break;
             default:
@@ -77,5 +86,12 @@ public class CharacterController : MonoBehaviour, ICharacterController
     public void Slide()
     {
        
+    }
+
+    private void JumpToLane(LaneObject laneObject)
+    {
+        Debug.Log("JumpToLane method!");
+        transform.DOJump(new Vector3(laneObject.transform.position.x, transform.position.y, transform.position.z), 1f, 1, 0.3f);
+        Character.OnCharacterSwitchLane.Invoke();
     }
 }
