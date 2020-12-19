@@ -77,14 +77,27 @@ public class CharacterController : MonoBehaviour, ICharacterController
 
     }
 
+    public Ease Ease;
+
     public void Jump()
     {
-        
+        if (isJumping)
+            return;
+
+        isJumping = true;
+
+        transform.DOJump(transform.position, 2.5f, 1, 1.2f).SetEase(Ease.InOutSine)
+            .OnComplete(() => { isJumping = false; });
+
+        Character.OnCharacterJump.Invoke();
+        Character.Collider.enabled = true;
     }
 
     public void Slide()
     {
-       
+
+        Character.OnCharacterSlide.Invoke();
+        Character.Collider.enabled = true;
     }
 
     private bool isJumping;
