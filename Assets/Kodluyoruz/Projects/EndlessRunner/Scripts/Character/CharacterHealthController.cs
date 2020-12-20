@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharacterHealthController : MonoBehaviour
+public class CharacterHealthController : MonoBehaviour, IDamagable, IHealable
 {
 
     public int MaxHealth;
@@ -29,9 +29,8 @@ public class CharacterHealthController : MonoBehaviour
         if (Managers.Instance == null)
             return;
 
-        Character.OnCharacterDie.AddListener(Damage);
+        
         Character.OnCharacterRevive.AddListener(ResetHealth);
-        Character.OnCharacterHeal.AddListener(Heal);
         EventManager.OnGameStart.AddListener(ResetHealth);
        
     }
@@ -40,32 +39,32 @@ public class CharacterHealthController : MonoBehaviour
     {
         if (Managers.Instance == null)
             return;
-
-        Character.OnCharacterDie.RemoveListener(Damage);
         Character.OnCharacterRevive.RemoveListener(ResetHealth);
-        Character.OnCharacterHeal.RemoveListener(Heal);
         EventManager.OnGameStart.RemoveListener(ResetHealth);
     }
+
 
     private void ResetHealth()
     {
         CurrentHealth = MaxHealth;
     }
 
-    private void Damage()
+
+    public void Damage()
     {
         CurrentHealth--;
-
+        Character.OnCharacterHit.Invoke();
         if (CurrentHealth <= 0)
         {
             Character.KillCharacter();
+            CurrentHealth = 0;
         }
     }
 
-    private void Heal()
+    public void Heal()
     {
         CurrentHealth++;
-
+        Character.OnCharacterHeal.Invoke();
         if (CurrentHealth >= MaxHealth)
         {
             CurrentHealth = MaxHealth;
