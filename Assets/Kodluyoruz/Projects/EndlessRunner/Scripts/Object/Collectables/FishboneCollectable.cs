@@ -12,11 +12,15 @@ public class FishboneCollectable : CollectableBase
     public override void Collect()
     {
         base.Collect();
+        Use();
     }
 
     public override void Use()
     {
-
+        var playerData = SaveLoadManager.LoadPDP<PlayerData>(SavedFileNameHolder.PlayerData , new PlayerData());
+        playerData.CoinAmount += 1;
+        SaveLoadManager.SavePDP<PlayerData>(playerData, SavedFileNameHolder.PlayerData);
+        Dispose();
     }
 
     private void Update()

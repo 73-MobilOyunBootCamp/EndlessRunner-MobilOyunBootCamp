@@ -81,7 +81,11 @@ public class Character : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        
+        Icollectable iCollectable = other.GetComponent<Icollectable>();
+        if (iCollectable != null)
+        {
+            iCollectable.Collect();
+        }
     }
 
 }
