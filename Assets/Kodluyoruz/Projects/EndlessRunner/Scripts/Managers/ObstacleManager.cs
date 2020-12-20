@@ -22,8 +22,8 @@ public class ObstacleManager : Singleton<ObstacleManager>
             return;
 
         EventManager.OnLevelStart.AddListener(() => canCreateObstacles = true);
+        EventManager.OnLevelFail.AddListener(() => canCreateObstacles = false);
 
-       
     }
 
     private void OnDisable()
@@ -32,6 +32,7 @@ public class ObstacleManager : Singleton<ObstacleManager>
             return;
 
         EventManager.OnLevelStart.RemoveListener(() => canCreateObstacles = true);
+        EventManager.OnLevelFail.RemoveListener(() => canCreateObstacles = false);
     }
 
     private void Update()

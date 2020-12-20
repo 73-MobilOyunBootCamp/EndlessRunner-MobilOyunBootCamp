@@ -27,6 +27,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxClipCount: 4
+  ParamName: RandomIde
 --- !u!1109 &-6963750429457192283
 AnimatorTransition:
   m_ObjectHideFlags: 1
@@ -1392,6 +1393,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxClipCount: 1
+  ParamName: RandomDeath
 --- !u!1109 &5606617822038544695
 AnimatorTransition:
   m_ObjectHideFlags: 1
