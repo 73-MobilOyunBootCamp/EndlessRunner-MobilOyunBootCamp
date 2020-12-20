@@ -56,15 +56,6 @@ public class Character : MonoBehaviour
     }
 
 
-    public void DamageCharacter()
-    {
-        OnCharacterHit.Invoke();
-    }
-    public void HealCharacter()
-    {
-        OnCharacterHeal.Invoke();
-    }
-
     public void KillCharacter()
     {
         if (IsDead)
@@ -74,8 +65,8 @@ public class Character : MonoBehaviour
         IsControlable = false;
         OnCharacterDie.Invoke();
 
-        //if (CharacterControllerType == CharacterControllerType.Player)
-        //    EventManager.OnLevelFail.Invoke();
+        if (CharacterControllerType == CharacterControllerType.Player)
+            EventManager.OnLevelFail.Invoke();
     }
 
     public void ReviveCharacter()

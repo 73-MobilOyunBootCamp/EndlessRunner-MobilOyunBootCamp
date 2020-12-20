@@ -5,11 +5,12 @@ using UnityEngine;
 public class StateMachineRandomizer : StateMachineBehaviour
 {
     public int MaxClipCount;
+    public string ParamName;
 
     // OnStateEnter is called before OnStateEnter is called on any state inside this state machine
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-
+        animator.SetInteger(ParamName, Random.Range(0, MaxClipCount));
     }
 
     // OnStateUpdate is called before OnStateUpdate is called on any state inside this state machine
@@ -36,11 +37,11 @@ public class StateMachineRandomizer : StateMachineBehaviour
     //    
     //}
 
-    // OnStateMachineEnter is called when entering a state machine via its Entry Node
-    //override public void OnStateMachineEnter(Animator animator, int stateMachinePathHash)
-    //{
-    //    
-    //}
+    //OnStateMachineEnter is called when entering a state machine via its Entry Node
+    override public void OnStateMachineEnter(Animator animator, int stateMachinePathHash)
+    {
+        animator.SetInteger(ParamName, Random.Range(0, MaxClipCount));
+    }
 
     // OnStateMachineExit is called when exiting a state machine via its Exit Node
     //override public void OnStateMachineExit(Animator animator, int stateMachinePathHash)
