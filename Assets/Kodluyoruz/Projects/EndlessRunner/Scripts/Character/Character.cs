@@ -56,14 +56,7 @@ public class Character : MonoBehaviour
     }
 
 
-    public void DamageCharacter()
-    {
-        OnCharacterHit.Invoke();
-    }
-    public void HealCharacter()
-    {
-        OnCharacterHeal.Invoke();
-    }
+ 
 
     public void KillCharacter()
     {
@@ -91,7 +84,8 @@ public class Character : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log(other.gameObject);
+        //Debug.Log(other.gameObject);
+
     }
 
 }
