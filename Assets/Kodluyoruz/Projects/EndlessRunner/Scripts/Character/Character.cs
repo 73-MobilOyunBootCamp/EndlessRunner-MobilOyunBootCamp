@@ -46,7 +46,11 @@ public class Character : MonoBehaviour
             return;
 
         CharacterManager.Instance.AddCharacter(this);
+<<<<<<< HEAD
 
+=======
+        
+>>>>>>> master
     }
 
     private void OnDisable()
@@ -91,4 +95,8 @@ public class Character : MonoBehaviour
     }
 
 
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> master

@@ -23,7 +23,11 @@ public class ObstacleManager : Singleton<ObstacleManager>
 
         EventManager.OnLevelStart.AddListener(() => canCreateObstacles = true);
         EventManager.OnLevelFail.AddListener(() => canCreateObstacles = false);
+<<<<<<< HEAD
 
+=======
+       
+>>>>>>> master
     }
 
     private void OnDisable()
