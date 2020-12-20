@@ -74,8 +74,8 @@ public class Character : MonoBehaviour
         IsControlable = false;
         OnCharacterDie.Invoke();
 
-        //if (CharacterControllerType == CharacterControllerType.Player)
-        //    EventManager.OnLevelFail.Invoke();
+        if (CharacterControllerType == CharacterControllerType.Player)
+            EventManager.OnLevelFail.Invoke();
     }
 
     public void ReviveCharacter()
