@@ -60,7 +60,7 @@ public class CollectableManager : MonoBehaviour
 
 
         Instantiate(LevelManager.Instance.CurrentLevel.GetRandomPowerUp(),
-            TrackManager.Instance.GetRandomLane().transform.position,
+            TrackManager.Instance.GetRandomLane().transform.position + Vector3.up,
             Quaternion.identity,
             TrackManager.Instance.GetLastTrackObject().transform);
 
