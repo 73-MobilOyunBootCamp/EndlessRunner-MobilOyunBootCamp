@@ -94,7 +94,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CollectSoundID: PowerUp
-  CollectParticlePrefab: {fileID: 0}
+  CollectParticlePrefab: {fileID: 1470639489738500, guid: 9e2b957157514af40870bf65c60ae63f,
+    type: 3}
   PowerUpDisplayPrefab: {fileID: 1470639489738500, guid: 9e2b957157514af40870bf65c60ae63f,
     type: 3}
 --- !u!135 &5131131487450749878

@@ -35,5 +35,9 @@ public class MagnetPowerUp : PowerUpBase
     public override void Interup()
     {
         base.Interup();
+        if (effect != null)
+            Destroy(effect);
+
+        IsMagetActive = false;
     }
 }

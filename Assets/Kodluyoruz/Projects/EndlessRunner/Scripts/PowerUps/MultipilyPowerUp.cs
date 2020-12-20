@@ -15,7 +15,10 @@ public class MultipilyPowerUp : PowerUpBase
 
     public override void Use()
     {
-        
+        MultipilyPowerUp multipilyPowerUp = CharacterManager.Instance.Player.gameObject.AddComponent<MultipilyPowerUp>();
+        multipilyPowerUp.Initialize(this);
+        multipilyPowerUp.Execute();
+
     }
 
     public override void Interup()
