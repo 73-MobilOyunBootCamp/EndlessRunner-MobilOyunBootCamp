@@ -1,4 +1,4 @@
-﻿using System;
+﻿//using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -53,12 +53,14 @@ public class TrackManager : Singleton<TrackManager>
     {
         EventManager.OnGameStart.AddListener(Initilize);
         EventManager.OnPlayerStartedRunning.AddListener(() => canMoveTracks = true);
+        EventManager.OnLevelFail.AddListener(() => canMoveTracks = false);
     }
 
     private void OnDisable()
     {
         EventManager.OnGameStart.RemoveListener(Initilize);
         EventManager.OnPlayerStartedRunning.RemoveListener(() => canMoveTracks = true);
+        EventManager.OnLevelFail.RemoveListener(() => canMoveTracks = false);
     }
 
     public void Initilize()
@@ -113,7 +115,7 @@ public class TrackManager : Singleton<TrackManager>
     {
         for (int i = 0; i < Tracks.Count; i++)
         {
-            if(Tracks[i].transform.position.z < -30)
+            if (Tracks[i].transform.position.z < -30)
             {
                 DisposeTrack(Tracks[i]);
                 CreateTrack();
@@ -121,6 +123,10 @@ public class TrackManager : Singleton<TrackManager>
         }
     }
 
+    public TrackObject GetLastTrackObject()
+    {
+        return Tracks[Tracks.Count - 1];
+    }
 
     /// <summary>
     /// This Method will be responsible for creating tracks.
@@ -129,7 +135,7 @@ public class TrackManager : Singleton<TrackManager>
     {
         Vector3 createPos = Vector3.zero;
 
-        if(Tracks != null)
+        if (Tracks != null)
         {
             if (Tracks.Count > 0)
             {
@@ -139,6 +145,7 @@ public class TrackManager : Singleton<TrackManager>
 
         GameObject trackObj = Instantiate(LevelManager.Instance.CurrentLevel.GetRandomTrack(LevelManager.Instance.CurrentTheme), createPos, Quaternion.identity);
     }
+
 
     /// <summary>
     /// This method is for removing track objects that are no longer needed.
@@ -174,7 +181,7 @@ public class TrackManager : Singleton<TrackManager>
         {
             distance = Vector3.Distance(Lanes[i].transform.position, position);
 
-            if(distance < minDistance)
+            if (distance < minDistance)
             {
                 minDistance = distance;
                 closestLane = Lanes[i];
@@ -182,6 +189,11 @@ public class TrackManager : Singleton<TrackManager>
         }
 
         return closestLane;
+    }
+
+    public LaneObject GetRandomLane()
+    {
+        return Lanes[Random.Range(0, lanes.Count)];
     }
     #endregion
 }
