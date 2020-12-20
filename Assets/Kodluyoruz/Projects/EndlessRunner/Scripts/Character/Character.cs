@@ -45,14 +45,14 @@ public class Character : MonoBehaviour
         if (Managers.Instance == null)
             return;
 
-        
+        CharacterManager.Instance.AddCharacter(this);
     }
 
     private void OnDisable()
     {
         if (Managers.Instance == null)
             return;
-
+        CharacterManager.Instance.RemoveCharacter(this);
     }
 
     public void KillCharacter()
