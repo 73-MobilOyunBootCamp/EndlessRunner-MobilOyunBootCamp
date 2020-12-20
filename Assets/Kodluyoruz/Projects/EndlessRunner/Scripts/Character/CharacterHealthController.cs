@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharacterHealthController : MonoBehaviour
+public class CharacterHealthController : MonoBehaviour, IDamageable, IHealabe
 {
 
     public int MaxHealth;
@@ -33,8 +33,7 @@ public class CharacterHealthController : MonoBehaviour
         if (Managers.Instance == null)
             return;
 
-        Character.OnCharacterHit.AddListener(Damage);
-        Character.OnCharacterHeal.AddListener(Heal);
+ 
         Character.OnCharacterRevive.AddListener(ResetHealth);
         EventManager.OnGameStart.AddListener(ResetHealth);
         
@@ -45,8 +44,7 @@ public class CharacterHealthController : MonoBehaviour
         if (Managers.Instance == null)
             return;
 
-        Character.OnCharacterHit.RemoveListener(Damage);
-        Character.OnCharacterHeal.RemoveListener(Heal);
+
         Character.OnCharacterRevive.RemoveListener(ResetHealth);
         EventManager.OnGameStart.RemoveListener(ResetHealth);
 
@@ -59,10 +57,10 @@ public class CharacterHealthController : MonoBehaviour
     }
 
     [Button]
-    private void Damage()
+    public  void Damage()
     {
         CurrentHealth--;
-
+        Character.OnCharacterHit.Invoke();
         if (CurrentHealth <= 0)
         {
             Character.KillCharacter();
@@ -71,10 +69,10 @@ public class CharacterHealthController : MonoBehaviour
     }
 
     [Button]
-    private void Heal()
+    public void Heal()
     {
         CurrentHealth++;
-
+        Character.OnCharacterHeal.Invoke();
         if (CurrentHealth >= MaxHealth)
         {
             CurrentHealth = MaxHealth;

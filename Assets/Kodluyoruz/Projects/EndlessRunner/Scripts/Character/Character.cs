@@ -58,11 +58,11 @@ public class Character : MonoBehaviour
 
     public void DamageCharacter()
     {
-        OnCharacterHit.Invoke();
+        //OnCharacterHit.Invoke();
     }
     public void HealCharacter()
     {
-        OnCharacterHeal.Invoke();
+        //OnCharacterHeal.Invoke();
     }
 
     public void KillCharacter()
