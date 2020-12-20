@@ -33,11 +33,13 @@ public class FishboneCollectable : CollectableBase
         Vector3 forward = transform.TransformDirection(Vector3.forward);
         Vector3 toOther = CharacterManager.Instance.Player.transform.position - transform.position;
 
-        if (Vector3.Dot(forward,toOther) > 0)
+        if (Vector3.Dot(forward, toOther) > 0)
         {
             Debug.Log("Passed fishbonoes wont collect!");
             return;
         }
+
+
 
         float distToPlayer = Vector3.Distance(transform.position, CharacterManager.Instance.Player.transform.position);
 

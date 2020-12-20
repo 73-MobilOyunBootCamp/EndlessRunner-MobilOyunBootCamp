@@ -65,17 +65,17 @@ public class CharacterManager : Singleton<CharacterManager>
     
     public void AddCharacter(Character character)
     {
-        if (!characters.Contains(character))
+        if (!Characters.Contains(character))
         {
-            characters.Add(character);
+            Characters.Add(character);
         }
     }
 
     public void RemoveCharacter(Character character)
     {
-        if (characters.Contains(character))
+        if (Characters.Contains(character))
         {
-            characters.Remove(character);
+            Characters.Remove(character);
         }
     }
 }
