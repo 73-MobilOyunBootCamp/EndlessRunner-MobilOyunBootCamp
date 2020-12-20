@@ -45,6 +45,7 @@ public class Character : MonoBehaviour
         if (Managers.Instance == null)
             return;
 
+        CharacterManager.Instance.AddCharacter(this);
         
     }
 
@@ -52,6 +53,8 @@ public class Character : MonoBehaviour
     {
         if (Managers.Instance == null)
             return;
+
+        CharacterManager.Instance.RemoveCharacter(this);
 
     }
 
@@ -81,7 +84,11 @@ public class Character : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        
+        Icollectable icollectable = other.GetComponent<Icollectable>();
+
+        if (icollectable != null)
+            icollectable.Collect();
     }
+
 
 }
