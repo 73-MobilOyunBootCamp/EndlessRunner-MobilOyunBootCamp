@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
 
-public class CharacterHealthController : MonoBehaviour, IHealable, IDamageable
+public class CharacterHealthController : MonoBehaviour, IDamageable, IHealable
 {
 
     public int MaxHealth;
@@ -44,7 +44,6 @@ public class CharacterHealthController : MonoBehaviour, IHealable, IDamageable
 
         Character.OnCharacterRevive.RemoveListener(ResetHealth);
         EventManager.OnGameStart.RemoveListener(ResetHealth);
-
     }
 
     [Button]
@@ -52,6 +51,7 @@ public class CharacterHealthController : MonoBehaviour, IHealable, IDamageable
     {
         CurrentHealth = MaxHealth;
     }
+
     [Button]
     public void Damage()
     {
@@ -63,15 +63,14 @@ public class CharacterHealthController : MonoBehaviour, IHealable, IDamageable
             CurrentHealth = 0;
         }
     }
+
     [Button]
     public void Heal()
     {
         CurrentHealth++;
         Character.OnCharacterHeal.Invoke();
         if (CurrentHealth >= MaxHealth)
-        {
             CurrentHealth = MaxHealth;
-        }
     }
 
 

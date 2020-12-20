@@ -55,7 +55,6 @@ public class Character : MonoBehaviour
 
     }
 
-
     public void KillCharacter()
     {
         if (IsDead)
@@ -82,7 +81,7 @@ public class Character : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log(other.gameObject.name);
+        
     }
 
 }

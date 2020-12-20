@@ -29,9 +29,7 @@ public class HealthPanel : Panel
     private void UpdateHealth(PlayerData playerData)
     {
         if (playerData.CurrentHelath > HeartImages.Count)
-        {
             return;
-        }
 
         foreach (var item in HeartImages)
         {

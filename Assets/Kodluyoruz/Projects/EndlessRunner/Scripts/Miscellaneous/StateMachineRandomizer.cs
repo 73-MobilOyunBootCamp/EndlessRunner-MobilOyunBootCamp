@@ -37,7 +37,7 @@ public class StateMachineRandomizer : StateMachineBehaviour
     //    
     //}
 
-    //OnStateMachineEnter is called when entering a state machine via its Entry Node
+    // OnStateMachineEnter is called when entering a state machine via its Entry Node
     override public void OnStateMachineEnter(Animator animator, int stateMachinePathHash)
     {
         animator.SetInteger(ParamName, Random.Range(0, MaxClipCount));
