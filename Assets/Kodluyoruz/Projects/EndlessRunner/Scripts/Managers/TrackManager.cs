@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -151,6 +150,10 @@ public class TrackManager : Singleton<TrackManager>
         Tracks.Remove(trackObject);
         Destroy(trackObject.gameObject);
     }
+    public TrackObject GetLastTrackObject()
+    {
+        return Tracks[Tracks.Count - 1];
+    }
     #endregion
 
     #region Lanes
@@ -184,6 +187,10 @@ public class TrackManager : Singleton<TrackManager>
         }
 
         return closestLane;
+    }
+    public LaneObject GetRandomLane()
+    {
+        return Lanes[Random.Range(0, Lanes.Count)];
     }
     #endregion
 }
