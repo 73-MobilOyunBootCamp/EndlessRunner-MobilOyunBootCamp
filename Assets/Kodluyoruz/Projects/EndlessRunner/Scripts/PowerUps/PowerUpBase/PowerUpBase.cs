@@ -12,11 +12,20 @@ public abstract class PowerUpBase : CollectableBase, IPowerUp
     public override void Collect()
     {
         base.Collect();
+
+        var powerUpInUse = CharacterManager.Instance.Player.GetComponent<IPowerUp>();
+        if (powerUpInUse != null)
+        {
+            powerUpInUse.Interup();
+        }
+        Use();
+
     }
 
     public virtual void Interup()
     {
-        
+        StopAllCoroutines();
+        Destroy(this);
     }
 
     public void Initialize(PowerUpBase powerUpBase)
