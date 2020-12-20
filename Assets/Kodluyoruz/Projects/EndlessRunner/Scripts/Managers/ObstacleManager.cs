@@ -22,8 +22,8 @@ public class ObstacleManager : Singleton<ObstacleManager>
             return;
 
         EventManager.OnLevelStart.AddListener(() => canCreateObstacles = true);
+        EventManager.OnLevelFail.AddListener(() => canCreateObstacles = false);
 
-       
     }
 
     private void OnDisable()
@@ -32,6 +32,7 @@ public class ObstacleManager : Singleton<ObstacleManager>
             return;
 
         EventManager.OnLevelStart.RemoveListener(() => canCreateObstacles = true);
+        EventManager.OnLevelFail.RemoveListener(() => canCreateObstacles = false);
     }
 
     private void Update()
@@ -56,7 +57,7 @@ public class ObstacleManager : Singleton<ObstacleManager>
         //We use our retio from difficulity data to see if we pass the chance of creating the obstacle
         float chance = Random.Range(0f, 100f);
 
-        if(chance < LevelManager.Instance.DifficulityData.ObstacleSpawnRetrio)
+        if (chance < LevelManager.Instance.DifficulityData.ObstacleSpawnRetrio)
         {
             lastObstacleCreateTime = Time.time; //We set the last obstacle create time to Time.time to wait for next interval.
             EventManager.OnObstacleCreated.Invoke(); //We invoke this event even if we don't create any obstacles. Because we want the come continue on it's loop.
@@ -79,7 +80,7 @@ public class ObstacleManager : Singleton<ObstacleManager>
 
         for (int i = 0; i < laneObjects.Count; i++)
         {
-            if(chanceForAnotherObstacle > 0.5f)
+            if (chanceForAnotherObstacle > 0.5f)
             {
                 CreateObstacle(laneObjects[i].transform.position);
                 chanceForAnotherObstacle = 0f;
