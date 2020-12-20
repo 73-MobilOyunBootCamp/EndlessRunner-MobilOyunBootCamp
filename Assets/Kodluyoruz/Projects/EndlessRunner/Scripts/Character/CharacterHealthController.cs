@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Sirenix.OdinInspector;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,6 +7,9 @@ public class CharacterHealthController : MonoBehaviour
 {
 
     public int MaxHealth;
+    
+    [ReadOnly]
+    [ShowInInspector]
     public int CurrentHealth
     {
         get
@@ -29,7 +33,11 @@ public class CharacterHealthController : MonoBehaviour
         if (Managers.Instance == null)
             return;
 
-       
+        Character.OnCharacterHit.AddListener(Damage);
+        Character.OnCharacterHeal.AddListener(Heal);
+        Character.OnCharacterRevive.AddListener(ResetHealth);
+        EventManager.OnGameStart.AddListener(ResetHealth);
+        
     }
 
     private void OnDisable()
@@ -37,22 +45,39 @@ public class CharacterHealthController : MonoBehaviour
         if (Managers.Instance == null)
             return;
 
-        
+        Character.OnCharacterHit.RemoveListener(Damage);
+        Character.OnCharacterHeal.RemoveListener(Heal);
+        Character.OnCharacterRevive.RemoveListener(ResetHealth);
+        EventManager.OnGameStart.RemoveListener(ResetHealth);
+
     }
 
+    [Button]
     private void ResetHealth()
     {
-        
+        CurrentHealth = MaxHealth;
     }
 
+    [Button]
     private void Damage()
     {
-        
+        CurrentHealth--;
+
+        if (CurrentHealth <= 0)
+        {
+            Character.KillCharacter();
+        }
     }
 
+    [Button]
     private void Heal()
     {
-        
+        CurrentHealth++;
+
+        if (CurrentHealth >= MaxHealth)
+        {
+            CurrentHealth = MaxHealth;
+        }
     }
 
 
