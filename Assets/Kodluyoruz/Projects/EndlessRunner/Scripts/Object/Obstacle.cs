@@ -6,7 +6,6 @@ using Sirenix.OdinInspector;
 
 public class Obstacle : MonoBehaviour
 {
-
     Animation animation;
     Animation Animation { get { return (animation == null) ? animation = GetComponentInChildren<Animation>() : animation; } }
 
@@ -18,10 +17,11 @@ public class Obstacle : MonoBehaviour
 
     private void OnTriggerEnter(Collider collision)
     {
-        IDamageable damageable = collision.GetComponent<IDamageable>();
-        if(damageable != null) 
+        IDamageable IDamageable = collision.GetComponent<IDamageable>();
+
+        if (IDamageable != null)
         {
-            damageable.Damage();
+            IDamageable.Damage();
             if (!string.IsNullOrEmpty(HitSoundID))
                 AudioManager.Instance.PlayOneShot2D(HitSoundID);
             if (Animation != null)

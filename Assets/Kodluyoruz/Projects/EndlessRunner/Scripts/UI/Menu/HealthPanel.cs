@@ -14,6 +14,7 @@ public class HealthPanel : Panel
     {
         if (Managers.Instance == null)
             return;
+
         EventManager.OnPlayerDataUpdated.AddListener(UpdateHealth);
     }
 
@@ -21,6 +22,7 @@ public class HealthPanel : Panel
     {
         if (Managers.Instance == null)
             return;
+
         EventManager.OnPlayerDataUpdated.RemoveListener(UpdateHealth);
     }
 

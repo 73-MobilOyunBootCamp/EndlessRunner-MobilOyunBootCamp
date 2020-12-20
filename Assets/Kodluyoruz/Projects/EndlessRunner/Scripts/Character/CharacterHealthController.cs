@@ -34,7 +34,7 @@ public class CharacterHealthController : MonoBehaviour, IDamageable, IHealable
 
         Character.OnCharacterRevive.AddListener(ResetHealth);
         EventManager.OnGameStart.AddListener(ResetHealth);
-       
+
     }
 
     private void OnDisable()
@@ -44,7 +44,6 @@ public class CharacterHealthController : MonoBehaviour, IDamageable, IHealable
 
         Character.OnCharacterRevive.RemoveListener(ResetHealth);
         EventManager.OnGameStart.RemoveListener(ResetHealth);
-
     }
 
     [Button]
@@ -60,10 +59,9 @@ public class CharacterHealthController : MonoBehaviour, IDamageable, IHealable
         Character.OnCharacterHit.Invoke();
         if (CurrentHealth <= 0)
         {
+            Character.KillCharacter();
             CurrentHealth = 0;
-            character.KillCharacter();
         }
-            
     }
 
     [Button]
