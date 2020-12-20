@@ -14,7 +14,7 @@ public class CoinPanel : Panel
     {
         if (Managers.Instance == null)
             return;
-
+        EventManager.OnPlayerDataUpdated.AddListener(UpdateCoinText);
         
     }
 
@@ -23,17 +23,18 @@ public class CoinPanel : Panel
         if (Managers.Instance == null)
             return;
 
-       
+        EventManager.OnPlayerDataUpdated.RemoveListener(UpdateCoinText);
     }
 
     private void InitilizePanel()
     {
-        
+        var playerData = SaveLoadManager.LoadPDP<PlayerData>(SavedFileNameHolder.PlayerData, new PlayerData());
+        UpdateCoinText(playerData);
     }
 
 
     private void UpdateCoinText(PlayerData playerData)
     {
-        
+        CoinText.SetText(playerData.CoinAmount.ToString());
     }
 }
