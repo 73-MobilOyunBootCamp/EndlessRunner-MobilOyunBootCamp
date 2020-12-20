@@ -21,7 +21,6 @@ public class CharacterAnimationController : MonoBehaviour
         Character.OnCharacterJump.AddListener(() => InvokeTrigger("Jump"));
         Character.OnCharacterSlide.AddListener(() => InvokeTrigger("Slide"));
         Character.OnCharacterHit.AddListener(() => InvokeTrigger("Hit"));
-        Character.OnCharacterDie.AddListener(() => InvokeTrigger("Die"));
 
     }
 
@@ -35,7 +34,6 @@ public class CharacterAnimationController : MonoBehaviour
         Character.OnCharacterJump.RemoveListener(() => InvokeTrigger("Jump"));
         Character.OnCharacterSlide.RemoveListener(() => InvokeTrigger("Slide"));
         Character.OnCharacterHit.RemoveListener(() => InvokeTrigger("Hit"));
-        Character.OnCharacterDie.RemoveListener(() => InvokeTrigger("Die"));
 
 
     }
