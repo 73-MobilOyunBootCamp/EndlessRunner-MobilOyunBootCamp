@@ -7,7 +7,7 @@ using Sirenix.OdinInspector;
 public abstract class PowerUpBase : CollectableBase, IPowerUp
 {
     public GameObject PowerUpDisplayPrefab;
-
+    protected GameObject effect;
 
     public override void Collect()
     {
@@ -24,6 +24,10 @@ public abstract class PowerUpBase : CollectableBase, IPowerUp
 
     public virtual void Interup()
     {
+        if (effect != null)
+        {
+            Destroy(effect);
+        }
         StopAllCoroutines();
         Destroy(this);
     }

@@ -6,7 +6,7 @@ using Sirenix.OdinInspector;
 
 public class MagnetPowerUp : PowerUpBase
 {
-    private GameObject effect;
+    
     public override IEnumerator ExecuteCo()
     {
         effect = Instantiate(PowerUpDisplayPrefab, 
@@ -36,5 +36,6 @@ public class MagnetPowerUp : PowerUpBase
     public override void Interup()
     {
         base.Interup();
+        GameManager.Instance.GameData.IsMagnetActive = false;
     }
 }
