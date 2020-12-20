@@ -153,6 +153,13 @@ public class TrackManager : Singleton<TrackManager>
         Tracks.Remove(trackObject);
         Destroy(trackObject.gameObject);
     }
+
+
+    public TrackObject GetLastTrackObject()
+    {
+        return Tracks[Tracks.Count - 1];
+    }
+
     #endregion
 
     #region Lanes
