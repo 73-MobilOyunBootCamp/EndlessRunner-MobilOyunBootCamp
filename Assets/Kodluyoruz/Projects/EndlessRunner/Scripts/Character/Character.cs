@@ -56,14 +56,14 @@ public class Character : MonoBehaviour
     }
 
 
-    public void DamageCharacter()
+    /*public void DamageCharacter()
     {
         OnCharacterHit.Invoke();
     }
     public void HealCharacter()
     {
         OnCharacterHeal.Invoke();
-    }
+    } */
 
     public void KillCharacter()
     {

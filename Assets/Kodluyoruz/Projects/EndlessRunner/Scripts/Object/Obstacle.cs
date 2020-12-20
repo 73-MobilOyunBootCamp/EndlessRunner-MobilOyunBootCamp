@@ -18,6 +18,15 @@ public class Obstacle : MonoBehaviour
 
     private void OnTriggerEnter(Collider collision)
     {
-        
+        var IDamageable = collision.GetComponent<IDamageable>();
+
+        if (IDamageable != null)
+        {
+            IDamageable.Damage();
+            if (!string.IsNullOrEmpty(HitSoundID))
+                AudioManager.Instance.PlayOneShot2D(HitSoundID);
+            if (Animation != null)
+                Animation.Play();
+        }
     }
 }

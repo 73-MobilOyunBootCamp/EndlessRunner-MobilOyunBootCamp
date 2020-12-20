@@ -86,12 +86,14 @@ public class CharacterController : MonoBehaviour, ICharacterController
             });
         Character.OnCharacterJump.Invoke();
         //Character.Collider.enabled = false;
+
     }
 
     public void Slide()
     {
         Character.OnCharacterSlide.Invoke();
         //Character.Collider.enabled = false;
+
     }
 
     private bool isJumping;

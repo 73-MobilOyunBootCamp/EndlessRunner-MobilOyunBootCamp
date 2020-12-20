@@ -27,6 +27,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxClipCount: 4
+  ParamName: RandomIdle
 --- !u!1109 &-6963750429457192283
 AnimatorTransition:
   m_ObjectHideFlags: 1
@@ -53,7 +54,7 @@ AnimatorController:
   - m_Name: RandomIdle
     m_Type: 3
     m_DefaultFloat: 0
-    m_DefaultInt: 0
+    m_DefaultInt: -1
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
   - m_Name: Moving
@@ -660,7 +661,7 @@ AnimatorStateMachine:
     second: []
   m_StateMachineBehaviours: []
   m_AnyStatePosition: {x: -10, y: -100, z: 0}
-  m_EntryPosition: {x: 120, y: 192, z: 0}
+  m_EntryPosition: {x: 120, y: 190, z: 0}
   m_ExitPosition: {x: 636, y: -12, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
   m_DefaultState: {fileID: 1102301022450862276}
@@ -1392,6 +1393,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxClipCount: 1
+  ParamName: RandomDeath
 --- !u!1109 &5606617822038544695
 AnimatorTransition:
   m_ObjectHideFlags: 1
