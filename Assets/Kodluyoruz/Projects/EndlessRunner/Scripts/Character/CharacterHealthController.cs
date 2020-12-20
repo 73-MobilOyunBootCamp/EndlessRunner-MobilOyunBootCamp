@@ -66,6 +66,7 @@ public class CharacterHealthController : MonoBehaviour
         if (CurrentHealth <= 0)
         {
             Character.KillCharacter();
+            CurrentHealth = 0;
         }
     }
 
