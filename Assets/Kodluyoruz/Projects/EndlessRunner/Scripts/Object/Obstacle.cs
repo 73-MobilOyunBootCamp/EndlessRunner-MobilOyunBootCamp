@@ -13,6 +13,7 @@ public class Obstacle : MonoBehaviour
     [ValueDropdown("audioKeyList")]
     public string HitSoundID;
 
+    public GameObject CrashParticlePrefab;
 
     private List<string> audioKeyList { get { return AudioKeys.AudioKeyList; } }
 
@@ -31,6 +32,8 @@ public class Obstacle : MonoBehaviour
             {
                 Animation.Play();
             }
+            if (CrashParticlePrefab != null)
+                Instantiate(CrashParticlePrefab, transform.position, Quaternion.identity);
         }
     }
 }
