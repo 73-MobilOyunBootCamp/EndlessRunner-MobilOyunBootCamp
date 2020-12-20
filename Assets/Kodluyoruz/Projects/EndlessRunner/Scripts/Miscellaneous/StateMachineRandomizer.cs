@@ -6,11 +6,12 @@ public class StateMachineRandomizer : StateMachineBehaviour
 {
     public int MaxClipCount;
     public string ParamName;
-    // OnStateEnter is called before OnStateEnter is called on any state inside this state machine
-    //override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
 
-    //}
+    // OnStateEnter is called before OnStateEnter is called on any state inside this state machine
+    override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+        animator.SetInteger(ParamName, Random.Range(0, MaxClipCount));
+    }
 
     // OnStateUpdate is called before OnStateUpdate is called on any state inside this state machine
     //override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
