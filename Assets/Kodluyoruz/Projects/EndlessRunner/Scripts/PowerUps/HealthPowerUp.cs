@@ -6,6 +6,10 @@ using Sirenix.OdinInspector;
 
 public class HealthPowerUp : PowerUpBase
 {
+    public override IEnumerator ExecuteCo()
+    {
+        throw new System.NotImplementedException();
+    }
     public override void Collect()
     {
         if (!string.IsNullOrEmpty(CollectSoundID))
@@ -16,7 +20,7 @@ public class HealthPowerUp : PowerUpBase
 
         Use();
     }
-
+    
     public override void Use()
     {
         CharacterManager.Instance.Player.GetComponent<IHealable>().Heal();
