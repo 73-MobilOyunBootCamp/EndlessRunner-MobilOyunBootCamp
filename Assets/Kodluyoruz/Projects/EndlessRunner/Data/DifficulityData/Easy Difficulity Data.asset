@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Easy Difficulity Data
   m_EditorClassIdentifier: 
   DifficulityMode: 0
-  TrackSpeed: 5
+  TrackSpeed: 10
   ObstacleSpawnRetrio: 35
   PowerUpSpawnRetrio: 75
   ActivateTimeTrashold: 0
