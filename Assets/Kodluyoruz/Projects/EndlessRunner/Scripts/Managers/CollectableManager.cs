@@ -11,7 +11,6 @@ public class CollectableManager : MonoBehaviour
             return;
 
         EventManager.OnObstacleCreated.AddListener(CreateCoins);
-       
 
     }
 
@@ -21,20 +20,20 @@ public class CollectableManager : MonoBehaviour
             return;
 
         EventManager.OnObstacleCreated.RemoveListener(CreateCoins);
+
     }
 
     private void CreateCoins()
     {
         LaneObject laneObject = TrackManager.Instance.GetRandomLane();
         int targetCoinCount = Random.Range(5, 10);
-        
+
         StartCoroutine(CreateCoinsCo(laneObject, targetCoinCount));
     }
 
     private IEnumerator CreateCoinsCo(LaneObject laneObject, int targetCoinCount)
     {
-        
-        yield return new WaitForSeconds(Random.Range(0.5f,1.5f));
+        yield return new WaitForSeconds(Random.Range(0.5f, 1.5f));
 
         for (int i = 0; i < targetCoinCount; i++)
         {
@@ -47,7 +46,6 @@ public class CollectableManager : MonoBehaviour
 
         yield return new WaitForSeconds(0.3f);
         CreatePowerUp();
-
         yield return null;
     }
 
@@ -60,7 +58,6 @@ public class CollectableManager : MonoBehaviour
         Instantiate(LevelManager.Instance.CurrentLevel.GetRandomPowerUp(),
             TrackManager.Instance.GetRandomLane().transform.position + Vector3.up,
             Quaternion.identity,
-            TrackManager.Instance.GetLastTrackObject().transform
-            );
+            TrackManager.Instance.GetLastTrackObject().transform);
     }
 }

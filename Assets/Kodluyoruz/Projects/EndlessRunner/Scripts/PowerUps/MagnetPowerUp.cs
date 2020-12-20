@@ -6,11 +6,9 @@ using Sirenix.OdinInspector;
 
 public class MagnetPowerUp : PowerUpBase
 {
-    private GameObject effect;
     public override IEnumerator ExecuteCo()
     {
-
-        effect = Instantiate(PowerUpDisplayPrefab,
+        effect = Instantiate(PowerUpDisplayPrefab, 
             CharacterManager.Instance.Player.transform.position,
             Quaternion.identity,
             CharacterManager.Instance.Player.transform);
@@ -26,7 +24,6 @@ public class MagnetPowerUp : PowerUpBase
     public override void Use()
     {
         MagnetPowerUp magnetPowerUp = CharacterManager.Instance.Player.gameObject.AddComponent<MagnetPowerUp>();
-        //initialize yapıcaz
         magnetPowerUp.Initialize(this);
         magnetPowerUp.Execute();
         Dispose();
@@ -35,9 +32,7 @@ public class MagnetPowerUp : PowerUpBase
     public override void Interup()
     {
         base.Interup();
-        if (effect != null)
-            Destroy(effect);
 
-        IsMagetActive = false;
+        GameManager.Instance.GameData.IsMagnetActive = false;
     }
 }

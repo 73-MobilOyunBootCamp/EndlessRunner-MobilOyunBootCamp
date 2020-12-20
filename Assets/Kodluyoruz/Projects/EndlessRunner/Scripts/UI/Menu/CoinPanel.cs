@@ -31,7 +31,8 @@ public class CoinPanel : Panel
 
     private void InitilizePanel()
     {
-        var playerData = SaveLoadManager.LoadPDP<PlayerData>(SavedFileNameHolder.PlayerData, new PlayerData());  //EN SONDAKİ NEW HENUZ OLUŞMADIYSA OLUŞTURMAK İÇİN
+        var playerData = SaveLoadManager.LoadPDP<PlayerData>(SavedFileNameHolder.PlayerData, new PlayerData());
+        UpdateCoinText(playerData);
     }
 
 

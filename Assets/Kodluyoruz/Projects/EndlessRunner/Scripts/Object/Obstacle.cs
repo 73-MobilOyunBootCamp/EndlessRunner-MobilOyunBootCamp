@@ -14,6 +14,7 @@ public class Obstacle : MonoBehaviour
 
     public GameObject CrashParticlePrefab;
 
+
     private List<string> audioKeyList { get { return AudioKeys.AudioKeyList; } }
 
     private void OnTriggerEnter(Collider collision)

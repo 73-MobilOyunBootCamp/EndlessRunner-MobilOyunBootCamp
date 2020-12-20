@@ -8,6 +8,7 @@ public abstract class PowerUpBase : CollectableBase, IPowerUp
 {
     public GameObject PowerUpDisplayPrefab;
 
+    protected GameObject effect;
 
     public override void Collect()
     {
@@ -18,11 +19,13 @@ public abstract class PowerUpBase : CollectableBase, IPowerUp
             powerUpInUse.Interup();
 
         Use();
-
     }
 
     public virtual void Interup()
     {
+        if (effect != null)
+            Destroy(effect);
+
         StopAllCoroutines();
         Destroy(this);
     }
