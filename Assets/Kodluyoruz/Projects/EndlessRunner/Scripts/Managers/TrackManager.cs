@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -53,12 +52,14 @@ public class TrackManager : Singleton<TrackManager>
     {
         EventManager.OnGameStart.AddListener(Initilize);
         EventManager.OnPlayerStartedRunning.AddListener(() => canMoveTracks = true);
+        EventManager.OnLevelFail.AddListener(() => canMoveTracks = false);
     }
 
     private void OnDisable()
     {
         EventManager.OnGameStart.RemoveListener(Initilize);
         EventManager.OnPlayerStartedRunning.RemoveListener(() => canMoveTracks = true);
+        EventManager.OnLevelFail.RemoveListener(() => canMoveTracks = false);
     }
 
     public void Initilize()
@@ -121,6 +122,10 @@ public class TrackManager : Singleton<TrackManager>
         }
     }
 
+    public TrackObject GetLastTrackObject()
+    {
+        return Tracks[Tracks.Count - 1];
+    }
 
     /// <summary>
     /// This Method will be responsible for creating tracks.
@@ -183,5 +188,11 @@ public class TrackManager : Singleton<TrackManager>
 
         return closestLane;
     }
+
+    public LaneObject GetRandomLane()
+    {
+        return Lanes[Random.Range(0, Lanes.Count)];
+    }
+
     #endregion
 }

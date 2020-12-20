@@ -15,6 +15,7 @@ public class HealthPanel : Panel
         if (Managers.Instance == null)
             return;
 
+        EventManager.OnPlayerDataUpdated.AddListener(UpdateHealth);
     }
 
     private void OnDisable()
@@ -22,10 +23,22 @@ public class HealthPanel : Panel
         if (Managers.Instance == null)
             return;
 
+        EventManager.OnPlayerDataUpdated.RemoveListener(UpdateHealth);
     }
 
     private void UpdateHealth(PlayerData playerData)
     {
-       
+        if (playerData.CurrentHelath > HeartImages.Count)
+            return;
+
+        foreach (var item in HeartImages)
+        {
+            item.enabled = false;
+        }
+
+        for (int i = 0; i < playerData.CurrentHelath; i++)
+        {
+            HeartImages[i].enabled = true;
+        }
     }
 }
