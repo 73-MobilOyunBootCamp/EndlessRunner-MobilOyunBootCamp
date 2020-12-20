@@ -6,7 +6,6 @@ using Sirenix.OdinInspector;
 
 public class Obstacle : MonoBehaviour
 {
-
     Animation animation;
     Animation Animation { get { return (animation == null) ? animation = GetComponentInChildren<Animation>() : animation; } }
 

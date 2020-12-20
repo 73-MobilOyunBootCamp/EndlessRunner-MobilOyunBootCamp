@@ -6,8 +6,6 @@ using Sirenix.OdinInspector;
 
 public class InGamePanel : Panel
 {
-
-
     private void OnEnable()
     {
         if (Managers.Instance == null)

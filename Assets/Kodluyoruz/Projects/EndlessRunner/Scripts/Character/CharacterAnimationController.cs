@@ -21,7 +21,6 @@ public class CharacterAnimationController : MonoBehaviour
         Character.OnCharacterJump.AddListener(() => InvokeTrigger("Jump"));
         Character.OnCharacterSlide.AddListener(() => InvokeTrigger("Slide"));
         Character.OnCharacterHit.AddListener(() => InvokeTrigger("Hit"));
-
     }
 
     private void OnDisable()

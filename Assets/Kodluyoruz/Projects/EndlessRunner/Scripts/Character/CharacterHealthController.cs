@@ -1,11 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Sirenix.OdinInspector;
 
 public class CharacterHealthController : MonoBehaviour, IDamageable, IHealable
 {
 
     public int MaxHealth;
+    [ShowInInspector]
+    [ReadOnly]
     public int CurrentHealth
     {
         get
@@ -43,12 +46,10 @@ public class CharacterHealthController : MonoBehaviour, IDamageable, IHealable
         EventManager.OnGameStart.RemoveListener(ResetHealth);
     }
 
-
     private void ResetHealth()
     {
         CurrentHealth = MaxHealth;
     }
-
 
     public void Damage()
     {
