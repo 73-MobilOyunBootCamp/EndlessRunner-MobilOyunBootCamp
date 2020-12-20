@@ -236,6 +236,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HitSoundID: WhhelBinHitSound
+  crashParticlePrefab: {fileID: 1000012762942328, guid: e954637ad8cb2bc4397fd0e433e62701,
+    type: 3}
 --- !u!1 &1000013839073736
 GameObject:
   m_ObjectHideFlags: 0

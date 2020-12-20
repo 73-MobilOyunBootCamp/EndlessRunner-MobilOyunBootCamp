@@ -62,6 +62,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HitSoundID: DogHit
+  crashParticlePrefab: {fileID: 1000012762942328, guid: e954637ad8cb2bc4397fd0e433e62701,
+    type: 3}
 --- !u!82 &-5615517742777044475
 AudioSource:
   m_ObjectHideFlags: 0

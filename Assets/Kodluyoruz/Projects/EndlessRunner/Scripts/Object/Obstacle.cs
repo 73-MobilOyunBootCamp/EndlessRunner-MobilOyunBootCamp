@@ -13,7 +13,7 @@ public class Obstacle : MonoBehaviour
     [ValueDropdown("audioKeyList")]
     public string HitSoundID;
 
-
+    public GameObject crashParticlePrefab;
     private List<string> audioKeyList { get { return AudioKeys.AudioKeyList; } }
 
     private void OnTriggerEnter(Collider collision)
@@ -27,6 +27,8 @@ public class Obstacle : MonoBehaviour
                 AudioManager.Instance.PlayOneShot2D(HitSoundID);
             if (Animation != null)
                 Animation.Play();
+            if (crashParticlePrefab != null)
+                Instantiate(crashParticlePrefab, transform.position, Quaternion.identity);
         }
     }
 }
