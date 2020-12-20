@@ -67,4 +67,10 @@ public class Level : ScriptableObject
             return null;
         }
     }
+
+    public GameObject GetRandomPowerUp()
+    {
+        return PowerUpData.PowerUpPrefabs[Random.Range(0, PowerUpData.PowerUpPrefabs.Count)];
+
+    }
 }
