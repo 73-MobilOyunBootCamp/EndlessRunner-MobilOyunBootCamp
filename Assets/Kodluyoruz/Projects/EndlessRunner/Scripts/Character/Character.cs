@@ -45,7 +45,7 @@ public class Character : MonoBehaviour
         if (Managers.Instance == null)
             return;
 
-        
+        CharacterManager.Instance.AddCharacter(this);
     }
 
     private void OnDisable()
@@ -53,6 +53,7 @@ public class Character : MonoBehaviour
         if (Managers.Instance == null)
             return;
 
+        CharacterManager.Instance.RemoveCharacter(this);
     }
 
 
@@ -91,7 +92,9 @@ public class Character : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log(other.gameObject.name);
+        Icollectable icollectable = other.GetComponent<Icollectable>();
+        if (icollectable != null)
+            icollectable.Collect();
     }
 
 }
