@@ -94,7 +94,12 @@ public class Character : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log(other.gameObject.name);
+        Icollectable Icollectable = other.GetComponent<Icollectable>();
+
+        if (Icollectable != null)
+        {
+            Icollectable.Collect();
+        }
     }
 
 }

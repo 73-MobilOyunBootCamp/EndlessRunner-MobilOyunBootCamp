@@ -17,6 +17,8 @@ public abstract class CollectableBase : MonoBehaviour, Icollectable
         if (Managers.Instance == null)
             return;
 
+        EventManager.OnLevelFinish.AddListener(Dispose);
+
     }
 
     private void OnDisable()
@@ -24,17 +26,28 @@ public abstract class CollectableBase : MonoBehaviour, Icollectable
         if (Managers.Instance == null)
             return;
 
+        EventManager.OnLevelFinish.RemoveListener(Dispose);
+
     }
 
     public virtual void Collect()
     {
-        
+        if (!string.IsNullOrEmpty(CollectSoundID))
+        {
+            AudioManager.Instance.PlayOneShot2D(CollectSoundID);
+        }
+
+        if (CollectParticlePrefab != null)
+        {
+            Instantiate(CollectParticlePrefab, transform.position, Quaternion.identity);
+        }
+
     }
 
     public abstract void Use();
 
     public virtual void Dispose()
     {
-
+        Destroy(gameObject);
     }
 }
