@@ -33,6 +33,12 @@ public class LaneObject : MonoBehaviour
 
     public LaneObject GetLane(Swipe swipe)
     {
+        for (int i = 0; i < ConnectedLanes.Count; i++)
+        {
+            if (ConnectedLanes[i].SwipeDirection.Equals(swipe))
+                return ConnectedLanes[i].LaneObject;
+        }
+
         return null;
     }
 
