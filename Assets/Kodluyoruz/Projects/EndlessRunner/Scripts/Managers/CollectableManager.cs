@@ -43,12 +43,21 @@ public class CollectableManager : MonoBehaviour
             yield return new WaitForSeconds(0.2f);
         }
 
-        
+        yield return new WaitForSeconds(0.3f);
+        CreatePowerUp();
+
+
         yield return null;
     }
 
     private void CreatePowerUp()
     {
-        
+        float chance = Random.Range(0, 100);
+        if (chance > LevelManager.Instance.DifficulityData.PowerUpSpawnRetrio)
+        {
+            return;
+        }
+
+        Instantiate(LevelManager.Instance.CurrentLevel.GetRandomPowerUp(), TrackManager.Instance.GetRandomLane().transform.position + Vector3.up, Quaternion.identity, TrackManager.Instance.GetLastTrackObject().transform);
     }
 }
