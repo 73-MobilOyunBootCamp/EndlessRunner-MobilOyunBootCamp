@@ -35,3 +35,4 @@ public class LevelData : ScriptableObject
     [InlineEditor(InlineEditorModes.GUIOnly)]
     public List<Level> Levels = new List<Level>();
 }
+

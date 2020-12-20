@@ -25,6 +25,23 @@ public class FishboneCollectable : CollectableBase
 
     private void Update()
     {
+        if (!GameManager.Instance.GameData.IsMagnetActive && !isStarted) return;
+
+        Vector3 forward = transform.TransformDirection(Vector3.forward);
+        Vector3 toOther = CharacterManager.Instance.Player.transform.position - transform.position;
+
+        if (Vector3.Dot(forward, toOther) > 0) 
+            return;
         
+
+        float disToPlayer = Vector3.Distance(transform.position, CharacterManager.Instance.Player.transform.position);
+
+        if (disToPlayer < 10f)
+        {
+            isStarted = true;
+            float speed = 30 - disToPlayer;
+            speed = speed * Time.deltaTime * 0.5f;
+            transform.position = Vector3.MoveTowards(transform.position, CharacterManager.Instance.Player.transform.position + Vector3.up , speed);
+        }
     }
 }
