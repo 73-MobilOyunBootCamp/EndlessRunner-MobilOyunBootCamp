@@ -30,7 +30,10 @@ public abstract class PowerUpBase : CollectableBase, IPowerUp
 
     public void Initialize(PowerUpBase powerUpBase)
     {
-        
+        CollectSoundID = powerUpBase.CollectSoundID;
+        CollectParticlePrefab = powerUpBase.CollectParticlePrefab;
+        PowerUpDisplayPrefab = powerUpBase.PowerUpDisplayPrefab;
+            
     }
 
     public void Execute()

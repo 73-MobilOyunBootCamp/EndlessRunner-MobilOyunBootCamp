@@ -20,12 +20,17 @@ public class MagnetPowerUp : PowerUpBase
         GameManager.Instance.GameData.IsMagnetActive = false;
 
         Destroy(effect);
+        Destroy(this);
+
         yield return null;
     }
 
     public override void Use()
     {
-       
+        MagnetPowerUp magnetPowerUp = CharacterManager.Instance.Player.gameObject.AddComponent<MagnetPowerUp>();
+        magnetPowerUp.Initialize(this);
+        magnetPowerUp.Execute();
+        Dispose();
     }
 
     public override void Interup()
