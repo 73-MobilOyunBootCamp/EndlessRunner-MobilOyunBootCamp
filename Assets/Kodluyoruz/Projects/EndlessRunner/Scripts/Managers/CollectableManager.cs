@@ -24,7 +24,10 @@ public class CollectableManager : MonoBehaviour
 
     private void CreateCoins()
     {
-       
+        LaneObject laneObject = TrackManager.Instance.GetRandomLane();
+        int targetCoinCount = Random.Range(5, 10);
+
+        StartCoroutine(CreateCoinsCo(laneObject, targetCoinCount));
     }
 
     private IEnumerator CreateCoinsCo(LaneObject laneObject, int targetCoinCount)

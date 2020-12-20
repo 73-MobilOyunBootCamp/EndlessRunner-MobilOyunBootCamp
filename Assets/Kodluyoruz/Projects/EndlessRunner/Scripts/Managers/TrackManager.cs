@@ -99,6 +99,7 @@ public class TrackManager : Singleton<TrackManager>
             Tracks.Remove(trackObject);
     }
 
+
     /// <summary>
     /// This method is resposible for moving track objects.
     /// We use a for loop to itterate trough all the track objects that we have.
@@ -122,6 +123,7 @@ public class TrackManager : Singleton<TrackManager>
             }
         }
     }
+
 
 
     /// <summary>
@@ -184,6 +186,11 @@ public class TrackManager : Singleton<TrackManager>
         }
 
         return closestLane;
+    }
+
+    public LaneObject GetRandomLane()
+    {
+        return Lanes[UnityEngine.Random.Range(0, Lanes.Count)];
     }
     #endregion
 }
