@@ -29,6 +29,10 @@ public class CharacterHealthController : MonoBehaviour
         if (Managers.Instance == null)
             return;
 
+        Character.OnCharacterDie.AddListener(Damage);
+        Character.OnCharacterRevive.AddListener(ResetHealth);
+        Character.OnCharacterHeal.AddListener(Heal);
+        EventManager.OnGameStart.AddListener(ResetHealth);
        
     }
 
@@ -37,22 +41,35 @@ public class CharacterHealthController : MonoBehaviour
         if (Managers.Instance == null)
             return;
 
-        
+        Character.OnCharacterDie.RemoveListener(Damage);
+        Character.OnCharacterRevive.RemoveListener(ResetHealth);
+        Character.OnCharacterHeal.RemoveListener(Heal);
+        EventManager.OnGameStart.RemoveListener(ResetHealth);
     }
 
     private void ResetHealth()
     {
-        
+        CurrentHealth = MaxHealth;
     }
 
     private void Damage()
     {
-        
+        CurrentHealth--;
+
+        if (CurrentHealth <= 0)
+        {
+            Character.KillCharacter();
+        }
     }
 
     private void Heal()
     {
-        
+        CurrentHealth++;
+
+        if (CurrentHealth >= MaxHealth)
+        {
+            CurrentHealth = MaxHealth;
+        }
     }
 
 
