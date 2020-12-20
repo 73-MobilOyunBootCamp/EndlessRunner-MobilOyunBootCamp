@@ -172,6 +172,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HitSoundID: TrashCanHitSound
+  CrashParticlePrefab: {fileID: 1000012762942328, guid: e954637ad8cb2bc4397fd0e433e62701,
+    type: 3}
 --- !u!1 &1000012535006976
 GameObject:
   m_ObjectHideFlags: 0

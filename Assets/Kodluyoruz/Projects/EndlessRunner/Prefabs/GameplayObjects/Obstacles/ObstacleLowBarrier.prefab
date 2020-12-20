@@ -155,3 +155,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HitSoundID: BarrierHitSound
+  CrashParticlePrefab: {fileID: 1000012762942328, guid: e954637ad8cb2bc4397fd0e433e62701,
+    type: 3}
