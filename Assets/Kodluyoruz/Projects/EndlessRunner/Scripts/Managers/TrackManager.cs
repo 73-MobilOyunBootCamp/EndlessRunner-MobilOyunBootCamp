@@ -122,6 +122,10 @@ public class TrackManager : Singleton<TrackManager>
         }
     }
 
+    public TrackObject GetLastTrackObject()
+    {
+        return Tracks[Tracks.Count - 1];
+    }
 
     /// <summary>
     /// This Method will be responsible for creating tracks.

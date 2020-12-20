@@ -6,7 +6,6 @@ using Sirenix.OdinInspector;
 
 public class MultipilyPowerUp : PowerUpBase
 {
-
     public override IEnumerator ExecuteCo()
     {
         effect = Instantiate(PowerUpDisplayPrefab,
@@ -21,7 +20,6 @@ public class MultipilyPowerUp : PowerUpBase
         Destroy(this);
 
         yield return null;
-
     }
 
     public override void Use()

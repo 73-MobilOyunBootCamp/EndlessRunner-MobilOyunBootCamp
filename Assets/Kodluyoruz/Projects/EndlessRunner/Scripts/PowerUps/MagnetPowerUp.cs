@@ -18,7 +18,6 @@ public class MagnetPowerUp : PowerUpBase
         GameManager.Instance.GameData.IsMagnetActive = false;
         Destroy(effect);
         Destroy(this);
-
         yield return null;
     }
 
@@ -33,6 +32,7 @@ public class MagnetPowerUp : PowerUpBase
     public override void Interup()
     {
         base.Interup();
+
         GameManager.Instance.GameData.IsMagnetActive = false;
     }
 }

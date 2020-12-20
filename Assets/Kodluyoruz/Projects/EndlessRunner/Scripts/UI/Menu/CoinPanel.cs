@@ -26,6 +26,7 @@ public class CoinPanel : Panel
 
         EventManager.OnPlayerDataUpdated.RemoveListener(UpdateCoinText);
         EventManager.OnGameStart.RemoveListener(InitilizePanel);
+
     }
 
     private void InitilizePanel()

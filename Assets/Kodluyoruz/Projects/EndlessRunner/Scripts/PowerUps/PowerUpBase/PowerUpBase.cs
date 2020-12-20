@@ -7,6 +7,7 @@ using Sirenix.OdinInspector;
 public abstract class PowerUpBase : CollectableBase, IPowerUp
 {
     public GameObject PowerUpDisplayPrefab;
+
     protected GameObject effect;
 
     public override void Collect()
@@ -15,9 +16,7 @@ public abstract class PowerUpBase : CollectableBase, IPowerUp
 
         var powerUpInUse = CharacterManager.Instance.Player.GetComponent<IPowerUp>();
         if (powerUpInUse != null)
-        {
             powerUpInUse.Interup();
-        }
 
         Use();
     }
@@ -25,16 +24,15 @@ public abstract class PowerUpBase : CollectableBase, IPowerUp
     public virtual void Interup()
     {
         if (effect != null)
-        {
             Destroy(effect);
-        }
+
         StopAllCoroutines();
         Destroy(this);
     }
 
     public void Initialize(PowerUpBase powerUpBase)
     {
-        CollectSoundID = powerUpBase.CollectSoundID ;
+        CollectSoundID = powerUpBase.CollectSoundID;
         CollectParticlePrefab = powerUpBase.CollectParticlePrefab;
         PowerUpDisplayPrefab = powerUpBase.PowerUpDisplayPrefab;
     }

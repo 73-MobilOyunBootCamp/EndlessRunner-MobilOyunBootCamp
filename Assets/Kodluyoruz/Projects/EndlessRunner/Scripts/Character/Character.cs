@@ -44,6 +44,7 @@ public class Character : MonoBehaviour
     {
         if (Managers.Instance == null)
             return;
+
         CharacterManager.Instance.AddCharacter(this);
         
     }
@@ -52,7 +53,9 @@ public class Character : MonoBehaviour
     {
         if (Managers.Instance == null)
             return;
+
         CharacterManager.Instance.RemoveCharacter(this);
+
     }
 
     public void KillCharacter()
@@ -84,9 +87,8 @@ public class Character : MonoBehaviour
         Icollectable icollectable = other.GetComponent<Icollectable>();
 
         if (icollectable != null)
-        {
             icollectable.Collect();
-        }
     }
+
 
 }
