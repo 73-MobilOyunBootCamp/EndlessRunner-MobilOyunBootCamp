@@ -23,6 +23,7 @@ public class ObstacleManager : Singleton<ObstacleManager>
 
         EventManager.OnLevelStart.AddListener(() => canCreateObstacles = true);
         EventManager.OnLevelFail.AddListener(() => canCreateObstacles = false);
+        EventManager.OnLevelContine.AddListener(() => canCreateObstacles = true);
        
     }
 
@@ -33,6 +34,7 @@ public class ObstacleManager : Singleton<ObstacleManager>
 
         EventManager.OnLevelStart.RemoveListener(() => canCreateObstacles = true);
         EventManager.OnLevelFail.RemoveListener(() => canCreateObstacles = false);
+        EventManager.OnLevelContine.RemoveListener(() => canCreateObstacles = true);
     }
 
     private void Update()
