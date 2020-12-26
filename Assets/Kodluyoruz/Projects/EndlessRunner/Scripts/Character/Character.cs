@@ -47,11 +47,11 @@ public class Character : MonoBehaviour
 
         CharacterManager.Instance.AddCharacter(this);
         EventManager.OnLevelContine.AddListener(ReviveCharacter);
-
+        EventManager.OnLevelStart.AddListener(ReviveCharacter);
         EventManager.OnLevelFinish.AddListener(() =>
         {
             transform.position = new Vector3(TrackManager.Instance.MiddleLane.transform.position.x, transform.position.y, transform.position.z);
-
+            transform.LookAt(TrackManager.Instance.MiddleLane.transform);
         });
         
     }
@@ -62,7 +62,13 @@ public class Character : MonoBehaviour
             return;
 
         CharacterManager.Instance.RemoveCharacter(this);
+        EventManager.OnLevelStart.RemoveListener(ReviveCharacter);
         EventManager.OnLevelContine.RemoveListener(ReviveCharacter);
+        EventManager.OnLevelFinish.RemoveListener(() =>
+        {
+            transform.position = new Vector3(TrackManager.Instance.MiddleLane.transform.position.x, transform.position.y, transform.position.z);
+            transform.LookAt(TrackManager.Instance.MiddleLane.transform);
+        });
 
     }
 
