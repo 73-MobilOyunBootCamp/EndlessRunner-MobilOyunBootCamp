@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using Sirenix.OdinInspector;
 
 public enum CharacterControllerType { Player, AI}
 
@@ -35,9 +36,13 @@ public class Character : MonoBehaviour
     #endregion
 
     private bool isDead;
+    [ShowInInspector]
+    [ReadOnly]
     public bool IsDead { get { return (isDead); } set { isDead = value; } }
 
     private bool isControlable;
+    [ShowInInspector]
+    [ReadOnly]
     public bool IsControlable { get { return isControlable; } set { isControlable = value; } }
 
     private void OnEnable()
@@ -46,6 +51,13 @@ public class Character : MonoBehaviour
             return;
 
         CharacterManager.Instance.AddCharacter(this);
+        EventManager.OnLevelContine.AddListener(ReviveCharacter);
+        EventManager.OnLevelStart.AddListener(ReviveCharacter);
+        EventManager.OnLevelFinish.AddListener(() =>
+        {
+            transform.position = new Vector3(TrackManager.Instance.MiddleLane.transform.position.x, transform.position.y, transform.position.z);
+            transform.LookAt(TrackManager.Instance.MiddleLane.transform);
+        });
         
     }
 
@@ -55,6 +67,14 @@ public class Character : MonoBehaviour
             return;
 
         CharacterManager.Instance.RemoveCharacter(this);
+
+        EventManager.OnLevelContine.RemoveListener(ReviveCharacter);
+        EventManager.OnLevelStart.RemoveListener(ReviveCharacter);
+        EventManager.OnLevelFinish.RemoveListener(() =>
+        {
+            transform.position = new Vector3(TrackManager.Instance.MiddleLane.transform.position.x, transform.position.y, transform.position.z);
+            transform.LookAt(TrackManager.Instance.MiddleLane.transform);
+        });
 
     }
 
