@@ -141,6 +141,7 @@ public class TrackManager : Singleton<TrackManager>
                 createPos = Tracks[Tracks.Count - 1].EndPoint.position + Vector3.forward * 4f;
             }
         }
+        createPos.y = 0;
 
         GameObject trackObj = Instantiate(LevelManager.Instance.CurrentLevel.GetRandomTrack(LevelManager.Instance.CurrentTheme), createPos, Quaternion.identity);
     }
