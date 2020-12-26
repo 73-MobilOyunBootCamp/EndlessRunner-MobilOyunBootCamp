@@ -96,6 +96,9 @@ MonoBehaviour:
   OnCharacterHit:
     m_PersistentCalls:
       m_Calls: []
+  OnCharacterHeal:
+    m_PersistentCalls:
+      m_Calls: []
   OnCharacterDie:
     m_PersistentCalls:
       m_Calls: []
@@ -152,7 +155,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3ed33a3d30d94343a4dfdd766576c05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHealth: 3
+  MaxHealth: 1
 --- !u!136 &1919195712183084936
 CapsuleCollider:
   m_ObjectHideFlags: 0
