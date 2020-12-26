@@ -158,10 +158,6 @@ public class TrackManager : Singleton<TrackManager>
         Tracks.Remove(trackObject);
         Destroy(trackObject.gameObject);
     }
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
     #endregion
 
     #region Lanes
