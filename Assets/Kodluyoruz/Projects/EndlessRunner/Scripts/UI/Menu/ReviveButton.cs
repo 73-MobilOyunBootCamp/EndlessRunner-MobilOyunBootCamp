@@ -14,6 +14,7 @@ public class ReviveButton : Button
         if (Managers.Instance == null)
             return;
 
+        onClick.AddListener(() => EventManager.OnLevelContine.Invoke());
     }
 
     protected override void OnDisable()
@@ -22,5 +23,7 @@ public class ReviveButton : Button
         if (Managers.Instance == null)
             return;
 
+
+        onClick.RemoveListener(() => EventManager.OnLevelContine.Invoke());
     }
 }

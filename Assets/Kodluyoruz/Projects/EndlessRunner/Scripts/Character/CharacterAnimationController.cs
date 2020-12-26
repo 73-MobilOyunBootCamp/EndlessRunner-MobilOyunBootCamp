@@ -18,6 +18,8 @@ public class CharacterAnimationController : MonoBehaviour
 
         EventManager.OnLevelStart.AddListener(() => InvokeTrigger("Start"));
 
+        EventManager.OnLevelFinish.AddListener(() => Animator.Rebind());
+        Character.OnCharacterRevive.AddListener(() => InvokeTrigger("Start"));
         Character.OnCharacterJump.AddListener(() => InvokeTrigger("Jump"));
         Character.OnCharacterSlide.AddListener(() => InvokeTrigger("Slide"));
         Character.OnCharacterHit.AddListener(() => InvokeTrigger("Hit"));
@@ -31,6 +33,8 @@ public class CharacterAnimationController : MonoBehaviour
 
         EventManager.OnLevelStart.RemoveListener(() => InvokeTrigger("Start"));
 
+        EventManager.OnLevelFinish.RemoveListener(() => Animator.Rebind());
+        Character.OnCharacterRevive.RemoveListener(() => InvokeTrigger("Start"));
         Character.OnCharacterJump.RemoveListener(() => InvokeTrigger("Jump"));
         Character.OnCharacterSlide.RemoveListener(() => InvokeTrigger("Slide"));
         Character.OnCharacterHit.RemoveListener(() => InvokeTrigger("Hit"));

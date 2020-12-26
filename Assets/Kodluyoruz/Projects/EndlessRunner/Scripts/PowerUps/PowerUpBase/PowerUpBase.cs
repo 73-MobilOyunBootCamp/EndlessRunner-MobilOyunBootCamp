@@ -37,6 +37,7 @@ public abstract class PowerUpBase : CollectableBase, IPowerUp
 
     public void Execute()
     {
+        EventManager.OnLevelFinish.RemoveListener(Dispose);
         StartCoroutine(ExecuteCo());
     }
 
