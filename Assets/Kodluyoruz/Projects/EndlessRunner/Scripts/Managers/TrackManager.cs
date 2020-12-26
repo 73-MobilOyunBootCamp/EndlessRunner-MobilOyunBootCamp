@@ -142,7 +142,11 @@ public class TrackManager : Singleton<TrackManager>
             }
         }
 
-        GameObject trackObj = Instantiate(LevelManager.Instance.CurrentLevel.GetRandomTrack(LevelManager.Instance.CurrentTheme), createPos, Quaternion.identity);
+        createPos.y = 0;
+
+        GameObject trackObj = Instantiate(LevelManager.Instance.CurrentLevel.GetRandomTrack(LevelManager.Instance.CurrentTheme),
+            createPos,
+            Quaternion.identity);
     }
 
     /// <summary>
