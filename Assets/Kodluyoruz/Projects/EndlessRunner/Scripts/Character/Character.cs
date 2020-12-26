@@ -46,6 +46,13 @@ public class Character : MonoBehaviour
             return;
 
         CharacterManager.Instance.AddCharacter(this);
+        EventManager.OnLevelContine.AddListener(ReviveCharacter);
+
+        EventManager.OnLevelFinish.AddListener(() =>
+        {
+            transform.position = new Vector3(TrackManager.Instance.MiddleLane.transform.position.x, transform.position.y, transform.position.z);
+
+        });
         
     }
 
@@ -55,6 +62,7 @@ public class Character : MonoBehaviour
             return;
 
         CharacterManager.Instance.RemoveCharacter(this);
+        EventManager.OnLevelContine.RemoveListener(ReviveCharacter);
 
     }
 

@@ -16,6 +16,8 @@ public class GameEndPanel : Panel
 
         EventManager.OnLevelFail.AddListener(InitializeLevelFailPanel);
         EventManager.OnLevelSuccess.AddListener(InitializeLevelSuccessPanel);
+        EventManager.OnLevelContine.AddListener(HidePanel);
+        EventManager.OnLevelFinish.AddListener(HidePanel);
         
     }
 
@@ -26,6 +28,8 @@ public class GameEndPanel : Panel
 
         EventManager.OnLevelFail.RemoveListener(InitializeLevelFailPanel);
         EventManager.OnLevelSuccess.RemoveListener(InitializeLevelSuccessPanel);
+        EventManager.OnLevelContine.RemoveListener(HidePanel);
+        EventManager.OnLevelFinish.RemoveListener(HidePanel);
 
     }
 
