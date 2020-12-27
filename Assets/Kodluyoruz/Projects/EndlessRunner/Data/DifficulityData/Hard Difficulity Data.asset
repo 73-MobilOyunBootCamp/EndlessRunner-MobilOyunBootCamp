@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Hard Difficulity Data
   m_EditorClassIdentifier: 
   DifficulityMode: 2
-  TrackSpeed: 10
+  TrackSpeed: 20
   ObstacleSpawnRetrio: 75
   PowerUpSpawnRetrio: 50
   ActivateTimeTrashold: 600

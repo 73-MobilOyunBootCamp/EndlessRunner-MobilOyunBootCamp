@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Medium Difficulity Data
   m_EditorClassIdentifier: 
   DifficulityMode: 1
-  TrackSpeed: 7
+  TrackSpeed: 15
   ObstacleSpawnRetrio: 50
   PowerUpSpawnRetrio: 25
   ActivateTimeTrashold: 350
