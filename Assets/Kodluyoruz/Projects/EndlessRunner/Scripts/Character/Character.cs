@@ -97,8 +97,9 @@ public class Character : MonoBehaviour
             return;
 
         IsDead = false;
-        IsControlable = true;
+        IsControlable = false;
         OnCharacterRevive.Invoke();
+        
     }
 
 
