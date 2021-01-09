@@ -36,7 +36,20 @@ public class LevelManager : Singleton<LevelManager>
         }
     }
 
-    public int DifficulityIndex { get; set; }
+    public int DifficulityIndex 
+    { 
+        get
+        {
+            return PlayerPrefs.GetInt("LastLevelDifficultyIndex" , 0);
+        }
+        set 
+        {
+            if (value > LevelData.Levels[LevelIndex].DifficulityData.Count)
+                value = LevelData.Levels[LevelIndex].DifficulityData.Count - 1;
+
+            PlayerPrefs.SetInt("LastLevelDifficultyIndex", value);
+        }
+    }
 
     public void StartLevel()
     {

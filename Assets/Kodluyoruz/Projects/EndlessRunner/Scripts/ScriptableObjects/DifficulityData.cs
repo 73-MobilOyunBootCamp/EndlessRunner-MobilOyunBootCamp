@@ -5,7 +5,7 @@ using UnityEngine;
 public enum DifficulityMode { Easy, Medium, Hard }
 [CreateAssetMenu(fileName = "Difficulity Data", menuName = "Endless Runner/Difficulity Data")]
 public class DifficulityData : ScriptableObject
-{
+{   
     public DifficulityMode DifficulityMode = DifficulityMode.Easy;
     public float TrackSpeed;
 
@@ -19,4 +19,5 @@ public class DifficulityData : ScriptableObject
 
     [Tooltip("Determans at which point should this difficulity be activated.")]
     public float ActivateTimeTrashold;
+
 }

@@ -28,6 +28,8 @@ MonoBehaviour:
       - {fileID: 8387328013862532398, guid: 3528fee27ec574b6aa81e5415bfaed8f, type: 3}
   DifficulityData:
   - {fileID: 11400000, guid: 5b54d93871b9c43b0b9c365a620dd172, type: 2}
+  - {fileID: 11400000, guid: 39edc511bbd3c4fb9aae8cff72008553, type: 2}
+  - {fileID: 11400000, guid: 326c1ec0234dd48958e83d9c400c1d5c, type: 2}
   PowerUpData:
     PowerUpPrefabs:
     - {fileID: 1029194402659383592, guid: fc6ba0f05024d41deb48368cce5f96f1, type: 3}
